@@ -1,0 +1,7 @@
+    @font-face {
+    font-family: 'ocr';
+    src: url('https://cdn.jsdelivr.net/gh/gitmaxu/shphsvfp@main/OCRBBQ.otf') format('opentype');
+    font-weight: lighter;
+    font-style: normal;
+    font-display: swap;
+}
