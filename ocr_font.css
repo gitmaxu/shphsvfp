@@ -5,3 +5,184 @@
     font-style: normal;
     font-display: swap;
 }
+    * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'orc',monospace;
+            background: #ffffff;
+            letter-spacing: -3px;
+            word-spacing: 3px;
+            color: #000000;
+            line-height: 1.6;
+        }
+
+        header {
+            border-bottom: 2px solid #000000;
+            padding: 20px 40px;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: lighter;
+            letter-spacing: -1px;
+        }
+
+        .hero {
+            max-width: 800px;
+            margin: 80px auto;
+            padding: 0 40px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 56px;
+            font-weight: lighter;
+            margin-bottom: 24px;
+            line-height: 1.1;
+        }
+
+        .subtitle {
+            font-size: 24px;
+            margin-bottom: 40px;
+            font-weight: lighter;
+        }
+
+        .download-btn {
+            display: inline-block;
+            background: #000000;
+            color: #ffffff;
+            padding: 18px 48px;
+            font-size: 18px;
+            font-weight: lighter;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: opacity 0.2s;
+        }
+
+        .download-btn:hover {
+            opacity: 0.8;
+        }
+
+        .features {
+            max-width: 1000px;
+            margin: 120px auto;
+            padding: 0 40px;
+        }
+
+        .features h2 {
+            font-size: 42px;
+            text-align: center;
+            margin-bottom: 60px;
+            font-weight: lighter;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+
+        .feature {
+            border: 2px solid #000000;
+            padding: 32px;
+            border-radius: 8px;
+        }
+
+        feature:hover {
+            border: 1px solid #000000;
+            padding: 36px;
+            border-radius: 18px;
+        }
+
+        .feature h3 {
+            font-size: 24px;
+            margin-bottom: 12px;
+            font-weight: lighter;
+        }
+
+        .feature p {
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        .shield-section {
+            background: #000000;
+            color: #ffffff;
+            padding: 80px 40px;
+            margin: 120px 0;
+        }
+
+        .shield-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .shield-section h2 {
+            font-size: 48px;
+            margin-bottom: 24px;
+            font-weight: lighter;
+        }
+
+        .shield-section p {
+            font-size: 20px;
+            line-height: 1.7;
+        }
+
+        .stats {
+            max-width: 800px;
+            margin: 80px auto;
+            padding: 0 40px;
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .stat h3 {
+            font-size: 56px;
+            font-weight: lighter;
+            margin-bottom: 8px;
+        }
+
+        .stat p {
+            font-size: 18px;
+            font-weight: lighter;
+        }
+
+        footer {
+            border-top: 2px solid #000000;
+            padding: 40px;
+            text-align: center;
+            margin-top: 120px;
+        }
+
+        footer p {
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 36px;
+            }
+
+            .subtitle {
+                font-size: 18px;
+            }
+
+            .features h2,
+            .shield-section h2 {
+                font-size: 32px;
+            }
+
+            .stat h3 {
+                font-size: 42px;
+            }
+        }
