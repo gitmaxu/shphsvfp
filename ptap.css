@@ -1,0 +1,287 @@
+  @font-face {
+    font-family: 'ocr';
+    src: url('https://cdn.jsdelivr.net/gh/gitmaxu/shphsvfp@main/OCRBBQ.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'ocr', 'Arial Narrow', sans-serif;
+    background: #ffffff;
+    color: #000000;
+    line-height: 1.5;
+    letter-spacing: -3px;
+    word-spacing: 9px;
+}
+
+.top-header {
+    background: #ffffff;
+    border-bottom: 2px solid #000000;
+    padding: 20px 40px;
+    
+}
+
+
+
+.page-title {
+    background: rgba(255, 255, 255, 0);
+    color: #0c0c0c;
+    border-bottom: solid 1px rgb(146, 146, 146);
+    transform: translateY(-64px);
+
+    padding: 40px 40px;
+    text-align: center;
+}
+
+.page-title h1 {
+    font-size: 44px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.tab {
+    padding: 12px 30px;
+    background: rgba(255, 255, 255, 0);
+    color: #616161;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.tab:hover,
+.tab.active {
+    background: #ffffff;
+    border-bottom: 2px solid #bababa;
+
+    color: rgb(48, 135, 255);
+}
+
+.container {
+    display: flex;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.sidebar {
+    width: 280px;
+    transform: translateY(-64px);
+
+    padding: 40px 20px;
+    border-right: 2px solid #f0f0f0;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.sidebar-link {
+    display: block;
+    padding: 12px 16px;
+    color: #000000;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 6px;
+    margin-bottom: 4px;
+    transition: all 0.2s ease;
+}
+
+.sidebar-link:hover,
+.sidebar-link.active {
+    background: #f5f5f5;
+    color: rgb(48, 135, 255);
+}
+
+.content {
+    flex: 1;
+    padding: 60px 80px;
+}
+
+.content-section {
+    display: none;
+}
+
+.content-section.active {
+    display: block;
+}
+
+.illustration {
+    text-align: center;
+    margin: 40px 0;
+    font-size: 80px;
+}
+
+h2 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    margin-top: 40px;
+}
+
+h3 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    margin-top: 30px;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.intro-text {
+    font-size: 18px;
+    font-weight: 500;
+    color: #000;
+    margin: 30px 0;
+}
+
+.highlight-box {
+    background: #f9f9f9;
+    padding: 20px 24px;
+    border-radius: 9px;
+    margin: 30px 0;
+}
+
+.feature-list {
+    margin: 20px 0;
+}
+
+.feature-item {
+    padding: 16px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.feature-item:hover {
+    border-color: rgb(48, 135, 255);
+    background: #ffffff;
+}
+
+.feature-item h4 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+ul {
+    margin: 20px 0 20px 30px;
+}
+
+li {
+    margin-bottom: 10px;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+
+
+
+.bfl {
+    display: inline-block;
+}
+
+
+
+.bfl-inner {
+    display: flex;
+    align-items: center;
+    /* vertically center icon + text */
+    gap: 10px;
+    /* space between icon and text */
+    padding: 6px 10px;
+    border-radius: 8px;
+    transition: background 0.2s;
+}
+
+.bfl-inner:hover {
+    background: #f0f0f0;
+    /* optional hover effect */
+}
+
+.bfl img {
+    width: 66px;
+    /* ← you can change this size */
+    height: 66px;
+
+    object-fit: cover;
+    border-radius: 50%;
+    /* optional: make it round */
+    flex-shrink: 0;
+}
+
+.bfl span {
+    font-size: 2rem;
+    font-weight: 600;
+    /* text-shadow: 1px 1px 0px rgb(255, 255, 255); */
+    color: rgb(0, 0, 0);
+    letter-spacing: -6px;
+    white-space: initial;
+}
+
+
+.ptw {
+    display: inline-block;
+
+    transform: translateY(-22px);
+}
+
+
+
+
+@media (max-width: 1024px) {
+    .sidebar {
+display: none;
+    }
+
+    .content {
+padding: 40px 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-title h1 {
+font-size: 32px;
+    }
+
+    .tabs {
+flex-direction: column;
+align-items: center;
+    }
+
+    .tab {
+width: 100%;
+max-width: 300px;
+    }
+
+    .content {
+padding: 30px 20px;
+    }
+
+    h2 {
+font-size: 28px;
+    }
+
+    h3 {
+font-size: 20px;
+    }
+}
