@@ -52,11 +52,11 @@ PESUMS operates on a local-first architecture where all features are designed to
 
 ## Platform Support
 
-- Windows
-- macOS  
 - Linux
 - Android
+- macOS  
 - iOS
+- Windows
 
 ## Philosophy
 
@@ -70,7 +70,9 @@ PESUMS is currently in active development. The browser is approximately 90% comp
 
 ## Funding
 
-This project is independently developed without venture capital or corporate backing. If you believe in a web where privacy is a right rather than a product, contributions help keep development sustainable while maintaining our zero-compromise approach.
+PESUMS is independently developed without venture capital or corporate backing. This project exists to prove that privacy-focused software can thrive without compromising user trust for investor returns.
+If you believe in a web where privacy is a right rather than a product, and you want to support this mission, funding opportunities are open. Whether through contributions, partnerships, or sponsorships that align with our principles, we welcome conversations with those who share our vision.
+For funding inquiries: contact@pesums.com
 
 ## License
 
