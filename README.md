@@ -1,4 +1,4 @@
-# PESUMS Browser
+# PESUMS Softwares
 
 A privacy-first web browser built on the principle that your data belongs to you, and only you.
 
