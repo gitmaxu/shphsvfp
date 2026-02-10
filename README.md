@@ -17,7 +17,7 @@ Everything runs on your machine. Search caches, history, passwords, settings—a
 **No Compromises**
 Free forever. No premium tiers. No ads. No partnerships with data brokers. Privacy isn't a feature you pay for; it's the foundation.
 ![PESUMS Browser](https://raw.githubusercontent.com/gitmaxu/shphsvfp/main/images/abtr-s.jpg)
-
+⭟ https://adblocktester.pages.dev/ you can visit to test your current browser privacy score 
 ## Key Features
 
 ### PESUMS Shield
