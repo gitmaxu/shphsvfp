@@ -1,332 +1,408 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/jpeg"
-    href="https://raw.githubusercontent.com/gitmaxu/shphsvfp/refs/heads/main/prex.jpeg">
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Mono:wght@400;500&display=swap');
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/jpeg"
+        href="https://raw.githubusercontent.com/gitmaxu/shphsvfp/refs/heads/main/prex.jpeg">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Mono:wght@400;500&display=swap');
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-  :root {
-    --bg: #0a0a0b;
-    --surface: #111113;
-    --border: #1e1e22;
-    --accent: #c8f04d;
-    --accent-dim: rgba(200,240,77,0.08);
-    --text: #f0f0ee;
-    --muted: #55554f;
-    --shield: #c8f04d;
-  }
+        :root {
+            --bg: #0a0a0b;
+            --surface: #111113;
+            --border: #1e1e22;
+            --accent: #c8f04d;
+            --accent-dim: rgba(200, 240, 77, 0.08);
+            --text: #f0f0ee;
+            --muted: #55554f;
+            --shield: #c8f04d;
+        }
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Syne', sans-serif;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    position: relative;
-  }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Syne', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
 
-  /* grid lines bg */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image:
-      linear-gradient(rgba(200,240,77,0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(200,240,77,0.03) 1px, transparent 1px);
-    background-size: 48px 48px;
-    pointer-events: none;
-  }
+        /* grid lines bg */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(200, 240, 77, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(200, 240, 77, 0.03) 1px, transparent 1px);
+            background-size: 48px 48px;
+            pointer-events: none;
+        }
 
-  /* radial glow */
-  body::after {
-    content: '';
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, rgba(200,240,77,0.07) 0%, transparent 70%);
-    pointer-events: none;
-    animation: pulse 4s ease-in-out infinite;
-  }
+        /* radial glow */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(200, 240, 77, 0.07) 0%, transparent 70%);
+            pointer-events: none;
+            animation: pulse 4s ease-in-out infinite;
+        }
 
-  @keyframes pulse {
-    0%, 100% { opacity: 0.6; transform: translate(-50%, -50%) scale(1); }
-    50% { opacity: 1; transform: translate(-50%, -50%) scale(1.08); }
-  }
+        @keyframes pulse {
 
-  .card {
-    position: relative;
-    z-index: 10;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    width: min(480px, 94vw);
-    padding: 48px 40px 40px;
-    animation: rise 0.7s cubic-bezier(0.22,1,0.36,1) both;
-  }
+            0%,
+            100% {
+                opacity: 0.6;
+                transform: translate(-50%, -50%) scale(1);
+            }
 
-  @keyframes rise {
-    from { opacity: 0; transform: translateY(28px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
+            50% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1.08);
+            }
+        }
 
-  /* top accent bar */
-  .card::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 2px;
-    background: var(--accent);
-    animation: expand 0.9s cubic-bezier(0.22,1,0.36,1) 0.2s both;
-    transform-origin: left;
-  }
+        .card {
+            position: relative;
+            z-index: 10;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            width: min(480px, 94vw);
+            padding: 48px 40px 40px;
+            animation: rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
 
-  @keyframes expand {
-    from { transform: scaleX(0); }
-    to   { transform: scaleX(1); }
-  }
+        @keyframes rise {
+            from {
+                opacity: 0;
+                transform: translateY(28px);
+            }
 
-  .shield-wrap {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 32px;
-    animation: popIn 0.5s cubic-bezier(0.34,1.56,0.64,1) 0.35s both;
-  }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-  @keyframes popIn {
-    from { opacity: 0; transform: scale(0.5); }
-    to   { opacity: 1; transform: scale(1); }
-  }
+        /* top accent bar */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--accent);
+            animation: expand 0.9s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
+            transform-origin: left;
+        }
 
-  .shield-ring {
-    width: 72px; height: 72px;
-    border-radius: 50%;
-    background: var(--accent-dim);
-    border: 1px solid rgba(200,240,77,0.2);
-    display: flex; align-items: center; justify-content: center;
-    position: relative;
-  }
+        @keyframes expand {
+            from {
+                transform: scaleX(0);
+            }
 
-  .shield-ring::after {
-    content: '';
-    position: absolute;
-    inset: -6px;
-    border-radius: 50%;
-    border: 1px solid rgba(200,240,77,0.08);
-  }
+            to {
+                transform: scaleX(1);
+            }
+        }
 
-  .shield-icon {
-    width: 32px; height: 32px;
-    fill: none;
-    stroke: var(--accent);
-    stroke-width: 1.8;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
+        .shield-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 32px;
+            animation: popIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.35s both;
+        }
 
-  /* checkmark draw animation */
-  .check-path {
-    stroke-dasharray: 30;
-    stroke-dashoffset: 30;
-    animation: draw 0.4s ease 0.7s forwards;
-  }
+        @keyframes popIn {
+            from {
+                opacity: 0;
+                transform: scale(0.5);
+            }
 
-  @keyframes draw {
-    to { stroke-dashoffset: 0; }
-  }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
 
-  .label {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.18em;
-    color: var(--accent);
-    text-transform: uppercase;
-    margin-bottom: 12px;
-    animation: fadeSlide 0.5s ease 0.5s both;
-  }
+        .shield-ring {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: var(--accent-dim);
+            border: 1px solid rgba(200, 240, 77, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
 
-  .title {
-    font-size: 30px;
-    font-weight: 800;
-    line-height: 1.15;
-    margin-bottom: 16px;
-    animation: fadeSlide 0.5s ease 0.6s both;
-  }
+        .shield-ring::after {
+            content: '';
+            position: absolute;
+            inset: -6px;
+            border-radius: 50%;
+            border: 1px solid rgba(200, 240, 77, 0.08);
+        }
 
-  @keyframes fadeSlide {
-    from { opacity: 0; transform: translateY(10px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
+        .shield-icon {
+            width: 32px;
+            height: 32px;
+            fill: none;
+            stroke: var(--accent);
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
 
-  .desc {
-    font-size: 14px;
-    font-weight: 400;
-    color: var(--muted);
-    line-height: 1.7;
-    margin-bottom: 32px;
-    animation: fadeSlide 0.5s ease 0.7s both;
-  }
+        /* checkmark draw animation */
+        .check-path {
+            stroke-dasharray: 30;
+            stroke-dashoffset: 30;
+            animation: draw 0.4s ease 0.7s forwards;
+        }
 
-  .desc span {
-    color: var(--text);
-    font-weight: 700;
-  }
+        @keyframes draw {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
 
-  .divider {
-    height: 1px;
-    background: var(--border);
-    margin-bottom: 28px;
-    animation: fadeSlide 0.5s ease 0.75s both;
-  }
+        .label {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 0.18em;
+            color: var(--accent);
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            animation: fadeSlide 0.5s ease 0.5s both;
+        }
 
-  .items {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 36px;
-    animation: fadeSlide 0.5s ease 0.8s both;
-  }
+        .title {
+            font-size: 30px;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 16px;
+            animation: fadeSlide 0.5s ease 0.6s both;
+        }
 
-  .item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 13px;
-  }
+        @keyframes fadeSlide {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
 
-  .item-label {
-    color: var(--muted);
-    font-family: 'DM Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 0.06em;
-  }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-  .item-val {
-    font-weight: 700;
-    font-size: 13px;
-  }
+        .desc {
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--muted);
+            line-height: 1.7;
+            margin-bottom: 32px;
+            animation: fadeSlide 0.5s ease 0.7s both;
+        }
 
-  .item-val.green { color: var(--accent); }
+        .desc span {
+            color: var(--text);
+            font-weight: 700;
+        }
 
-  .btn {
-    display: block;
-    width: 100%;
-    padding: 15px 24px;
-    background: var(--accent);
-    color: #0a0a0b;
-    font-family: 'Syne', sans-serif;
-    font-size: 13px;
-    font-weight: 800;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    border: none;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    transition: opacity 0.2s, transform 0.15s;
-    animation: fadeSlide 0.5s ease 0.9s both;
-  }
+        .divider {
+            height: 1px;
+            background: var(--border);
+            margin-bottom: 28px;
+            animation: fadeSlide 0.5s ease 0.75s both;
+        }
 
-  .btn:hover { opacity: 0.88; transform: translateY(-1px); }
-  .btn:active { transform: translateY(0); }
+        .items {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 36px;
+            animation: fadeSlide 0.5s ease 0.8s both;
+        }
 
-  /* particles */
-  .particles {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 5;
-  }
+        .item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+        }
 
-  .p {
-    position: absolute;
-    width: 4px; height: 4px;
-    border-radius: 50%;
-    background: var(--accent);
-    opacity: 0;
-    animation: fall var(--dur) ease var(--delay) forwards;
-  }
+        .item-label {
+            color: var(--muted);
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 0.06em;
+        }
 
-  @keyframes fall {
-    0%   { opacity: 1; transform: translate(0, 0) rotate(0deg); }
-    100% { opacity: 0; transform: translate(var(--dx), var(--dy)) rotate(720deg); }
-  }
-</style>
+        .item-val {
+            font-weight: 700;
+            font-size: 13px;
+        }
+
+        .item-val.green {
+            color: var(--accent);
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 15px 24px;
+            background: var(--accent);
+            color: #0a0a0b;
+            font-family: 'Syne', sans-serif;
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: opacity 0.2s, transform 0.15s;
+            animation: fadeSlide 0.5s ease 0.9s both;
+        }
+
+        .btn:hover {
+            opacity: 0.88;
+            transform: translateY(-1px);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        /* particles */
+        .particles {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .p {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: var(--accent);
+            opacity: 0;
+            animation: fall var(--dur) ease var(--delay) forwards;
+        }
+
+        @keyframes fall {
+            0% {
+                opacity: 1;
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            100% {
+                opacity: 0;
+                transform: translate(var(--dx), var(--dy)) rotate(720deg);
+            }
+        }
+    </style>
 </head>
+
 <body>
-
-<div class="particles" id="particles"></div>
-
-<div class="card">
-  <div class="shield-wrap">
-    <div class="shield-ring">
-      <svg class="shield-icon" viewBox="0 0 24 24">
-        <path d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.35C16.5 22.15 20 17.25 20 12V6L12 2z"/>
-        <path class="check-path" d="M9 12l2 2 4-4" stroke-width="2"/>
-      </svg>
+    <div class="particles" id="particles"></div>
+    <div class="card">
+        <div class="shield-wrap">
+            <div class="shield-ring">
+                <svg class="shield-icon" viewBox="0 0 24 24">
+                    <path d="M12 2L4 6v6c0 5.25 3.5 10.15 8 11.35C16.5 22.15 20 17.25 20 12V6L12 2z" />
+                    <path class="check-path" d="M9 12l2 2 4-4" stroke-width="2" />
+                </svg>
+            </div>
+        </div>
+        <div class="label">Payment confirmed</div>
+        <div class="title">You're protected.<br>Welcome aboard.</div>
+        <div class="desc">
+            Your <span>Pesums Browser — Annual Plan</span> is now active.
+            No logs. No tracking. No ads. Just a browser that works for you.
+        </div>
+        <div class="divider"></div>
+        <div class="items">
+            <div class="item">
+                <span class="item-label">Plan</span>
+                <span class="item-val">Annual · $33 / yr</span>
+            </div>
+            <div class="item">
+                <span class="item-label">Status</span>
+                <span class="item-val green">Active</span>
+            </div>
+            <div class="item">
+                <span class="item-label">Activation Date</span>
+                <span class="item-val" id="activation-date">Loading...</span>
+            </div>
+            <div class="item">
+                <span class="item-label">Next billing</span>
+                <span class="item-val">April 5, 2027</span>
+            </div>
+        </div>
+        <a href="https://pesums.com" class="btn">Go to Pesums →</a>
     </div>
-  </div>
 
-  <div class="label">Payment confirmed</div>
-  <div class="title">You're protected.<br>Welcome aboard.</div>
-  <div class="desc">
-    Your <span>Pesums Browser — Annual Plan</span> is now active.
-    No logs. No tracking. No ads. Just a browser that works for you.
-  </div>
-
-  <div class="divider"></div>
-
-  <div class="items">
-    <div class="item">
-      <span class="item-label">Plan</span>
-      <span class="item-val">Annual · $33 / yr</span>
-    </div>
-    <div class="item">
-      <span class="item-label">Status</span>
-      <span class="item-val green">Active</span>
-    </div>
-    <div class="item">
-      <span class="item-label">Next billing</span>
-      <span class="item-val">April 5, 2027</span>
-    </div>
-  </div>
-
-  <a href="https://pesums.com" class="btn">Go to Pesums →</a>
-</div>
-
-<script>
-  // spawn particles
-  const container = document.getElementById('particles');
-  const cols = ['#c8f04d','#ffffff','#a0c030'];
-  for (let i = 0; i < 28; i++) {
-    const p = document.createElement('div');
-    p.className = 'p';
-    const x = 20 + Math.random() * 60;
-    const y = 20 + Math.random() * 60;
-    const dx = (Math.random() - 0.5) * 200 + 'px';
-    const dy = (Math.random() - 0.5) * 200 + 'px';
-    p.style.cssText = `
+    <script>
+        // === Particles (your original code) ===
+        const container = document.getElementById('particles');
+        const cols = ['#c8f04d', '#ffffff', '#a0c030'];
+        for (let i = 0; i < 28; i++) {
+            const p = document.createElement('div');
+            p.className = 'p';
+            const x = 20 + Math.random() * 60;
+            const y = 20 + Math.random() * 60;
+            const dx = (Math.random() - 0.5) * 200 + 'px';
+            const dy = (Math.random() - 0.5) * 200 + 'px';
+            p.style.cssText = `
       left:${x}%; top:${y}%;
-      background:${cols[i%cols.length]};
+      background:${cols[i % cols.length]};
       --dx:${dx}; --dy:${dy};
-      --dur:${0.8+Math.random()*1.2}s;
-      --delay:${0.3+Math.random()*0.7}s;
-      width:${3+Math.random()*4}px;
-      height:${3+Math.random()*4}px;
+      --dur:${0.8 + Math.random() * 1.2}s;
+      --delay:${0.3 + Math.random() * 0.7}s;
+      width:${3 + Math.random() * 4}px;
+      height:${3 + Math.random() * 4}px;
     `;
-    container.appendChild(p);
-  }
-</script>
+            container.appendChild(p);
+        }
+
+        // === Set Current Activation Date ===
+        function setActivationDate() {
+            const dateEl = document.getElementById('activation-date');
+            const now = new Date();
+            const options = { year: 'numeric', month: 'long', day: 'numeric' };
+            dateEl.textContent = now.toLocaleDateString('en-US', options);
+        }
+
+        setActivationDate();
+    </script>
 </body>
+
 </html>
