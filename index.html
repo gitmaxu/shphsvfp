@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,7 +17,6 @@
             font-style: normal;
             font-display: swap;
         }
-
         *,
         *::before,
         *::after {
@@ -26,12 +24,10 @@
             padding: 0;
             box-sizing: border-box;
         }
-
         html {
             scroll-behavior: smooth;
             overflow-x: hidden;
         }
-
         :root {
             --white: #ffffff;
             --off: #f7f7f5;
@@ -50,7 +46,6 @@
             --body: 'DM Sans', sans-serif;
             --ocr: 'ocr', 'Arial Narrow', sans-serif;
         }
-
         body {
             font-family: var(--body);
             background: var(--white);
@@ -58,21 +53,17 @@
             line-height: 1.6;
             overflow-x: visible;
         }
-
         /* SCROLLBAR */
         ::-webkit-scrollbar {
             width: 4px;
         }
-
         ::-webkit-scrollbar-track {
             background: var(--off);
         }
-
         ::-webkit-scrollbar-thumb {
             background: var(--blue);
             border-radius: 99px;
         }
-
         /* ─── HEADER ─── */
         /* header {
             position: sticky;
@@ -83,7 +74,6 @@
             border-bottom: 1.5px solid var(--border);
             height: 68px;
         } */
-
         /* .header-container {
             max-width: 1300px;
             margin: 0 auto;
@@ -104,11 +94,9 @@
             /* Optional: add a subtle shadow when visible */
             box-shadow: 0 0.6px 0px rgb(255, 91, 32);
         }
-
         header.hidden {
             transform: translateY(-100%);
         }
-
         /* Make sure the header-container still works as you showed */
         .header-container {
             max-width: 1300px;
@@ -119,21 +107,18 @@
             align-items: center;
             justify-content: space-between;
         }
-
         .logo-wrap {
             display: flex;
             align-items: center;
             gap: 10px;
             text-decoration: none;
         }
-
         .logo-wrap img {
             width: 40px;
             height: 40px;
             border-radius: 10px;
             object-fit: cover;
         }
-
         .logo-name {
             font-family: var(--font);
             font-weight: 800;
@@ -141,21 +126,17 @@
             color: var(--ink);
             letter-spacing: -0.5px;
         }
-
         .logo-name span {
             color: var(--blue);
         }
-
         .nav-menu {
             display: flex;
             gap: 2px;
             align-items: center;
         }
-
         .nav-item {
             position: relative;
         }
-
         .nav-link {
             padding: 8px 14px;
             font-size: 0.85rem;
@@ -167,12 +148,10 @@
             transition: all 0.2s;
             font-family: var(--body);
         }
-
         .nav-link:hover {
             color: var(--ink);
             background: var(--off);
         }
-
         .dropdown-content {
             position: absolute;
             top: calc(100% + 8px);
@@ -188,13 +167,11 @@
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
             overflow: hidden;
         }
-
         .dropdown:hover .dropdown-content {
             opacity: 1;
             visibility: visible;
             transform: translateY(0);
         }
-
         .dropdown-content a {
             padding: 11px 18px;
             font-size: 0.83rem;
@@ -205,17 +182,14 @@
             transition: all 0.15s;
             border-bottom: 1px solid var(--border);
         }
-
         .dropdown-content a:last-child {
             border-bottom: none;
         }
-
         .dropdown-content a:hover {
             background: var(--blue-pale);
             color: var(--blue);
             padding-left: 22px;
         }
-
         .btn-suggestion {
             display: flex;
             height: 22px;
@@ -232,17 +206,14 @@
             font-family: var(--body);
             border: 1.5px solid var(--blue);
         }
-
         .btn-suggestion:hover {
             background: var(--blue-dark);
             border-color: var(--blue-dark);
             transform: translateY(-1px);
         }
-
         .btn-suggestion svg {
             flex-shrink: 0;
         }
-
         /* ─── HERO ─── */
         #hero {
             min-height: 100vh;
@@ -256,7 +227,6 @@
             background: rgba(0, 0, 0, 0);
             text-align: center;
         }
-
         /* Grid lines */
         .hero-grid {
             position: absolute;
@@ -268,7 +238,6 @@
             background-size: 6px 6px;
             opacity: 0.5;
         }
-
         /* Blue accent line top */
         .hero-stripe {
             position: absolute;
@@ -278,7 +247,6 @@
             height: 3px;
             background: var(--blue);
         }
-
         .hero-badge {
             display: inline-flex;
             align-items: center;
@@ -297,7 +265,6 @@
             z-index: 1;
             animation: fadeDown 0.6s ease both;
         }
-
         .badge-dot {
             width: 7px;
             height: 7px;
@@ -305,45 +272,37 @@
             border-radius: 50%;
             animation: pulse 2s ease infinite;
         }
-
         @keyframes pulse {
-
             0%,
             100% {
                 opacity: 1;
                 transform: scale(1)
             }
-
             50% {
                 opacity: 0.4;
                 transform: scale(0.7)
             }
         }
-
         @keyframes fadeDown {
             from {
                 opacity: 0;
                 transform: translateY(-16px)
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0)
             }
         }
-
         @keyframes fadeUp {
             from {
                 opacity: 0;
                 transform: translateY(20px)
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0)
             }
         }
-
         .hero-title {
             font-family: var(--font);
             font-size: clamp(3.2rem, 9vw, 7rem);
@@ -356,16 +315,13 @@
             z-index: 1;
             animation: fadeUp 0.7s 0.1s ease both;
         }
-
         .hero-title .blue {
             color: var(--blue);
         }
-
         .hero-title .outline {
             -webkit-text-stroke: 2.5px var(--ink);
             color: transparent;
         }
-
         .hero-sub {
             font-size: clamp(1rem, 2.2vw, 1.2rem);
             color: var(--ink3);
@@ -377,12 +333,10 @@
             z-index: 1;
             animation: fadeUp 0.7s 0.2s ease both;
         }
-
         .hero-sub strong {
             color: var(--ink);
             font-weight: 600;
         }
-
         .hero-coming {
             font-family: var(--mono);
             font-size: 0.85rem;
@@ -394,7 +348,6 @@
             z-index: 1;
             animation: fadeUp 0.7s 0.3s ease both;
         }
-
         .hero-btns {
             display: flex;
             gap: 14px;
@@ -404,7 +357,6 @@
             z-index: 1;
             animation: fadeUp 0.7s 0.4s ease both;
         }
-
         .btn-hero-primary {
             padding: 14px 32px;
             background: var(--ink);
@@ -420,13 +372,11 @@
             align-items: center;
             gap: 8px;
         }
-
         .btn-hero-primary:hover {
             background: var(--blue);
             border-color: var(--blue);
             transform: translateY(-2px);
         }
-
         .btn-hero-ghost {
             padding: 14px 32px;
             background: transparent;
@@ -439,12 +389,10 @@
             font-family: var(--body);
             transition: all 0.2s;
         }
-
         .btn-hero-ghost:hover {
             border-color: var(--ink);
             transform: translateY(-2px);
         }
-
         /* Floating zero badges */
         .hero-zeros {
             display: flex;
@@ -456,7 +404,6 @@
             z-index: 1;
             animation: fadeUp 0.7s 0.5s ease both;
         }
-
         .zero-pill {
             display: flex;
             align-items: center;
@@ -471,14 +418,12 @@
             box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
             transition: all 0.2s;
         }
-
         .zero-pill:hover {
             border-color: var(--blue);
             background: var(--blue-pale);
             color: var(--blue);
             transform: translateY(-3px);
         }
-
         .zero-num {
             font-family: var(--font);
             font-size: 1.4rem;
@@ -486,17 +431,14 @@
             color: var(--blue);
             line-height: 1;
         }
-
         /* ─── SECTION BASE ─── */
         section {
             padding: 100px 24px;
         }
-
         .section-inner {
             max-width: 1200px;
             margin: 0 auto;
         }
-
         .section-label {
             font-family: var(--mono);
             font-size: 0.72rem;
@@ -508,14 +450,12 @@
             gap: 10px;
             margin-bottom: 14px;
         }
-
         .section-label::before {
             content: '';
             width: 24px;
             height: 1.5px;
             background: var(--blue);
         }
-
         .section-title {
             font-family: var(--font);
             font-size: clamp(2rem, 4vw, 3rem);
@@ -525,29 +465,24 @@
             color: var(--ink);
             margin-bottom: 14px;
         }
-
         .section-title span {
             color: var(--blue);
         }
-
         .section-sub {
             color: var(--ink3);
             font-size: 1rem;
             max-width: 540px;
             line-height: 1.75;
         }
-
         /* ─── STATS ─── */
         #stats {
             background: rgba(0, 0, 0, 0.999);
             padding: 80px 24px;
         }
-
         .stats-inner {
             max-width: 1200px;
             margin: 0 auto;
         }
-
         .stats-label {
             font-family: var(--mono);
             font-size: 0.72rem;
@@ -561,7 +496,6 @@
             justify-content: center;
             gap: 12px;
         }
-
         .stats-label::before,
         .stats-label::after {
             content: '';
@@ -570,7 +504,6 @@
             height: 1px;
             background: rgb(255, 255, 255);
         }
-
         .stat-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -579,22 +512,18 @@
             border-radius: 12px;
             overflow: hidden;
         }
-
         .stat-card {
             padding: 44px 28px;
             text-align: center;
             border-right: 1.5px solid rgba(255, 255, 255, 0.08);
             transition: background 0.2s;
         }
-
         .stat-card:last-child {
             border-right: none;
         }
-
         .stat-card:hover {
             background: rgba(26, 95, 255, 0.08);
         }
-
         .stat-big {
             font-family: var(--font);
             font-size: 5rem;
@@ -604,34 +533,29 @@
             margin-bottom: 10px;
             letter-spacing: -3px;
         }
-
         .stat-title {
             font-size: 1rem;
             font-weight: 700;
-            color:orangered;
+            color: orangered;
             margin-bottom: 10px;
         }
-
         .stat-detail {
             font-size: 0.82rem;
             color: rgb(255, 255, 255);
             line-height: 1.7;
         }
-
         /* ─── FEATURES ─── */
         #features-main {
             background: var(--off);
             border-top: 1.5px solid var(--border);
             border-bottom: 1.5px solid var(--border);
         }
-
         .features-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 20px;
             margin-top: 56px;
         }
-
         .feat-card {
             background: var(--white);
             border: 1.5px solid var(--border);
@@ -641,7 +565,6 @@
             position: relative;
             overflow: hidden;
         }
-
         .feat-card::before {
             content: '';
             position: absolute;
@@ -654,17 +577,14 @@
             transform-origin: left;
             transition: transform 0.3s;
         }
-
         .feat-card:hover {
             border-color: var(--blue);
             transform: translateY(-5px);
             box-shadow: 0 16px 40px rgba(26, 95, 255, 0.1);
         }
-
         .feat-card:hover::before {
             transform: scaleX(1);
         }
-
         .feat-num {
             font-family: var(--mono);
             font-size: 0.7rem;
@@ -673,13 +593,11 @@
             margin-bottom: 18px;
             display: block;
         }
-
         .feat-icon {
             font-size: 1.8rem;
             margin-bottom: 14px;
             display: block;
         }
-
         .feat-title {
             font-family: var(--font);
             font-size: 1.1rem;
@@ -688,29 +606,24 @@
             margin-bottom: 10px;
             color: var(--ink);
         }
-
         .feat-desc {
             font-size: 0.875rem;
             color: var(--ink3);
             line-height: 1.75;
         }
-
         /* ─── SHIELD SECTION ─── */
         #shield-section {
             background: rgb(146, 159, 255);
             color: var(--white);
             padding: 90px 24px;
         }
-
         .shield-inner {
             max-width: 1200px;
             margin: 0 auto;
         }
-
         .shield-header {
             margin-bottom: 60px;
         }
-
         .shield-eyebrow {
             font-family: var(--mono);
             font-size: 0.72rem;
@@ -722,14 +635,12 @@
             align-items: center;
             gap: 10px;
         }
-
         .shield-eyebrow::before {
             content: '';
             width: 24px;
             height: 1px;
             background: rgba(255, 255, 255, 0.4);
         }
-
         .shield-title {
             font-family: var(--font);
             font-size: clamp(2rem, 4vw, 3.2rem);
@@ -739,20 +650,17 @@
             line-height: 1.1;
             margin-bottom: 14px;
         }
-
         .shield-sub {
             font-size: 1rem;
             color: rgba(255, 255, 255, 0.7);
             max-width: 540px;
             line-height: 1.75;
         }
-
         .shield-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
         }
-
         .shield-card {
             background: rgba(255, 255, 255, 0.07);
             border: 1.5px solid rgba(255, 255, 255, 0.15);
@@ -760,13 +668,11 @@
             padding: 32px 28px;
             transition: all 0.25s;
         }
-
         .shield-card:hover {
             background: rgba(255, 255, 255, 0.12);
             border-color: rgba(255, 255, 255, 0.3);
             transform: translateY(-4px);
         }
-
         .shield-card-title {
             font-family: 'ocr';
             letter-spacing: -4px;
@@ -779,7 +685,6 @@
             align-items: center;
             gap: 10px;
         }
-
         .shield-card-icon {
             width: 32px;
             height: 32px;
@@ -791,24 +696,20 @@
             font-size: 0.95rem;
             flex-shrink: 0;
         }
-
         .shield-card-desc {
             font-size: 0.875rem;
             color: rgb(255, 255, 255);
             line-height: 1.75;
         }
-
         /* ─── FEATURES DARK (black section) ─── */
         #features-dark {
             background: var(--ink2);
             padding: 90px 24px;
         }
-
         .fdark-inner {
             max-width: 1200px;
             margin: 0 auto;
         }
-
         .fdark-label {
             font-family: var(--mono);
             font-size: 0.72rem;
@@ -820,14 +721,12 @@
             align-items: center;
             gap: 10px;
         }
-
         .fdark-label::before {
             content: '';
             width: 24px;
             height: 1px;
             background: rgba(194, 194, 194, 0.25);
         }
-
         .fdark-title {
             font-family: var(--font);
             font-size: clamp(2rem, 4vw, 3rem);
@@ -836,11 +735,9 @@
             color: var(--white);
             margin-bottom: 16px;
         }
-
         .fdark-title span {
             color: var(--blue2);
         }
-
         .fdark-sub {
             font-size: 1rem;
             color: rgba(255, 255, 255, 0.811);
@@ -848,7 +745,6 @@
             line-height: 1.75;
             margin-bottom: 56px;
         }
-
         .fdark-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -857,29 +753,24 @@
             border-radius: 12px;
             overflow: visible;
         }
-
         .fdark-item {
             padding: 36px 11px;
             line-height: 11.1px;
             border-right: 1.5px solid rgba(255, 255, 255, 0.08);
             transition: background 0.2s;
         }
-
         .fdark-item:last-child,
         .fdark-item:nth-child(3n) {
             border-right: none;
         }
-
         .fdark-item:hover {
             background: rgba(26, 95, 255, 0.08);
         }
-
         .fdark-item-icon {
             font-size: 1.6rem;
             margin-bottom: 16px;
             display: block;
         }
-
         .fdark-item-title {
             height: auto;
             font-family: 'ocr';
@@ -891,16 +782,13 @@
             color: var(--white);
             margin-bottom: 8px;
         }
-
         .fdark-item-desc {
             font-size: 0.83rem;
             color: rgba(255, 255, 255, 0.5);
             line-height: 1.7;
         }
-
         /* ─── SCREENSHOTS ─── */
         #screenshots {
-
             min-height: 100vh;
             width: 100%;
             padding: 5vh 5vw;
@@ -913,44 +801,34 @@
                 linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-
-
-            padding: 90px 0;
         }
-
         .screenshots-header {
-            max-width: 1200px;
+            max-width: 100%;
             margin: 0 auto 48px;
             padding: 0 24px;
         }
-
         .slider-container {
             max-width: 1200px;
             margin: 0px auto;
             position: relative;
             padding: 0 11px;
         }
-
         .slider {
             overflow: hidden;
             border-radius: 16px;
         }
-
         .slides {
             display: flex;
             transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
-
         .slide {
             min-width: 25%;
             flex-shrink: 0;
             padding: 10px;
         }
-
         .slide img {
             width: 100%;
             height: 666px;
@@ -961,17 +839,15 @@
             display: block;
             transition: transform 0.2s;
         }
-
         .slide img:hover {
             transform: scale(1.03);
         }
-
         .slider-btn {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: var(--ink);
-            color: var(--white);
+            background: white;
+            color: red;
             border: none;
             width: 44px;
             height: 44px;
@@ -985,33 +861,27 @@
             z-index: 10;
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
         }
-
         .slider-btn:hover {
-            background: var(--blue);
+            background: rgb(220, 220, 220);
             transform: translateY(-50%) scale(1.1);
         }
-
         .slider-btn.prev {
             left: 4px;
         }
-
         .slider-btn.next {
             right: 4px;
         }
-
         /* ─── PROMISE ─── */
         #promise {
             background: var(--white);
             border-top: 1.5px solid var(--border);
         }
-
         .promise-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 20px;
             margin-top: 56px;
         }
-
         .promise-card {
             padding: 32px 24px;
             background: var(--off);
@@ -1020,18 +890,15 @@
             transition: all 0.25s;
             text-align: center;
         }
-
         .promise-card:hover {
             border-color: var(--blue);
             background: var(--blue-pale);
             transform: translateY(-4px);
         }
-
         .promise-icon {
             font-size: 2rem;
             margin-bottom: 14px;
         }
-
         .promise-title {
             font-family: var(--font);
             font-size: 1rem;
@@ -1040,29 +907,24 @@
             margin-bottom: 8px;
             letter-spacing: -0.2px;
         }
-
         .promise-desc {
             font-size: 0.83rem;
             color: var(--ink3);
             line-height: 1.7;
         }
-
         /* ─── FAQ ─── */
         #faq-section {
             background: var(--off);
             border-top: 1.5px solid var(--border);
             border-bottom: 1.5px solid var(--border);
         }
-
         .faq-inner {
             max-width: 800px;
             margin: 0 auto;
         }
-
         .faq-list {
             margin-top: 56px;
         }
-
         .faq-item {
             border: 1.5px solid var(--border);
             border-radius: 10px;
@@ -1071,15 +933,12 @@
             transition: border-color 0.2s;
             background: var(--white);
         }
-
         .faq-item:hover {
             border-color: var(--border2);
         }
-
         .faq-item.active {
             border-color: var(--blue);
         }
-
         .faq-question {
             padding: 20px 24px;
             font-size: 0.95rem;
@@ -1093,16 +952,13 @@
             color: var(--ink);
             transition: background 0.15s;
         }
-
         .faq-question:hover {
             background: var(--off);
         }
-
         .faq-item.active .faq-question {
             background: var(--blue-pale);
             color: var(--blue);
         }
-
         .faq-arrow {
             width: 28px;
             height: 28px;
@@ -1116,13 +972,11 @@
             flex-shrink: 0;
             transition: transform 0.3s, background 0.2s;
         }
-
         .faq-item.active .faq-arrow {
             transform: rotate(180deg);
             background: var(--blue);
             color: var(--white);
         }
-
         .faq-answer {
             max-height: 0;
             overflow: hidden;
@@ -1132,19 +986,16 @@
             line-height: 1.8;
             color: var(--ink3);
         }
-
         .faq-item.active .faq-answer {
             max-height: 500px;
             padding: 0 24px 22px;
         }
-
         /* ─── FOOTER ─── */
         footer {
             background: var(--ink);
             color: var(--white);
             padding: 72px 24px 32px;
         }
-
         .footer-top {
             max-width: 1200px;
             margin: 0 auto;
@@ -1153,9 +1004,7 @@
             gap: 48px;
             margin-bottom: 56px;
         }
-
         .footer-brand {}
-
         .footer-logo-row {
             display: flex;
             align-items: center;
@@ -1163,13 +1012,11 @@
             margin-bottom: 16px;
             text-decoration: none;
         }
-
         .footer-logo-row img {
             width: 40px;
             height: 40px;
             border-radius: 10px;
         }
-
         .footer-logo-name {
             font-family: var(--font);
             font-weight: 800;
@@ -1177,7 +1024,6 @@
             color: var(--white);
             letter-spacing: -0.5px;
         }
-
         .footer-brand-desc {
             font-size: 0.85rem;
             color: rgba(255, 255, 255, 0.45);
@@ -1185,7 +1031,6 @@
             max-width: 260px;
             margin-bottom: 24px;
         }
-
         .footer-sovereign {
             display: inline-flex;
             align-items: center;
@@ -1201,12 +1046,10 @@
             font-family: var(--font);
             font-size: 1rem;
         }
-
         .footer-sovereign:hover {
             border-color: var(--blue2);
             color: var(--white);
         }
-
         .footer-col h4 {
             font-family: var(--mono);
             font-size: 0.7rem;
@@ -1216,15 +1059,12 @@
             text-transform: uppercase;
             margin-bottom: 18px;
         }
-
         .footer-col ul {
             list-style: none;
         }
-
         .footer-col ul li {
             margin-bottom: 10px;
         }
-
         .footer-col ul li a {
             font-size: 0.875rem;
             color: rgba(255, 255, 255, 0.6);
@@ -1235,17 +1075,14 @@
             align-items: center;
             gap: 6px;
         }
-
         .footer-col ul li a:hover {
             color: var(--white);
             padding-left: 4px;
         }
-
         .social-row {
             display: flex;
             gap: 10px;
         }
-
         .social-btn {
             width: 38px;
             height: 38px;
@@ -1258,13 +1095,11 @@
             transition: all 0.2s;
             text-decoration: none;
         }
-
         .social-btn:hover {
             border-color: var(--blue2);
             color: var(--white);
             background: rgba(59, 130, 246, 0.15);
         }
-
         .footer-bottom {
             max-width: 1200px;
             margin: 0 auto;
@@ -1276,113 +1111,86 @@
             flex-wrap: wrap;
             gap: 12px;
         }
-
         .footer-copy {
             font-size: 0.78rem;
             color: rgba(255, 255, 255, 0.3);
             font-family: var(--mono);
         }
-
         .footer-copy span {
             color: var(--blue2);
         }
-
         /* ─── REVEAL ANIMATIONS ─── */
         .reveal {
             opacity: 0;
             transform: translateY(24px);
             transition: opacity 0.6s ease, transform 0.6s ease;
         }
-
         .reveal.visible {
             opacity: 1;
             transform: translateY(0);
         }
-
         .reveal.d1 {
             transition-delay: 0.1s;
         }
-
         .reveal.d2 {
             transition-delay: 0.2s;
         }
-
         .reveal.d3 {
             transition-delay: 0.3s;
         }
-
         .reveal.d4 {
             transition-delay: 0.4s;
         }
-
         .reveal.d5 {
             transition-delay: 0.5s;
         }
-
         /* ─── RESPONSIVE ─── */
         @media (max-width: 1024px) {
             .nav-menu {
                 display: none;
             }
-
             .stat-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-
             .stat-card:nth-child(2) {
                 border-right: none;
             }
-
             .features-grid,
             .fdark-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-
             .shield-grid {
                 grid-template-columns: 1fr;
             }
-
             .promise-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-
             .footer-top {
                 grid-template-columns: 1fr 1fr;
             }
-
             .slide {
                 min-width: 50%;
             }
         }
-
         @media (max-width: 768px) {
             .stat-grid {
                 grid-template-columns: 1fr 1fr;
             }
-
             .features-grid,
             .fdark-grid,
             .promise-grid {
                 grid-template-columns: 1fr;
             }
-
             .footer-top {
                 grid-template-columns: 1fr;
                 gap: 32px;
             }
-
             .hero-title {
                 letter-spacing: -2px;
             }
-
             .slide {
                 min-width: 100%;
             }
-
-            .slide img {
-                height: 777px;
-            }
-
             .footer-bottom {
                 flex-direction: column;
                 text-align: center;
@@ -1390,7 +1198,6 @@
         }
     </style>
 </head>
-
 <body>
     <!-- HEADER -->
     <header>
@@ -1518,7 +1325,7 @@
                 <div class="feat-card reveal d1">
                     <span class="feat-num">01 —</span>
                     <span class="feat-icon"><svg width="80px" height="80px" viewBox="0 0 24 24" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
+                            xmlns="c/2000/svg">
                             <path
                                 d="M2 16C2 13.1716 2 11.7574 2.87868 10.8787C3.75736 10 5.17157 10 8 10H16C18.8284 10 20.2426 10 21.1213 10.8787C22 11.7574 22 13.1716 22 16C22 18.8284 22 20.2426 21.1213 21.1213C20.2426 22 18.8284 22 16 22H8C5.17157 22 3.75736 22 2.87868 21.1213C2 20.2426 2 18.8284 2 16Z"
                                 stroke="#000000" stroke-width="1.5" />
@@ -1534,8 +1341,7 @@
                 </div>
                 <div class="feat-card reveal d2">
                     <span class="feat-num">02 —</span>
-                    <span class="feat-icon"><svg width="80px" height="80px" viewBox="0 0 48 48"
-                            xmlns="http://www.w3.org/2000/svg">
+                    <span class="feat-icon"><svg width="80px" height="80px" viewBox="0 0 48 48" xmlns="c/2000/svg">
                             <defs>
                                 <style>
                                     .a {
@@ -1563,7 +1369,7 @@
                 <div class="feat-card reveal d3">
                     <span class="feat-num">03 —</span>
                     <span class="feat-icon"><svg fill="#000000" width="80px" height="80px" viewBox="-17.71 0 100 100"
-                            xmlns="http://www.w3.org/2000/svg">
+                            xmlns="c/2000/svg">
                             <path id="flash2"
                                 d="M828.58,537.616c-.06,1.543-1.316,1.891-2.106,2.706-.562,1.042-1.265,1.945-1.8,3.008a31.145,31.145,0,0,0-5.116,5.414,38.56,38.56,0,0,1,5.415,1.5c2.3-.1,4.538-.127,4.812,1.8.091,1.4-.526,2.081-1.8,2.105-.582.622-.735,1.674-1.205,2.406-1.273.229-1.754,1.257-2.706,1.8-.953,1.755-2.328,3.089-3.308,4.813a19.465,19.465,0,0,1-3.611,4.512c-2.633,2.673-4.91,5.715-7.517,8.419,4.777.64,8.421,2.407,13.231,3.007.037,1.169,1.478.931,1.505,2.107-.65-.052-.137,1.066-.3,1.5-.736.869-2.214.993-3.007,1.8-.957.648-1.522,1.686-2.7,2.1a154.213,154.213,0,0,1-12.03,12.332c-1.97,2.14-4.26,3.962-6.319,6.014-2.147,1.862-4.774,3.242-6.614,5.412-4.347,3.773-8.5,7.742-12.629,11.73-1.056-.055-.992,1.015-1.8,1.2-.453.552-1.259.749-1.506,1.5a15.33,15.33,0,0,0-3.3,2.705c-2.447,1.226-4.565,4.176-8.122,3.309-2.337-2.573,1.026-5.275,1.5-7.819,2.474-4.843,4.9-9.737,7.218-14.735,1.18-2.43,2.437-4.781,3.608-7.219-1.364-1.143-4.226-.785-6.014-1.5-1.762-.644-4.241-.571-5.411-1.8.464-3.045,2.458-4.558,3.3-7.218,1.371-2.141,2.982-4.036,4.213-6.316,2.982-4.032,5.528-8.5,8.417-12.63-1.8-1.009-4.271-1.34-6.314-2.1-1.236-.167-1.944-.862-3.307-.9a2.563,2.563,0,0,0-1.8-.3,5.149,5.149,0,0,0-.9-1.2c-.205-2.611,1.348-3.466,2.106-5.112.782-1.523,1.823-2.788,2.706-4.211.974-1.433,1.988-2.825,3.008-4.209.833-1.474,1.995-2.62,2.706-4.211,2.209-2.5,3.752-5.674,5.716-8.421,1.765-2.946,3.711-5.708,4.811-9.321a2.283,2.283,0,0,0,2.106-.6H796.4c5.711.8,11.694,1.334,17.141,2.405,2.958.25,4.91,1.506,8.118,1.5C823.77,536.009,827.34,535.645,828.58,537.616Zm-19.249-.6q-6.086-1.131-12.329-2.106a1.427,1.427,0,0,1-.3.9c-1.319,2.693-2.69,5.331-4.213,7.817a42.461,42.461,0,0,1-4.81,7.519c-.306,1.7-1.7,2.306-2.1,3.91-1.244.862-1.533,2.677-2.709,3.608-1.174,2.935-3.362,4.857-4.208,8.119a15.221,15.221,0,0,1,4.811,1.2c1.539.569,3.42.791,4.21,2.107a29.748,29.748,0,0,1,.6,5.412,13.083,13.083,0,0,1-2.706,3.91c-.185,1.118-.718,1.89-.9,3.007-1.566,1.541-2.44,3.773-3.907,5.414-1.065,2.043-2.546,3.67-3.61,5.714,1.864.141,3.811.2,5.113.9,2,.1,3.406.806,3.907,2.406.24,3.247-1.039,4.973-2.1,6.919-.8,2.308-2.042,4.175-3.01,6.314-2.252,3.863-4.39,7.842-6.613,11.73,1.211-.294,1.693-1.314,2.405-2.106.92-.581,1.505-1.5,2.407-2.1,1.779-1.327,3.029-3.184,4.811-4.51.292-1.212,1.312-1.694,2.1-2.407,2.131-2.582,4.789-4.635,6.919-7.217,4.683-4.641,8.661-9.984,14.134-13.833,1.681-1.429,4.411-1.8,4.211-5.114-.642-2.165-3.129-2.484-6.015-2.407-.682-.619-1.992-.613-2.7-1.2-.775-.532-2.386-.222-3.01-.9a11.086,11.086,0,0,0,.6-2.107,5.953,5.953,0,0,0,1.505-1.2,27.3,27.3,0,0,1,2.4-3.308c1.648-2.06,3.3-4.115,5.111-6.014,2.522-3.094,5.459-5.769,8.121-8.722.986-.918,2.221-1.588,2.706-3.008-1.89-.115-3.308-.7-5.111-.9-1.325-.682-3.242-.77-4.513-1.5.079-1.228,1.122-1.485.9-3.008,1.008.205,1.1-.5,1.2-1.2.665-.236.754-1.052,1.2-1.5,1.11-.7,1.476-2.132,2.707-2.708.1-1.077,1.2-1.479,1.806-2.1a9.359,9.359,0,0,1,2.1-2.107c.133-.7,1.33-.8.6-1.5C816.546,539.023,813.861,537.1,809.331,537.014Zm8.722,14.435c-.233.067-.591.009-.6.3C817.685,551.683,818.044,551.742,818.053,551.449Zm-2.4,31.277c-1.308,1.6-3.273,2.543-4.211,4.511,1.314-.388,1.892-1.517,2.705-2.4,1.313-.293,1.662-1.547,2.707-2.107Z"
                                 transform="translate(-765.209 -531)" fill-rule="evenodd" />
@@ -1576,8 +1382,7 @@
                 <div class="feat-card reveal d1">
                     <span class="feat-num">04 —</span>
                     <span class="feat-icon"><svg fill="#000000" width="80px" height="80px" version="1.1" id="Capa_1"
-                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                            viewBox="0 0 60 60" xml:space="preserve">
+                            xmlns="c/2000/svg" xmlns:xlink="c/1999/xlink" viewBox="0 0 60 60" xml:space="preserve">
                             <g>
                                 <g>
                                     <path d="M11,12c0.6,0,1-0.4,1-1V2h34v10h2V1c0-0.6-0.4-1-1-1H11l0,0c-0.1,0-0.2,0-0.3,0.1h-0.1c-0.1,0.1-0.2,0.1-0.3,0.2l-10,10
@@ -1619,8 +1424,7 @@
                 <div class="feat-card reveal d2">
                     <span class="feat-num">05 —</span>
                     <span class="feat-icon"><svg height="80px" width="80px" version="1.1" id="Layer_1"
-                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                            viewBox="0 0 512 512" xml:space="preserve">
+                            xmlns="c/2000/svg" xmlns:xlink="c/1999/xlink" viewBox="0 0 512 512" xml:space="preserve">
                             <path style="fill:#F4DE3B;" d="M432.714,215.329L321.63,309.264c-12.174,10.299-2.015,29.952,13.421,25.98l24.162-6.21
 	c21.762-5.592,36.616,21.529,20.19,36.849l-60.884,56.818c-8.481,7.91-18.314,14.073-28.916,18.256
 	c-10.613,4.182-21.995,6.384-33.599,6.384c-23.207,0-45.552-8.807-62.515-24.64l-60.895-56.818
@@ -1651,7 +1455,7 @@
                 <div class="feat-card reveal d3">
                     <span class="feat-num">06 —</span>
                     <span class="feat-icon"><svg width="80px" height="80px" viewBox="0 0 20 20" version="1.1"
-                            xmlns="http://www.w3.org/2000/svg">
+                            xmlns="c/2000/svg">
                             <g id="layer1">
                                 <path
                                     d="M 14 1 C 10.692214 1 8 3.6922138 8 7 C 8.0009187 7.6566689 8.1675322 8.2941025 8.3789062 8.9140625 L 0.14648438 17.146484 A 0.50005 0.50005 0 0 0 0 17.5 L 0 19.5 A 0.50005 0.50005 0 0 0 0.5 20 L 3.5 20 A 0.50005 0.50005 0 0 0 3.8535156 19.853516 L 4.7070312 19 L 6.5 19 A 0.50005 0.50005 0 0 0 7 18.5 L 7 17 L 8.5 17 A 0.50005 0.50005 0 0 0 9 16.5 L 9 14.707031 L 11.408203 12.298828 C 12.222493 12.696518 13.08808 12.998007 13.998047 13 A 0.50005 0.50005 0 0 0 14 13 C 17.307786 13 20 10.307786 20 7 C 20 3.6922138 17.307786 1 14 1 z M 14 2 C 16.767346 2 19 4.2326539 19 7 C 19 9.7666799 16.768376 11.998925 14.001953 12 C 13.122276 11.9981 12.258393 11.764657 11.498047 11.322266 A 0.50005 0.50005 0 0 0 10.892578 11.400391 L 8.1464844 14.146484 A 0.50005 0.50005 0 0 0 8 14.5 L 8 16 L 6.5 16 A 0.50005 0.50005 0 0 0 6 16.5 L 6 18 L 4.5 18 A 0.50005 0.50005 0 0 0 4.1464844 18.146484 L 3.2929688 19 L 1 19 L 1 17.707031 L 9.2675781 9.4394531 A 0.50005 0.50005 0 0 0 9.3769531 8.8964844 C 9.1293039 8.2948851 9.0009101 7.6505774 9 7 C 9 4.2326539 11.232654 2 14 2 z M 15 3 C 13.901353 3 13 3.9013528 13 5 C 13 6.0986472 13.901353 7 15 7 C 16.098647 7 17 6.0986472 17 5 C 17 3.9013528 16.098647 3 15 3 z M 15 4 C 15.558207 4 16 4.4417929 16 5 C 16 5.5582071 15.558207 6 15 6 C 14.441793 6 14 5.5582071 14 5 C 14 4.4417929 14.441793 4 15 4 z "
@@ -1668,7 +1472,6 @@
     </section>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600&display=swap');
-
         .quote-container1 {
             min-height: 100vh;
             width: 100%;
@@ -1688,7 +1491,6 @@
             align-items: center;
             justify-content: center;
         }
-
         .quote-container2 {
             min-height: 100vh;
             width: 100%;
@@ -1709,7 +1511,6 @@
             align-items: center;
             justify-content: center;
         }
-
         .quote-container3 {
             min-height: 100vh;
             width: 100%;
@@ -1730,7 +1531,6 @@
             align-items: center;
             justify-content: center;
         }
-
         .quote-container4 {
             min-height: 100vh;
             width: 100%;
@@ -1751,7 +1551,6 @@
             align-items: center;
             justify-content: center;
         }
-
         .quote-card {
             width: 100%;
             max-width: 1100px;
@@ -1764,11 +1563,9 @@
             flex-direction: column;
             border: dashed rgba(252, 252, 252, 0.031) 0.1px;
         }
-
         .quote-card:last-child {
             margin-bottom: 0;
         }
-
         .quote-card::before {
             content: '“';
             position: absolute;
@@ -1781,7 +1578,6 @@
             pointer-events: none;
             z-index: 0;
         }
-
         .quote-text {
             font-size: clamp(1.8rem, 5.5vw, 3.2rem);
             line-height: 1.25;
@@ -1792,7 +1588,6 @@
             position: relative;
             z-index: 1;
         }
-
         .author {
             font-size: clamp(1.1rem, 3vw, 1.6rem);
             color: #ffffff;
@@ -1827,7 +1622,7 @@
                 <div class="shield-card reveal d1">
                     <div class="shield-card-title">
                         <div class="shield-card-icon"><svg width="80px" height="80px" viewBox="0 0 512 512"
-                                xmlns="http://www.w3.org/2000/svg">
+                                xmlns="c/2000/svg">
                                 <path fill="#ffffff"
                                     d="M16.37 29.06V52L193.3 154.3c19.7-14.4 39.3-28.8 58.9-43.1 66.2 81.7 123.6 152.7 182.7 225.5-97.5-15.7-199.6-31.9-286.9-45.5 2.8-24.7 5.6-49.4 8.5-74L16.38 136.1v63.5l24.5 141.1L66.94 190l22.18 106 17.38-83.4 25.5 14.7-9.9 84.7c8 40.9 15.5 83 23.1 124.3l10.7-58.5 19.9 117 28.5-167.4 21.5 117.4 20.4-111.1 17.7 36 16-32.7 18.8 3 22.1 132.9 20.8-126.1 12.8 2 24.5 63 14.8-38.1 18.1 98.4 17.6-96.3 16.8 23.5 22.9-32.3 25.6 4C413.2 270.3 327.5 165.2 257 78.41l-68.4 50.19zm0 44.53v40.91c53.31 31 106.83 61.6 160.03 92.6-2.6 22.8-5.2 45.7-7.8 68.5l221.1 35-44.9-55.4-9.6 31.3-20.4-66.1-13.3 46.5-19.3-72.2-16.2 79-28-110.2-15.5 51.9-13.9-46.5-12.4 67.6-12.1-66z" />
                             </svg></div>
@@ -1842,8 +1637,8 @@
                 <div class="shield-card reveal d2">
                     <div class="shield-card-title">
                         <div class="shield-card-icon"><svg height="80px" width="80px" version="1.1" id="Layer_1"
-                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                viewBox="0 0 512.001 512.001" xml:space="preserve">
+                                xmlns="c/2000/svg" xmlns:xlink="c/1999/xlink" viewBox="0 0 512.001 512.001"
+                                xml:space="preserve">
                                 <circle style="fill:#ffffff;" cx="256.001" cy="256" r="192.376" />
                                 <circle style="fill:#959CB3;" cx="256.001" cy="256" r="64.125" />
                                 <path d="M504.486,248.018c-0.005,0-0.01,0-0.015,0l-16.666,0.031c-1.979-59.063-25.931-114.296-67.948-156.231
@@ -1897,9 +1692,9 @@
                 </div>
                 <div class="shield-card reveal d1">
                     <div class="shield-card-title">
-                        <div class="shield-card-icon"><svg fill="#ffffff" version="1.1" id="Capa_1"
-                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                width="80px" height="80px" viewBox="0 0 333.28 333.28" xml:space="preserve">
+                        <div class="shield-card-icon"><svg fill="#ffffff" version="1.1" id="Capa_1" xmlns="c/2000/svg"
+                                xmlns:xlink="c/1999/xlink" width="80px" height="80px" viewBox="0 0 333.28 333.28"
+                                xml:space="preserve">
                                 <g>
                                     <g>
                                         <path d="M56.707,96.158c4.287,0,7.948-2.674,9.419-6.43c2.728-2.424,8.614-7.621,12.529-11.057
@@ -1995,7 +1790,7 @@
                 <div class="shield-card reveal d2">
                     <div class="shield-card-title">
                         <div class="shield-card-icon"><svg width="80px" height="80px" viewBox="0 0 24 24" version="1.1"
-                                xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                xmlns="c/2000/svg" xmlns:xlink="c/1999/xlink">
                                 <g id="🔍-Product-Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                     <g id="ic_fluent_cookies_24_regular" fill="#ffffff" fill-rule="nonzero">
                                         <path
@@ -2014,9 +1809,8 @@
                 </div>
                 <div class="shield-card reveal d1">
                     <div class="shield-card-title">
-                        <div class="shield-card-icon"><svg fill="#ffffff" xmlns="http://www.w3.org/2000/svg"
-                                width="80px" height="80px" viewBox="0 0 100 100" enable-background="new 0 0 100 100"
-                                xml:space="preserve">
+                        <div class="shield-card-icon"><svg fill="#ffffff" xmlns="c/2000/svg" width="80px" height="80px"
+                                viewBox="0 0 100 100" enable-background="new 0 0 100 100" xml:space="preserve">
                                 <path d="M79.2,32.8c-0.2-0.7-1.101-0.9-1.7-0.4L67.4,42.5c-0.801,0.8-2,0.8-2.801,0l-7.1-7.1c-0.8-0.8-0.8-2,0-2.8
 	l10.2-10.2c0.5-0.5,0.3-1.4-0.4-1.7C65.6,20.3,63.8,20,62,20c-10.6,0-19.1,9.2-17.9,20c0.2,1.7,0.6,3.2,1.2,4.7L22,68.1
 	c-2.7,2.7-2.7,7.2,0,9.9c1.4,1.4,3.2,2.1,5,2.1s3.6-0.699,5-2.1l23.3-23.3c1.5,0.6,3.101,1,4.7,1.2C70.9,57.1,80,48.6,80,38
@@ -2031,21 +1825,18 @@
                 <div class="shield-card reveal d2">
                     <div class="shield-card-title">
                         <div class="shield-card-icon"><svg width="80px" height="80px" viewBox="0 0 50 50"
-                                data-name="Layer 1" id="Layer_1" xmlns="http://www.w3.org/2000/svg">
+                                data-name="Layer 1" id="Layer_1" xmlns="c/2000/svg">
                                 <defs>
                                     <style>
                                         .cls-1 {
                                             fill: #a6ff28;
                                         }
-
                                         .cls-2 {
                                             fill: #ffba50;
                                         }
-
                                         .cls-3 {
                                             fill: #ffffff;
                                         }
-
                                         .cls-4 {
                                             fill: #caff58;
                                         }
@@ -2146,7 +1937,7 @@
             <div class="fdark-grid reveal">
                 <div class="fdark-item">
                     <span class="fdark-item-icon"><svg width="80px" height="80px" viewBox="0 0 32 32" version="1.1"
-                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                            xmlns="c/2000/svg" xmlns:xlink="c/1999/xlink"
                             xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
                             <defs>
                             </defs>
@@ -2168,7 +1959,7 @@
                 </div>
                 <div class="fdark-item">
                     <span class="fdark-item-icon"><svg width="80px" height="80px" viewBox="0 0 24 24" version="1.1"
-                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                            xmlns="c/2000/svg" xmlns:xlink="c/1999/xlink">
                             <g id="🔍-Product-Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                                 <g id="ic_fluent_cookies_24_regular" fill="#ffffff" fill-rule="nonzero">
                                     <path
@@ -2185,7 +1976,7 @@
                 </div>
                 <div class="fdark-item">
                     <span class="fdark-item-icon"><svg width="80px" height="80px" viewBox="0 0 15 15" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
+                            xmlns="c/2000/svg">
                             <path
                                 d="M12.5 8.5V7.5C12.5 6.94772 12.0523 6.5 11.5 6.5H1.5C0.947715 6.5 0.5 6.94772 0.5 7.5V13.5C0.5 14.0523 0.947715 14.5 1.5 14.5H11.5C12.0523 14.5 12.5 14.0523 12.5 13.5V12.5M12.5 8.5H8.5C7.39543 8.5 6.5 9.39543 6.5 10.5C6.5 11.6046 7.39543 12.5 8.5 12.5H12.5M12.5 8.5C13.6046 8.5 14.5 9.39543 14.5 10.5C14.5 11.6046 13.6046 12.5 12.5 12.5M3.5 6.5V3.5C3.5 1.84315 4.84315 0.5 6.5 0.5C8.15685 0.5 9.5 1.84315 9.5 3.5V6.5M12 10.5H13M10 10.5H11M8 10.5H9"
                                 stroke="#ffffff" />
@@ -2197,7 +1988,7 @@
                 </div>
                 <div class="fdark-item">
                     <span class="fdark-item-icon"><svg width="80px" height="80px" viewBox="0 0 24 24" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
+                            xmlns="c/2000/svg">
                             <path
                                 d="M3 5.67541V3C3 2.44772 2.55228 2 2 2C1.44772 2 1 2.44772 1 3V7C1 8.10457 1.89543 9 3 9H7C7.55229 9 8 8.55229 8 8C8 7.44772 7.55229 7 7 7H4.52186C4.54218 6.97505 4.56157 6.94914 4.57995 6.92229C5.621 5.40094 7.11009 4.22911 8.85191 3.57803C10.9074 2.80968 13.173 2.8196 15.2217 3.6059C17.2704 4.3922 18.9608 5.90061 19.9745 7.8469C20.9881 9.79319 21.2549 12.043 20.7247 14.1724C20.1945 16.3018 18.9039 18.1638 17.0959 19.4075C15.288 20.6513 13.0876 21.1909 10.9094 20.9247C8.73119 20.6586 6.72551 19.605 5.27028 17.9625C4.03713 16.5706 3.27139 14.8374 3.06527 13.0055C3.00352 12.4566 2.55674 12.0079 2.00446 12.0084C1.45217 12.0088 0.995668 12.4579 1.04626 13.0078C1.25994 15.3309 2.2082 17.5356 3.76666 19.2946C5.54703 21.3041 8.00084 22.5931 10.6657 22.9188C13.3306 23.2444 16.0226 22.5842 18.2345 21.0626C20.4464 19.541 22.0254 17.263 22.6741 14.6578C23.3228 12.0526 22.9963 9.30013 21.7562 6.91897C20.5161 4.53782 18.448 2.69239 15.9415 1.73041C13.4351 0.768419 10.6633 0.756291 8.14853 1.69631C6.06062 2.47676 4.26953 3.86881 3 5.67541Z"
                                 fill="#ffffff" />
@@ -2214,9 +2005,8 @@
                     <span class="fdark-item-icon">
                         <?xml version="1.0" encoding="iso-8859-1"?>
                         <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                        <svg height="80px" width="80px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-                            xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512.001 512.001"
-                            xml:space="preserve">
+                        <svg height="80px" width="80px" version="1.1" id="Layer_1" xmlns="c/2000/svg"
+                            xmlns:xlink="c/1999/xlink" viewBox="0 0 512.001 512.001" xml:space="preserve">
                             <path style="fill:#ffffff;" d="M24,16h464c13.254,0,24,10.745,24,24v432c0,13.254-10.745,24-24,24H24C10.745,496,0,485.255,0,472V40
 	C0,26.745,10.745,16,24,16z" />
                             <g>
@@ -2291,7 +2081,7 @@
                 </div>
                 <div class="fdark-item">
                     <span class="fdark-item-icon"><svg width="80px" height="80px" viewBox="0 0 24 24" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
+                            xmlns="c/2000/svg">
                             <circle cx="12" cy="12" r="3" stroke="#ffffff" stroke-width="1.5" />
                             <path
                                 d="M3.66122 10.6392C4.13377 10.9361 4.43782 11.4419 4.43782 11.9999C4.43781 12.558 4.13376 13.0638 3.66122 13.3607C3.33966 13.5627 3.13248 13.7242 2.98508 13.9163C2.66217 14.3372 2.51966 14.869 2.5889 15.3949C2.64082 15.7893 2.87379 16.1928 3.33973 16.9999C3.80568 17.8069 4.03865 18.2104 4.35426 18.4526C4.77508 18.7755 5.30694 18.918 5.83284 18.8488C6.07287 18.8172 6.31628 18.7185 6.65196 18.5411C7.14544 18.2803 7.73558 18.2699 8.21895 18.549C8.70227 18.8281 8.98827 19.3443 9.00912 19.902C9.02332 20.2815 9.05958 20.5417 9.15224 20.7654C9.35523 21.2554 9.74458 21.6448 10.2346 21.8478C10.6022 22 11.0681 22 12 22C12.9319 22 13.3978 22 13.7654 21.8478C14.2554 21.6448 14.6448 21.2554 14.8478 20.7654C14.9404 20.5417 14.9767 20.2815 14.9909 19.9021C15.0117 19.3443 15.2977 18.8281 15.7811 18.549C16.2644 18.27 16.8545 18.2804 17.3479 18.5412C17.6837 18.7186 17.9271 18.8173 18.1671 18.8489C18.693 18.9182 19.2249 18.7756 19.6457 18.4527C19.9613 18.2106 20.1943 17.807 20.6603 17C20.8677 16.6407 21.029 16.3614 21.1486 16.1272M20.3387 13.3608C19.8662 13.0639 19.5622 12.5581 19.5621 12.0001C19.5621 11.442 19.8662 10.9361 20.3387 10.6392C20.6603 10.4372 20.8674 10.2757 21.0148 10.0836C21.3377 9.66278 21.4802 9.13092 21.411 8.60502C21.3591 8.2106 21.1261 7.80708 20.6601 7.00005C20.1942 6.19301 19.9612 5.7895 19.6456 5.54732C19.2248 5.22441 18.6929 5.0819 18.167 5.15113C17.927 5.18274 17.6836 5.2814 17.3479 5.45883C16.8544 5.71964 16.2643 5.73004 15.781 5.45096C15.2977 5.1719 15.0117 4.6557 14.9909 4.09803C14.9767 3.71852 14.9404 3.45835 14.8478 3.23463C14.6448 2.74458 14.2554 2.35523 13.7654 2.15224C13.3978 2 12.9319 2 12 2C11.0681 2 10.6022 2 10.2346 2.15224C9.74458 2.35523 9.35523 2.74458 9.15224 3.23463C9.05958 3.45833 9.02332 3.71848 9.00912 4.09794C8.98826 4.65566 8.70225 5.17191 8.21891 5.45096C7.73557 5.73002 7.14548 5.71959 6.65205 5.4588C6.31633 5.28136 6.0729 5.18269 5.83285 5.15108C5.30695 5.08185 4.77509 5.22436 4.35427 5.54727C4.03866 5.78945 3.80569 6.19297 3.33974 7C3.13231 7.35929 2.97105 7.63859 2.85138 7.87273"
@@ -2328,7 +2118,7 @@
             <div class="promise-grid">
                 <div class="promise-card reveal d1">
                     <div class="promise-icon"><svg width="80px" height="80px" viewBox="0 0 24 24" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
+                            xmlns="c/2000/svg">
                             <path
                                 d="M2 16C2 13.1716 2 11.7574 2.87868 10.8787C3.75736 10 5.17157 10 8 10H16C18.8284 10 20.2426 10 21.1213 10.8787C22 11.7574 22 13.1716 22 16C22 18.8284 22 20.2426 21.1213 21.1213C20.2426 22 18.8284 22 16 22H8C5.17157 22 3.75736 22 2.87868 21.1213C2 20.2426 2 18.8284 2 16Z"
                                 stroke="#000000" stroke-width="1.5" />
@@ -2343,14 +2133,13 @@
                         because we never collect it.</div>
                 </div>
                 <div class="promise-card reveal d2">
-                    <div class="promise-icon"><svg version="1.1" id="Artwork" xmlns="http://www.w3.org/2000/svg"
-                            xmlns:xlink="http://www.w3.org/1999/xlink" width="80px" height="80px" viewBox="0 0 24 24"
+                    <div class="promise-icon"><svg version="1.1" id="Artwork" xmlns="c/2000/svg"
+                            xmlns:xlink="c/1999/xlink" width="80px" height="80px" viewBox="0 0 24 24"
                             xml:space="preserve">
                             <style type="text/css">
                                 .xxxxxxxxxxx {
                                     fill: #000000;
                                 }
-
                                 .cccccccc {
                                     fill: #000000;
                                 }
@@ -2389,8 +2178,7 @@
                 </div>
                 <div class="promise-card reveal d3">
                     <div class="promise-icon"><svg fill="#000000" height="80px" width="80px" version="1.1" id="Layer_1"
-                            xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                            viewBox="0 0 496 496" xml:space="preserve">
+                            xmlns="c/2000/svg" xmlns:xlink="c/1999/xlink" viewBox="0 0 496 496" xml:space="preserve">
                             <g>
                                 <g>
                                     <path d="M464,328c-14.872,0-27.288,10.232-30.864,24H332.688L312,372.688V224h80c17.648,0,32-14.352,32-32s-14.352-32-32-32
@@ -2420,41 +2208,32 @@
                 </div>
                 <div class="promise-card reveal d4">
                     <div class="promise-icon"><svg width="80px" height="80px" viewBox="0 0 30 30" id="Layer_1"
-                            version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
-                            xmlns:xlink="http://www.w3.org/1999/xlink">
+                            version="1.1" xml:space="preserve" xmlns="c/2000/svg" xmlns:xlink="c/1999/xlink">
                             <style type="text/css">
                                 .st0 {
                                     fill: #FD6A7E;
                                 }
-
                                 .st1 {
                                     fill: #17B978;
                                 }
-
                                 .st2 {
                                     fill: #8797EE;
                                 }
-
                                 .st3 {
                                     fill: #41A6F9;
                                 }
-
                                 .st4 {
                                     fill: #37E0FF;
                                 }
-
                                 .st5 {
                                     fill: #2FD9B9;
                                 }
-
                                 .st6 {
                                     fill: #F498BD;
                                 }
-
                                 .st7 {
                                     fill: #FFDF1D;
                                 }
-
                                 .st8 {
                                     fill: #C6C9CC;
                                 }
@@ -2706,7 +2485,7 @@
             if (Math.abs(diff) > 50) diff > 0 ? nextSlide() : prevSlide();
         });
         // Auto slide
-        setInterval(nextSlide, 4000);
+        setInterval(nextSlide, 2266);
         // ─── SCROLL REVEAL
         const revObs = new IntersectionObserver(entries => {
             entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
@@ -2741,5 +2520,4 @@
         });
     </script>
 </body>
-
 </html>
