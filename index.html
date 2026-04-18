@@ -53,6 +53,52 @@
             line-height: 1.6;
             overflow-x: visible;
         }
+        .highlight {
+            background-color: #ffffff;
+            padding: 2px 11px 2px;
+            border-radius: 9px;
+            color: #ff5a28;
+            padding: 2px 2px;
+            font-family: 'ocr';
+            letter-spacing: -3px;
+            font-weight: normal;
+        }
+        .not-matched {
+            background-color: #1d78ff;
+            padding: 2px 11px 2px;
+            border-radius: 9px;
+            color: #ffffff;
+            padding: 2px 2px;
+            font-weight: normal;
+        }
+        .fdark-item-desc {
+            line-height: 1.75;
+            color: #ffffff;
+            font-size: 15.2px;
+        }
+        .fdark-item-desc p {
+            margin-bottom: 1.2em;
+        }
+        .fdark-item-desc strong {
+            color: #ffffff;
+        }
+        .tracker-examples {
+            margin: 0.9em 0 1.2em 0;
+            padding-left: 1.2em;
+            list-style: none;
+        }
+        .tracker-examples li {
+            margin-bottom: 0.7em;
+        }
+        .tracker-examples code {
+            background: #ff5a28;
+            color: #ffffff;
+            padding: 2px 11px 2px;
+            font-family: 'ocr';
+            letter-spacing: -3px;
+            border-radius: 9px;
+            font-size: 14.8px;
+        }
         /* SCROLLBAR */
         ::-webkit-scrollbar {
             width: 4px;
@@ -188,7 +234,7 @@
         .dropdown-content a:hover {
             background: var(--blue-pale);
             color: var(--blue);
-            padding-left: 22px;
+            padding: 11px 18px;
         }
         .btn-suggestion {
             display: flex;
@@ -736,7 +782,7 @@
             margin-bottom: 16px;
         }
         .fdark-title span {
-            color: var(--blue2);
+            color: #ff5a28;
         }
         .fdark-sub {
             font-size: 1rem;
@@ -784,7 +830,7 @@
         }
         .fdark-item-desc {
             font-size: 0.83rem;
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(255, 255, 255, 0.861);
             line-height: 1.7;
         }
         /* ─── SCREENSHOTS ─── */
@@ -1208,6 +1254,12 @@
                 <span class="logo-name">Pesum<span>s</span></span>
             </a>
             <nav class="nav-menu">
+                <div class="nav-item dropdown">
+                    <a href="#" class="nav-link">VPN ▾</a>
+                    <div class="dropdown-content">
+                        <a href="#vpn-doc">Words List For DNS</a>
+                    </div>
+                </div>
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link">Browser ▾</a>
                     <div class="dropdown-content">
@@ -2105,6 +2157,100 @@
             </div>
         </div>
     </div>
+    <section id="features-dark">
+        <vpn id="vpn-doc"></vpn>
+        <div class="fdark-inner">
+            <div class="reveal">
+                <div class="fdark-label">Pesums — privacy feature VPN</div>
+                <h2 class="fdark-title">Keyword-based <span>DNS</span> blocking in<br /><span
+                        class="section-title">Pesums VPN</span>
+                </h2>
+                <div class="fdark-item-desc">One blocked word. Every domain containing it, stopped. No list maintenance.
+                    No missed variants. This is how Pesums blocks trackers at the pattern level, not the name level.
+                </div>
+                <div class="fdark-item-title">The problem with exact-match blocklists</div>
+                <div class="fdark-item-desc">Traditional blocklists work by exact domain name. You add
+                    tracker.example.com and that one domain is blocked. But ad networks and tracker services spawn
+                    hundreds of subdomains and rotate CDN hostnames constantly. An exact list becomes a game of
+                    whack-a-mole.
+                    AdAway on Android solves part of this with wildcard rules. Pesums goes further — it blocks at the
+                    keyword level, before DNS ever resolves.
+                </div>
+                <div class="fdark-item-title">How keyword blocking works</div>
+                <div class="fdark-item-desc">
+                    <p>Your word list contains substrings (keywords from domain names). Before any network request
+                        leaves your device, Pesums checks whether the target hostname contains <span
+                            class="highlight">any word</span> from your list. If it matches anywhere — the request is
+                        <span class="highlight">blocked</span>.
+                    </p>
+                    <p><strong>Example word list (real tracking domains &amp; subdomains):</strong><br>
+                        <span class="highlight">appsflyer.com</span>
+                        <span class="highlight">adjust.com</span>
+                        <span class="highlight">kochava.com</span>
+                        <span class="highlight">singular.net</span>
+                        <span class="highlight">taboola.com</span>
+                        <span class="highlight">outbrain.com</span>
+                        <span class="highlight">hotjar.com</span>
+                        <span class="highlight">clarity.ms</span>
+                        <span class="highlight">mouseflow.com</span>
+                        <span class="highlight">crazyegg.com</span>
+                        <span class="highlight">mgid.com</span>
+                        <span class="highlight">revcontent.com</span>
+                        <span class="highlight">datadog.com</span>
+                        <span class="highlight">track</span>
+                        <span class="highlight">pixel</span>
+                        <span class="highlight">beacon</span>
+                        <span class="highlight">adserv</span>
+                        <span class="highlight">analytics</span>
+                    </p>
+                    <p><strong>What gets blocked by just the word <span class="highlight">track</span>:</strong></p>
+                    <ul class="tracker-examples">
+                        <li><code>tracking.adjust.com</code> <span class="highlight">blocked</span> — subdomain contains
+                            <code>track</code>
+                        </li>
+                        <li><code>ads-tracking.doubleclick.net</code> <span class="highlight">blocked</span> — CDN
+                            hostname contains <code>track</code></li>
+                        <li><code>pixel-track.fb.com</code> <span class="highlight">blocked</span> — contains both
+                            <code>track</code> and <code>pixel</code>
+                        </li>
+                        <li><code>track.branch.io</code> <span class="highlight">blocked</span> — Branch.io attribution
+                            tracker</li>
+                        <li><code>app-tracking.appsflyer.com</code> <span class="highlight">blocked</span> — AppsFlyer
+                            subdomain</li>
+                        <li><code>sdk-tracking.kochava.com</code> <span class="highlight">blocked</span> — Kochava SDK
+                            endpoint</li>
+                        <li><code>tr4ck.someadnetwork.io</code> <span class="not-matched">not matched</span> — uses
+                            <code>4</code> instead of <code>a</code>, bypasses the <code>track</code> keyword. To catch
+                            this, add <code>tr4ck</code> as a separate keyword, or add <code>.io</code> as a TLD-level
+                            block rule to block all <code>.io</code> domains.
+                        </li>
+                        <li><code>trk.mopub.com</code> <span class="not-matched">not matched</span> — abbreviated form,
+                            does not contain <code>track</code>. Add <code>trk</code> to your word list to catch it.
+                        </li>
+                        <li><code>pixel.facebook.com</code> <span class="highlight">blocked</span> — matched by keyword
+                            <code>pixel</code>
+                        </li>
+                        <li><code>beacon.krxd.net</code> <span class="highlight">blocked</span> — matched by keyword
+                            <code>beacon</code> (Salesforce Krux DMP)
+                        </li>
+                        <li><code>adserv.nt.vc</code> <span class="highlight">blocked</span> — matched by keyword
+                            <code>adserv</code>
+                        </li>
+                        <li><code>analytics.twitter.com</code> <span class="highlight">blocked</span> — matched by
+                            keyword <code>analytics</code></li>
+                        <li><code>hotjar.com</code> <span class="highlight">blocked</span> — full domain match</li>
+                        <li><code>outbrain.com</code> <span class="highlight">blocked</span> (if you added <span
+                                class="highlight">outbrain</span>)</li>
+                    </ul>
+                    <p><strong>Tip:</strong> Adding full domains like <span class="highlight">appsflyer.com</span>,
+                        <span class="highlight">hotjar.com</span>, or <span class="highlight">taboola.com</span> gives
+                        precise blocking. Short words like <span class="highlight">track</span>, <span
+                            class="highlight">pixel</span>, and <span class="highlight">beacon</span> catch many unknown
+                        trackers automatically.
+                    </p>
+                </div>
+            </div>
+    </section>
     <!-- PROMISE -->
     <section id="promise">
         <div class="section-inner">
