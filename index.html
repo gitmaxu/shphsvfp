@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pesums True Privacy, Zero Tracking, 100% Pure</title>
+    <title>Pesums — Independent Software to End Internet Surveillance</title>
     <link rel="icon" type="image/jpeg"
         href="https://raw.githubusercontent.com/gitmaxu/shphsvfp/refs/heads/main/prex.jpeg">
     <link
@@ -1125,11 +1125,11 @@
             color: var(--white);
             padding-left: 4px;
         }
-        .social-row {
+        .connect-row {
             display: flex;
             gap: 10px;
         }
-        .social-btn {
+        .icon-link {
             width: 38px;
             height: 38px;
             border: 1.5px solid rgba(255, 255, 255, 0.15);
@@ -2161,7 +2161,7 @@
         <vpn id="vpn-doc"></vpn>
         <div class="fdark-inner">
             <div class="reveal">
-                <div class="fdark-label">Pesums — privacy feature VPN</div>
+                <div class="fdark-label">Pesums privacy feature VPN</div>
                 <h2 class="fdark-title">Keyword-based <span>DNS</span> blocking in<br /><span
                         class="section-title">Pesums VPN</span>
                 </h2>
@@ -2173,14 +2173,14 @@
                     tracker.example.com and that one domain is blocked. But ad networks and tracker services spawn
                     hundreds of subdomains and rotate CDN hostnames constantly. An exact list becomes a game of
                     whack-a-mole.
-                    AdAway on Android solves part of this with wildcard rules. Pesums goes further — it blocks at the
+                    AdAway on Android solves part of this with wildcard rules. Pesums goes further it blocks at the
                     keyword level, before DNS ever resolves.
                 </div>
                 <div class="fdark-item-title">How keyword blocking works</div>
                 <div class="fdark-item-desc">
                     <p>Your word list contains substrings (keywords from domain names). Before any network request
                         leaves your device, Pesums checks whether the target hostname contains <span
-                            class="highlight">any word</span> from your list. If it matches anywhere — the request is
+                            class="highlight">any word</span> from your list. If it matches anywhere the request is
                         <span class="highlight">blocked</span>.
                     </p>
                     <p><strong>Example word list (real tracking domains &amp; subdomains):</strong><br>
@@ -2205,40 +2205,40 @@
                     </p>
                     <p><strong>What gets blocked by just the word <span class="highlight">track</span>:</strong></p>
                     <ul class="tracker-examples">
-                        <li><code>tracking.adjust.com</code> <span class="highlight">blocked</span> — subdomain contains
+                        <li><code>tracking.adjust.com</code> <span class="highlight">blocked</span> subdomain contains
                             <code>track</code>
                         </li>
-                        <li><code>ads-tracking.doubleclick.net</code> <span class="highlight">blocked</span> — CDN
+                        <li><code>ads-tracking.doubleclick.net</code> <span class="highlight">blocked</span> CDN
                             hostname contains <code>track</code></li>
-                        <li><code>pixel-track.fb.com</code> <span class="highlight">blocked</span> — contains both
+                        <li><code>pixel-track.fb.com</code> <span class="highlight">blocked</span> contains both
                             <code>track</code> and <code>pixel</code>
                         </li>
-                        <li><code>track.branch.io</code> <span class="highlight">blocked</span> — Branch.io attribution
+                        <li><code>track.branch.io</code> <span class="highlight">blocked</span> Branch.io attribution
                             tracker</li>
-                        <li><code>app-tracking.appsflyer.com</code> <span class="highlight">blocked</span> — AppsFlyer
+                        <li><code>app-tracking.appsflyer.com</code> <span class="highlight">blocked</span> AppsFlyer
                             subdomain</li>
-                        <li><code>sdk-tracking.kochava.com</code> <span class="highlight">blocked</span> — Kochava SDK
+                        <li><code>sdk-tracking.kochava.com</code> <span class="highlight">blocked</span> Kochava SDK
                             endpoint</li>
-                        <li><code>tr4ck.someadnetwork.io</code> <span class="not-matched">not matched</span> — uses
+                        <li><code>tr4ck.someadnetwork.io</code> <span class="not-matched">not matched</span> uses
                             <code>4</code> instead of <code>a</code>, bypasses the <code>track</code> keyword. To catch
                             this, add <code>tr4ck</code> as a separate keyword, or add <code>.io</code> as a TLD-level
                             block rule to block all <code>.io</code> domains.
                         </li>
-                        <li><code>trk.mopub.com</code> <span class="not-matched">not matched</span> — abbreviated form,
+                        <li><code>trk.mopub.com</code> <span class="not-matched">not matched</span> abbreviated form,
                             does not contain <code>track</code>. Add <code>trk</code> to your word list to catch it.
                         </li>
-                        <li><code>pixel.facebook.com</code> <span class="highlight">blocked</span> — matched by keyword
+                        <li><code>pixel.facebook.com</code> <span class="highlight">blocked</span> matched by keyword
                             <code>pixel</code>
                         </li>
-                        <li><code>beacon.krxd.net</code> <span class="highlight">blocked</span> — matched by keyword
+                        <li><code>beacon.krxd.net</code> <span class="highlight">blocked</span> matched by keyword
                             <code>beacon</code> (Salesforce Krux DMP)
                         </li>
-                        <li><code>adserv.nt.vc</code> <span class="highlight">blocked</span> — matched by keyword
+                        <li><code>adserv.nt.vc</code> <span class="highlight">blocked</span> matched by keyword
                             <code>adserv</code>
                         </li>
-                        <li><code>analytics.twitter.com</code> <span class="highlight">blocked</span> — matched by
+                        <li><code>analytics.twitter.com</code> <span class="highlight">blocked</span> matched by
                             keyword <code>analytics</code></li>
-                        <li><code>hotjar.com</code> <span class="highlight">blocked</span> — full domain match</li>
+                        <li><code>hotjar.com</code> <span class="highlight">blocked</span> full domain match</li>
                         <li><code>outbrain.com</code> <span class="highlight">blocked</span> (if you added <span
                                 class="highlight">outbrain</span>)</li>
                     </ul>
@@ -2409,159 +2409,242 @@
     </div>
     <!-- FAQ -->
     <section id="faq-section">
-    <div class="section-inner">
-        <div class="reveal" style="text-align:center;margin-bottom:0">
-            <div class="section-label" style="justify-content:center">Questions</div>
-            <h2 class="section-title" style="text-align:center">Frequently <span>Asked</span></h2>
-        </div>
-        <div class="faq-inner">
-            <div class="faq-list">
-
-                <!-- GENERAL -->
-
-                <div class="faq-item">
-                    <div class="faq-question">Is Pesums Browser secure? <span class="faq-arrow">∨</span></div>
-                    <div class="faq-answer">Yes. Pesums is built for maximum security from the ground up. Every tracker, cookie, and fingerprinting attempt is blocked by default. Connections upgrade to HTTPS automatically. No third-party code runs inside the browser. No data leaks. No surveillance. Security is not a feature here — it is the foundation.</div>
+        <div class="section-inner">
+            <div class="reveal" style="text-align:center;margin-bottom:0">
+                <div class="section-label" style="justify-content:center">Questions</div>
+                <h2 class="section-title" style="text-align:center">Frequently <span>Asked</span></h2>
+            </div>
+            <div class="faq-inner">
+                <div class="faq-list">
+                    <!-- GENERAL -->
+                    <div class="faq-item">
+                        <div class="faq-question">Is Pesums Browser secure? <span class="faq-arrow">∨</span></div>
+                        <div class="faq-answer">Yes. Pesums is built for maximum security from the ground up. Every
+                            tracker, cookie, and fingerprinting attempt is blocked by default. Connections upgrade to
+                            HTTPS automatically. No third-party code runs inside the browser. No data leaks. No
+                            surveillance. Security is not a feature here it is the foundation.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">How do I get Pesums? <span class="faq-arrow">∨</span></div>
+                        <div class="faq-answer">Pesums is currently in development and not yet publicly available. It is
+                            launching first on Android. Windows, macOS, Linux, and iOS will follow. When it launches,
+                            download, install, and you are browsing privately within seconds. No forced account. No
+                            registration wall. Just the browser.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">How much does Pesums cost? <span class="faq-arrow">∨</span></div>
+                        <div class="faq-answer">Pesums is <span style="color:rgb(255, 78, 43)">$33</span> per year. One
+                            flat price. No hidden fees, no upsells, no
+                            tiered plans. You pay once a year and get the full browser with every feature included.
+                            Privacy should not cost a fortune <span style="color:rgb(255, 78, 43)">$33</span> is
+                            intentional.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">Why is Pesums paid and not free? <span class="faq-arrow">∨</span>
+                        </div>
+                        <div class="faq-answer">Because free browsers pay their bills by selling your data or showing
+                            you ads. That is the exact opposite of what Pesums stands for. Pesums is paid so it has zero
+                            financial reason to touch your data ever. Your <span
+                                style="color:rgb(255, 78, 43)">$33</span> is the entire business model. Nothing
+                            else.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">Does Pesums collect any user data? <span class="faq-arrow">∨</span>
+                        </div>
+                        <div class="faq-answer">No. Pesums never collects, stores, or shares your personal data. No
+                            tracking, no telemetry, no background monitoring. Your history, tabs, searches, passwords,
+                            and all browser data stay fully offline on your device. No cloud sync, no external servers,
+                            no hidden connections. Zero. That is not a policy it is the technical architecture.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">Can websites track me on Pesums? <span class="faq-arrow">∨</span>
+                        </div>
+                        <div class="faq-answer">No. Pesums blocks all standard tracking methods cookies, pixels,
+                            fingerprinting, cross-site tracking, and behavioral profiling. Websites cannot follow you
+                            across the web. Advertisers cannot build a profile on you. You browse without leaving a
+                            readable trail.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">What makes Pesums different from Brave, Firefox, or Chrome? <span
+                                class="faq-arrow">∨</span></div>
+                        <div class="faq-answer">Brave and Firefox are genuine improvements over Chrome but still collect
+                            telemetry, run background services, and in Brave's case have built-in advertising systems.
+                            Chrome is surveillance infrastructure dressed as a browser. Pesums collects zero data not
+                            minimal, not anonymized, zero. No telemetry runs in the background. No ad network. No sync
+                            servers. The difference is architectural, not cosmetic.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">Does Pesums block ads on YouTube? <span class="faq-arrow">∨</span>
+                        </div>
+                        <div class="faq-answer">Pesums Shield blocks ads and trackers across the internet including
+                            YouTube. YouTube actively works to break ad blockers and changes its methods frequently no
+                            browser can guarantee 100% YouTube ad blocking permanently. Pesums blocks aggressively and
+                            updates its blocking engine, but if YouTube changes something, there may be a gap until it
+                            is patched. Everywhere else on the web, blocking is comprehensive and consistent.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">What is Pesums Shield? <span class="faq-arrow">∨</span></div>
+                        <div class="faq-answer">Pesums Shield is the core protection layer built into every session. It
+                            blocks ads, trackers, malicious scripts, and fingerprinting attempts before they load
+                            locally, on your device, with zero data sent anywhere. It runs in two modes: Aggressive for
+                            maximum blocking, and Balanced for everyday use where some site functionality needs to be
+                            preserved. No setup required. It is on by default.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">How fast is Pesums compared to other browsers? <span
+                                class="faq-arrow">∨</span></div>
+                        <div class="faq-answer">Significantly faster in practice. When a browser blocks ads, trackers,
+                            and third-party scripts before they load, pages have less to download and render. Heavy news
+                            sites, blogs, and social pages that normally load dozens of tracking scripts load noticeably
+                            faster. The exact difference varies by site pages with aggressive ad loads show the biggest
+                            improvement.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">Is Pesums open source? <span class="faq-arrow">∨</span></div>
+                        <div class="faq-answer">Pesums is built on open-source technologies. The core browser engine and
+                            underlying frameworks are open and auditable. The Pesums-specific codebase and blocking
+                            engine are proprietary. There are no hidden trackers, no backdoors, and no secret data
+                            collection the zero-collection architecture is verifiable through network inspection. A user
+                            with a packet analyzer will see zero outbound calls to Pesums servers.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">Does Pesums have a password manager? <span class="faq-arrow">∨</span>
+                        </div>
+                        <div class="faq-answer">Yes. Pesums includes a local encrypted password vault. No cloud sync, no
+                            external servers. Your passwords are stored on your device only, protected by a master
+                            password or biometric authentication. Nothing leaves your device.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">Does Pesums sync across devices? <span class="faq-arrow">∨</span>
+                        </div>
+                        <div class="faq-answer">No. Pesums does not sync and does not have sync servers. Everything
+                            history, passwords, settings, bookmarks stays on the device it was created on. This is not a
+                            limitation. It is a deliberate privacy decision. Sync requires a server. A server means your
+                            data leaves your device. Pesums does not do that.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">What search engines does Pesums support? <span
+                                class="faq-arrow">∨</span></div>
+                        <div class="faq-answer">Pesums supports privacy-respecting search engines including Brave
+                            Search, DuckDuckGo, and Mojeek by default. Search suggestions are cached locally no search
+                            query is transmitted to Pesums. You choose your search engine. Pesums does not override or
+                            monetize your searches.</div>
+                    </div>
+                    <!-- VPN / DNS -->
+                    <div class="faq-item">
+                        <div class="faq-question">Does Pesums have a VPN? <span class="faq-arrow">∨</span></div>
+                        <div class="faq-answer">Pesums includes a built-in DNS-based blocking layer that uses the
+                            Android VPN interface locally it does not route your traffic through any external server. It
+                            is not a traditional VPN. No tunnel, no third-party server, no IP masking. It uses the VPN
+                            interface as a technical mechanism to intercept and block DNS requests before they resolve,
+                            entirely on your device.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">What is keyword-based DNS blocking? <span class="faq-arrow">∨</span>
+                        </div>
+                        <div class="faq-answer">Traditional blocklists work by exact domain name you block
+                            tracker.example.com and only that specific domain is stopped. Ad networks rotate subdomains
+                            and CDN hostnames constantly, making exact lists a losing game. Pesums blocks at the keyword
+                            level. If your word list contains "track", then tracking.adjust.com <a href="#vpn-doc">Read
+                                more...</a>
+                            ads-tracking.doubleclick.net, and app-tracking.appsflyer.com are all blocked because the
+                            hostname contains the keyword. One word blocks hundreds of unknown variants automatically.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">Does the DNS blocking slow down browsing? <span
+                                class="faq-arrow">∨</span></div>
+                        <div class="faq-answer">No. The DNS check happens locally on your device before any network
+                            request is made. There is no round trip to an external server. Blocking a request locally is
+                            faster than allowing it and waiting for a response from a tracker server. In practice,
+                            blocking speeds browsing up, not down.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">Can I customize what gets blocked? <span class="faq-arrow">∨</span>
+                        </div>
+                        <div class="faq-answer">Yes. You control your keyword word list entirely. Add full domains for
+                            precise blocking, add short keywords like "pixel" or "beacon" to catch unknown trackers,
+                            create whitelists for trusted sites, and review what was blocked in real time. All rules are
+                            stored locally on your device. Nothing is uploaded.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">Will the DNS blocking break websites? <span class="faq-arrow">∨</span>
+                        </div>
+                        <div class="faq-answer">Aggressive mode may occasionally block something a site needs to
+                            function. This is the tradeoff of maximum blocking. Balanced mode is tuned to block the
+                            majority of threats while allowing non-intrusive elements that sites need. If a specific
+                            site breaks, you can whitelist it instantly without changing your global settings.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">Does Pesums hide my IP address? <span class="faq-arrow">∨</span></div>
+                        <div class="faq-answer">No. Pesums does not mask your IP address. It is a browser and DNS
+                            blocker, not a VPN or proxy. If you need IP-level anonymity, use Pesums alongside a trusted
+                            VPN or Tor. Pesums handles what browsers and DNS can handle tracker blocking, fingerprint
+                            resistance, ad elimination. IP masking is a separate layer.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">Does Pesums work with my existing VPN? <span
+                                class="faq-arrow">∨</span></div>
+                        <div class="faq-answer">Yes. Pesums' browser-level blocking works independently of your network
+                            setup. Use it alongside any VPN you trust. The DNS blocking layer uses Android's local VPN
+                            interface on some devices running both simultaneously may require configuration. The browser
+                            itself works with any VPN active.</div>
+                    </div>
+                    <!-- PRIVACY / TRUST -->
+                    <div class="faq-item">
+                        <div class="faq-question">How do I know Pesums is actually not collecting data? <span
+                                class="faq-arrow">∨</span></div>
+                        <div class="faq-answer">Run a network monitor or packet analyzer while using Pesums. You will
+                            see zero outbound connections to Pesums servers because there are none. The only outbound
+                            traffic is to websites you deliberately visit. This is verifiable by any technically capable
+                            user. We say this because it is technically true, not because it makes good marketing copy.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">What happens to my data if Pesums shuts down? <span
+                                class="faq-arrow">∨</span></div>
+                        <div class="faq-answer">Nothing changes. Because Pesums never held your data to begin with,
+                            there is nothing to lose, sell, or hand over. Your browser history, passwords, and settings
+                            live on your device. If Pesums ceased to exist tomorrow, your local data would be completely
+                            unaffected.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">Can Pesums be compelled by a court to hand over my data? <span
+                                class="faq-arrow">∨</span></div>
+                        <div class="faq-answer">No. Pesums cannot hand over what it does not have. We hold zero user
+                            data no browsing history, no IP logs, no account records, no usage telemetry. A court order
+                            against Pesums would return nothing because there is nothing stored.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">Is my payment information private? <span class="faq-arrow">∨</span>
+                        </div>
+                        <div class="faq-answer">Payment is processed by <span
+                                style="color:rgb(255, 78, 43)">Polar</span> and Stripe both are industry-standard
+                            payment processors. Pesums never sees or stores your payment card details. The transaction
+                            goes through <span style="color:rgb(255, 78, 43)">Polar/Stripe</span> directly. What Pesums
+                            receives is confirmation that a valid
+                            license was purchased. That is all.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">What is your refund policy? <span class="faq-arrow">∨</span></div>
+                        <div class="faq-answer">Contact us at <span
+                                style="color:rgb(255, 78, 43)">contact@pesums.com</span>. We handle refund requests
+                            individually
+                            and fairly. Pesums is a small independent product we are not a faceless corporation with
+                            automated denial systems. If you have a genuine issue, reach out directly.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">Who built Pesums? <span class="faq-arrow">∨</span></div>
+                        <div class="faq-answer">Pesums is an independent, self-funded privacy project. Not a
+                            corporation. Not VC-backed. No investors with data monetization incentives. Built by someone
+                            who believes surveillance capitalism is a real problem and that a browser that collects
+                            nothing is the only honest answer to it. <span style="color:rgb(255, 78, 43)"><a
+                                    target="_blank" href="https://younis.pesums.com">Profile...</a></span></div>
+                    </div>
                 </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">How do I get Pesums? <span class="faq-arrow">∨</span></div>
-                    <div class="faq-answer">Pesums is currently in development and not yet publicly available. It is launching first on Android. Windows, macOS, Linux, and iOS will follow. When it launches, download, install, and you are browsing privately within seconds. No forced account. No registration wall. Just the browser.</div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">How much does Pesums cost? <span class="faq-arrow">∨</span></div>
-                    <div class="faq-answer">Pesums is $33 per year. One flat price. No hidden fees, no upsells, no tiered plans. You pay once a year and get the full browser with every feature included. Privacy should not cost a fortune — $33 is intentional.</div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">Why is Pesums paid and not free? <span class="faq-arrow">∨</span></div>
-                    <div class="faq-answer">Because free browsers pay their bills by selling your data or showing you ads. That is the exact opposite of what Pesums stands for. Pesums is paid so it has zero financial reason to touch your data — ever. Your $33 is the entire business model. Nothing else.</div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">Does Pesums collect any user data? <span class="faq-arrow">∨</span></div>
-                    <div class="faq-answer">No. Pesums never collects, stores, or shares your personal data. No tracking, no telemetry, no background monitoring. Your history, tabs, searches, passwords, and all browser data stay fully offline on your device. No cloud sync, no external servers, no hidden connections. Zero. That is not a policy — it is the technical architecture.</div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">Can websites track me on Pesums? <span class="faq-arrow">∨</span></div>
-                    <div class="faq-answer">No. Pesums blocks all standard tracking methods — cookies, pixels, fingerprinting, cross-site tracking, and behavioral profiling. Websites cannot follow you across the web. Advertisers cannot build a profile on you. You browse without leaving a readable trail.</div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">What makes Pesums different from Brave, Firefox, or Chrome? <span class="faq-arrow">∨</span></div>
-                    <div class="faq-answer">Brave and Firefox are genuine improvements over Chrome but still collect telemetry, run background services, and in Brave's case have built-in advertising systems. Chrome is surveillance infrastructure dressed as a browser. Pesums collects zero data — not minimal, not anonymized, zero. No telemetry runs in the background. No ad network. No sync servers. The difference is architectural, not cosmetic.</div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">Does Pesums block ads on YouTube? <span class="faq-arrow">∨</span></div>
-                    <div class="faq-answer">Pesums Shield blocks ads and trackers across the internet including YouTube. YouTube actively works to break ad blockers and changes its methods frequently — no browser can guarantee 100% YouTube ad blocking permanently. Pesums blocks aggressively and updates its blocking engine, but if YouTube changes something, there may be a gap until it is patched. Everywhere else on the web, blocking is comprehensive and consistent.</div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">What is Pesums Shield? <span class="faq-arrow">∨</span></div>
-                    <div class="faq-answer">Pesums Shield is the core protection layer built into every session. It blocks ads, trackers, malicious scripts, and fingerprinting attempts before they load — locally, on your device, with zero data sent anywhere. It runs in two modes: Aggressive for maximum blocking, and Balanced for everyday use where some site functionality needs to be preserved. No setup required. It is on by default.</div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">How fast is Pesums compared to other browsers? <span class="faq-arrow">∨</span></div>
-                    <div class="faq-answer">Significantly faster in practice. When a browser blocks ads, trackers, and third-party scripts before they load, pages have less to download and render. Heavy news sites, blogs, and social pages that normally load dozens of tracking scripts load noticeably faster. The exact difference varies by site — pages with aggressive ad loads show the biggest improvement.</div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">Is Pesums open source? <span class="faq-arrow">∨</span></div>
-                    <div class="faq-answer">Pesums is built on open-source technologies. The core browser engine and underlying frameworks are open and auditable. The Pesums-specific codebase and blocking engine are proprietary. There are no hidden trackers, no backdoors, and no secret data collection — the zero-collection architecture is verifiable through network inspection. A user with a packet analyzer will see zero outbound calls to Pesums servers.</div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">Does Pesums have a password manager? <span class="faq-arrow">∨</span></div>
-                    <div class="faq-answer">Yes. Pesums includes a local encrypted password vault. No cloud sync, no external servers. Your passwords are stored on your device only, protected by a master password or biometric authentication. Nothing leaves your device.</div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">Does Pesums sync across devices? <span class="faq-arrow">∨</span></div>
-                    <div class="faq-answer">No. Pesums does not sync and does not have sync servers. Everything — history, passwords, settings, bookmarks — stays on the device it was created on. This is not a limitation. It is a deliberate privacy decision. Sync requires a server. A server means your data leaves your device. Pesums does not do that.</div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">What search engines does Pesums support? <span class="faq-arrow">∨</span></div>
-                    <div class="faq-answer">Pesums supports privacy-respecting search engines including Brave Search, DuckDuckGo, and Mojeek by default. Search suggestions are cached locally — no search query is transmitted to Pesums. You choose your search engine. Pesums does not override or monetize your searches.</div>
-                </div>
-
-                <!-- VPN / DNS -->
-
-                <div class="faq-item">
-                    <div class="faq-question">Does Pesums have a VPN? <span class="faq-arrow">∨</span></div>
-                    <div class="faq-answer">Pesums includes a built-in DNS-based blocking layer that uses the Android VPN interface locally — it does not route your traffic through any external server. It is not a traditional VPN. No tunnel, no third-party server, no IP masking. It uses the VPN interface as a technical mechanism to intercept and block DNS requests before they resolve, entirely on your device.</div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">What is keyword-based DNS blocking? <span class="faq-arrow">∨</span></div>
-                    <div class="faq-answer">Traditional blocklists work by exact domain name — you block tracker.example.com and only that specific domain is stopped. Ad networks rotate subdomains and CDN hostnames constantly, making exact lists a losing game. Pesums blocks at the keyword level. If your word list contains "track", then tracking.adjust.com, ads-tracking.doubleclick.net, and app-tracking.appsflyer.com are all blocked — because the hostname contains the keyword. One word blocks hundreds of unknown variants automatically.</div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">Does the DNS blocking slow down browsing? <span class="faq-arrow">∨</span></div>
-                    <div class="faq-answer">No. The DNS check happens locally on your device before any network request is made. There is no round trip to an external server. Blocking a request locally is faster than allowing it and waiting for a response from a tracker server. In practice, blocking speeds browsing up, not down.</div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">Can I customize what gets blocked? <span class="faq-arrow">∨</span></div>
-                    <div class="faq-answer">Yes. You control your keyword word list entirely. Add full domains for precise blocking, add short keywords like "pixel" or "beacon" to catch unknown trackers, create whitelists for trusted sites, and review what was blocked in real time. All rules are stored locally on your device. Nothing is uploaded.</div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">Will the DNS blocking break websites? <span class="faq-arrow">∨</span></div>
-                    <div class="faq-answer">Aggressive mode may occasionally block something a site needs to function. This is the tradeoff of maximum blocking. Balanced mode is tuned to block the majority of threats while allowing non-intrusive elements that sites need. If a specific site breaks, you can whitelist it instantly without changing your global settings.</div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">Does Pesums hide my IP address? <span class="faq-arrow">∨</span></div>
-                    <div class="faq-answer">No. Pesums does not mask your IP address. It is a browser and DNS blocker, not a VPN or proxy. If you need IP-level anonymity, use Pesums alongside a trusted VPN or Tor. Pesums handles what browsers and DNS can handle — tracker blocking, fingerprint resistance, ad elimination. IP masking is a separate layer.</div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">Does Pesums work with my existing VPN? <span class="faq-arrow">∨</span></div>
-                    <div class="faq-answer">Yes. Pesums' browser-level blocking works independently of your network setup. Use it alongside any VPN you trust. The DNS blocking layer uses Android's local VPN interface — on some devices running both simultaneously may require configuration. The browser itself works with any VPN active.</div>
-                </div>
-
-                <!-- PRIVACY / TRUST -->
-
-                <div class="faq-item">
-                    <div class="faq-question">How do I know Pesums is actually not collecting data? <span class="faq-arrow">∨</span></div>
-                    <div class="faq-answer">Run a network monitor or packet analyzer while using Pesums. You will see zero outbound connections to Pesums servers — because there are none. The only outbound traffic is to websites you deliberately visit. This is verifiable by any technically capable user. We say this because it is technically true, not because it makes good marketing copy.</div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">What happens to my data if Pesums shuts down? <span class="faq-arrow">∨</span></div>
-                    <div class="faq-answer">Nothing changes. Because Pesums never held your data to begin with, there is nothing to lose, sell, or hand over. Your browser history, passwords, and settings live on your device. If Pesums ceased to exist tomorrow, your local data would be completely unaffected.</div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">Can Pesums be compelled by a court to hand over my data? <span class="faq-arrow">∨</span></div>
-                    <div class="faq-answer">No. Pesums cannot hand over what it does not have. We hold zero user data — no browsing history, no IP logs, no account records, no usage telemetry. A court order against Pesums would return nothing because there is nothing stored.</div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">Is my payment information private? <span class="faq-arrow">∨</span></div>
-                    <div class="faq-answer">Payment is processed by Polar and Stripe — both are industry-standard payment processors. Pesums never sees or stores your payment card details. The transaction goes through Polar/Stripe directly. What Pesums receives is confirmation that a valid license was purchased. That is all.</div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">What is your refund policy? <span class="faq-arrow">∨</span></div>
-                    <div class="faq-answer">Contact us at contact@pesums.com. We handle refund requests individually and fairly. Pesums is a small independent product — we are not a faceless corporation with automated denial systems. If you have a genuine issue, reach out directly.</div>
-                </div>
-
-                <div class="faq-item">
-                    <div class="faq-question">Who built Pesums? <span class="faq-arrow">∨</span></div>
-                    <div class="faq-answer">Pesums is an independent, self-funded privacy project. Not a corporation. Not VC-backed. No investors with data monetization incentives. Built by someone who believes surveillance capitalism is a real problem and that a browser that collects nothing is the only honest answer to it.</div>
-                </div>
-
             </div>
         </div>
-    </div>
-</section>
+    </section>
     <!-- FOOTER -->
     <footer>
         <div class="footer-top">
@@ -2599,21 +2682,21 @@
             </div>
             <div class="footer-col">
                 <h4>Connect</h4>
-                <div class="social-row">
-                    <a href="https://github.com/gitmaxu" target="_blank" aria-label="GitHub" class="social-btn">
+                <div class="connect-row">
+                    <a href="https://github.com/gitmaxu" target="_blank" aria-label="GitHub" class="icon-link">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                             <path
                                 d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                         </svg>
                     </a>
                     <a href="https://youtube.com/@pesumssoftware" target="_blank" aria-label="YouTube"
-                        class="social-btn">
+                        class="icon-link">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                             <path
                                 d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
                         </svg>
                     </a>
-                    <a href="https://www.facebook.com/Pesums" target="_blank" aria-label="Facebook" class="social-btn">
+                    <a href="https://www.facebook.com/Pesums" target="_blank" aria-label="Facebook" class="icon-link">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                             <path
                                 d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
