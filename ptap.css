@@ -11,7 +11,9 @@
     padding: 0;
     box-sizing: border-box;
 }
-
+fms{
+font-family: monospace;
+}
 body {
     font-family: 'ocr', 'Arial Narrow', sans-serif;
     background: #ffffff;
