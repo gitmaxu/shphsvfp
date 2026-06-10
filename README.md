@@ -20,7 +20,8 @@ Free forever. No premium tiers. No ads. No partnerships with data brokers. Priva
 ⭟ https://adblocktester.pages.dev/ you can visit to test your current browser privacy score 
 
 <img width="1245" height="830" alt="image" src="https://github.com/user-attachments/assets/09432745-67c0-4afe-81e0-bd826bcd9933" />
-⭟ https://superadblocktest.com/ you can visit to test your current browser privacy score 
+⭟ https://superadblocktest.com/ you can visit to test your current browser privacy score
+
 ## Key Features
 
 ### PESUMS Shield
