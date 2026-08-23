@@ -1,1 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PESUMS SOFTWARES</title>
+  <style>
+    @font-face {
+      font-family: 'ocr';
+      src: url('https://cdn.jsdelivr.net/gh/gitmaxu/shphsvfp@main/OCRBBQ.otf') format('opentype');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      overflow: hidden;
+    }
+
+    #stage {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: #000;
+    }
+
+    canvas {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    #introLayer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 5;
+      letter-spacing: -4px;
+      word-spacing: 6px;
+      font-family: 'ocr', monospace;
+      color: #75ff19;
+      pointer-events: none;
+    }
+
+    #introText {
+      top: 10vh;
+      left: 8vw;
+      right: 8vw;
+      font-size: clamp(16px, 2.2vw, 26px);
+      line-height: 1.7;
+      white-space: pre;
+      text-shadow: 0 0 6px #dcff1779, 0 0 14px rgb(79, 255, 9);
+    }
+
+    #introText div {
+      min-height: 1.7em;
+    }
+
+    /* single shared cursor, positioned absolutely and moved via JS —
+     never duplicated per line */
+    #cursor {
+      position: absolute;
+      width: 0.5em;
+      height: 1em;
+      background: #21ff08;
+      box-shadow: 0 0 8px #8aff50, 0 0 16px rgba(113, 255, 5, 0.6);
+      top: 0;
+      left: 0;
+      transform: translate(0px, 0px);
+    }
+
+    #cursor.blink {
+      animation: blink 1s steps(1) infinite;
+    }
+
+    @keyframes blink {
+
+      0%,
+      49% {
+        opacity: 1;
+      }
+
+      50%,
+      100% {
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="stage">
+    <canvas id="digitCanvas"></canvas>
+    <canvas id="rainCanvas"></canvas>
+    <div id="introLayer">
+      <div id="introText"></div>
+      <div id="cursor" class="blink"></div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      'use strict';
+
+      // Nothing on this page is interactive (no buttons, no links, no
+      // scrollable content) so there is nothing for the user to trigger.
+      // Earlier we added blanket preventDefault() listeners on
+      // keydown/click/touchstart/etc, but a non-passive touchstart
+      // listener on window is exactly the kind of thing that makes some
+      // mobile browsers defer or stall JS timers while they wait to
+      // resolve the touch/scroll conflict — which is almost certainly
+      // why the sequence got stuck on the very first blink. Removed.
+
+      // ============================================================
+      //  SHARED SETUP
+      // ============================================================
+      const digitCanvas = document.getElementById('digitCanvas');
+      const rainCanvas = document.getElementById('rainCanvas');
+      const dctx = digitCanvas.getContext('2d', { alpha: true });
+      const rctx = rainCanvas.getContext('2d', { alpha: false });
+      const introText = document.getElementById('introText');
+      const cursorEl = document.getElementById('cursor');
+
+      let dpr = Math.max(1, Math.min(window.devicePixelRatio || 1, 2));
+      let W = 0, H = 0;
+
+      const katakana = 'アァベペオォコソトノホモヨョロヲゴゾドボポヴッンャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッンカサタナハマヤアァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッンャラワガザダバパイィキベペオォコソトノホモヨョロヲゴゾドボポヴッンャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッンシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン';
+      const latin = 'EOSIEOSIUEOSIEOSIUEOSIUNPSEOSIEOSIUNPSUSYMUNPSUSYMEOSIUNPSUSYMUSYMNPSUEOSIUNPSUSYMSYMUNPSUSEOSIUNPSUSYMYMEOSIUNPSEOSIEOSIUNPSUSYMUNPSUSYMEOSIUNPSUSYMUEOSEOSIEOSIUEOSIUNPSEOSIEOSIUNPSUSYMUNPSUSYMEOSIUNPSUSYMUSYMNPSUEOSIUNPSUSYMSYMUNPSUSEOSIUNPSUSYMYMIEOSIUEOSIUNPSEOSIEOSIUNPSUSYMUNPSUSYMEOSIUNPSUSYMUSYMNPSUEOSIUNPSUSYMSYMUNPSUSEOSIUNPSUSYMYMSYMNPSUEOSIUNPSUSYMSYMUNPSUSEOSIUNPSUSYMEOSIEOSIUEOSIUNPSEOSIEOSIUNPSUSYMUNPSUSYMEOSIUNPSUSYMUSYMNPSUEOSIUNPSUSYMSYMUNPSUSEOSIUNPSUSYNPSUSEOSIUNPSUSYMEOMYNPSUSEOSIUNPSUSYMEOYMUNPSUSEOSIUNPSUSYMEOSIEOSIUEOSIUNPSEOSMYMYMUNPSUSEOSIUNPSUSYMEOSIEOSIUEOSIUNPSEOS';
+      const digitsStr = '00100110000100110010100100110010110100101101000010011001010010011001011010010110101000110010110010110010011001010010011001011010010110101000110010110010110100011001000100110010100100110010110100101101010001100101100101101100101101010010011001011010010110101000110010110010110100011001000100110010100100110010110100101101010001100101100101101100101101010010011001011010010010001100010001100100010011001010010011001011010010110101000110010110010110110010110101001001100101101001011010100011001011001011010001001100101001001100101101001011010100011001011001011011001011010100100110010110100101101010001100101100101101101010001100101100101100';
+      const rainChars = (katakana + latin + digitsStr).split('');
+      const digitChars = digitsStr.split('');
+
+      function randChar(arr) { return arr[(Math.random() * arr.length) | 0]; }
+
+      // Declared here (before resizeCanvases, which reads it) to avoid a
+      // temporal-dead-zone ReferenceError: resizeCanvases() runs once at
+      // load time, before the script reaches the "let rainStarted"
+      // declaration further down — accessing it early threw and halted
+      // the entire script, which is why the page got stuck on the very
+      // first blinking cursor and never advanced.
+      let rainStarted = false;
+      let rainOpacity = 0;
+
+      // ------------------------------------------------------------
+      // Resize handling: NEVER blanks or restarts the sequence.
+      // Canvases are resized/redrawn in place; the rain state array
+      // is rebuilt (columns depend on width) but the animation loop
+      // itself is never stopped or restarted, and the intro sequence
+      // (a plain DOM/CSS animation) is entirely unaffected by resize.
+      // ------------------------------------------------------------
+      function resizeCanvases() {
+        dpr = Math.max(1, Math.min(window.devicePixelRatio || 1, 2));
+        W = window.innerWidth;
+        H = window.innerHeight;
+        [digitCanvas, rainCanvas].forEach(c => {
+          c.width = Math.floor(W * dpr);
+          c.height = Math.floor(H * dpr);
+        });
+        dctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        rctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        if (rainStarted) {
+          // repaint solid black and rebuild columns for new width,
+          // but keep the loop running — no blank pause, no restart
+          rctx.fillStyle = '#000';
+          rctx.fillRect(0, 0, W, H);
+          initRainColumns();
+        }
+      }
+
+      let resizeTimer = null;
+      window.addEventListener('resize', function () {
+        // debounce so rapid resize events don't thrash canvas rebuilds
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(resizeCanvases, 120);
+      });
+
+      resizeCanvases();
+
+      // ============================================================
+      //  SINGLE SHARED CURSOR
+      // ============================================================
+      // Moves to sit right after whatever text currently exists.
+      // Only ever one cursor element in the DOM — it is repositioned,
+      // never cloned.
+      function placeCursorAfter(el) {
+        void el.offsetHeight; // force synchronous layout so getClientRects() is accurate
+        const range = document.createRange();
+        range.selectNodeContents(el);
+        const rects = range.getClientRects();
+        const lastRect = rects[rects.length - 1];
+        const introRect = introText.getBoundingClientRect();
+
+        if (lastRect) {
+          cursorEl.style.left = (lastRect.right - introRect.left) + 'px';
+          cursorEl.style.top = (lastRect.top - introRect.top) + 'px';
+          cursorEl.style.height = lastRect.height + 'px';
+        } else {
+          const elRect = el.getBoundingClientRect();
+          cursorEl.style.left = (elRect.left - introRect.left) + 'px';
+          cursorEl.style.top = (elRect.top - introRect.top) + 'px';
+          cursorEl.style.height = '1.3em';
+        }
+      }
+
+      function setCursorBlinking(isBlinking) {
+        cursorEl.classList.toggle('blink', isBlinking);
+        cursorEl.style.opacity = '1';
+      }
+
+      // ============================================================
+      //  SEQUENCE HELPERS
+      // ============================================================
+      let rafId = null;
+      function clearRAF() { if (rafId) { cancelAnimationFrame(rafId); rafId = null; } }
+
+      function wait(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+      }
+
+      // Types one line into its own row div, cursor tracks the end of the
+      // growing text the whole time, then stays parked there blinking.
+      function typeLine(text, speed) {
+        speed = speed || 55;
+        return new Promise(resolve => {
+          const row = document.createElement('div');
+          introText.appendChild(row);
+          setCursorBlinking(false);
+
+          let i = 0;
+          function step() {
+            row.textContent = text.slice(0, i);
+            placeCursorAfter(row);
+            if (i >= text.length) {
+              setCursorBlinking(true);
+              resolve(row);
+              return;
+            }
+            i++;
+            setTimeout(step, speed + Math.random() * 40);
+          }
+          step();
+        });
+      }
+
+      function idleBlink(ms) {
+        setCursorBlinking(true);
+        return wait(ms);
+      }
+
+      // ============================================================
+      //  DIGIT ZOOM SEQUENCE
+      // ============================================================
+      function runDigitField() {
+        return new Promise(resolve => {
+          const cellW = 46, cellH = 40;
+          const cols = Math.ceil(W / cellW);
+          const rows = Math.ceil(H / cellH);
+          const grid = [];
+          for (let r = 0; r < rows; r++) {
+            for (let c = 0; c < cols; c++) {
+              if (Math.random() > 0.55) {
+                grid.push({ c, r, ch: randChar(digitChars), delay: Math.random() * 1400 });
+              }
+            }
+          }
+
+          const target = grid[(Math.random() * grid.length) | 0] || { c: cols / 2, r: rows / 2, ch: '0' };
+          target.ch = '0';
+
+          let startTime = null;
+          const APPEAR_MS = 1600;
+          const HOLD_MS = 900;
+          const ZOOM_MS = 1300;
+
+          function frame(now) {
+            if (startTime === null) startTime = now;
+            const t = now - startTime;
+
+            dctx.clearRect(0, 0, W, H);
+            dctx.font = '600 22px "ocr", monospace';
+            dctx.textAlign = 'center';
+            dctx.textBaseline = 'middle';
+
+            if (t < APPEAR_MS) {
+              for (const g of grid) {
+                const localT = t - g.delay;
+                if (localT <= 0) continue;
+                const a = Math.min(1, localT / 250);
+                dctx.globalAlpha = a * 0.9;
+                dctx.fillStyle = '#9dff60';
+                dctx.shadowColor = '#9dff60';
+                dctx.shadowBlur = 4;
+                dctx.fillText(g.ch, g.c * cellW + cellW / 2, g.r * cellH + cellH / 2);
+              }
+              dctx.globalAlpha = 1;
+              dctx.shadowBlur = 0;
+              rafId = requestAnimationFrame(frame);
+            } else if (t < APPEAR_MS + HOLD_MS) {
+              for (const g of grid) {
+                const isTarget = (g === target);
+                const flicker = (!isTarget && Math.random() > 0.985) ? randChar(digitChars) : g.ch;
+                dctx.fillStyle = isTarget ? '#e7fff0' : '#3ee87a';
+                dctx.shadowColor = isTarget ? '#aaffcc' : '#3ee87a';
+                dctx.shadowBlur = isTarget ? 16 : 4;
+                dctx.globalAlpha = 0.9;
+                dctx.fillText(isTarget ? target.ch : flicker, g.c * cellW + cellW / 2, g.r * cellH + cellH / 2);
+              }
+              dctx.globalAlpha = 1;
+              dctx.shadowBlur = 0;
+              rafId = requestAnimationFrame(frame);
+            } else if (t < APPEAR_MS + HOLD_MS + ZOOM_MS) {
+              const zt = (t - APPEAR_MS - HOLD_MS) / ZOOM_MS;
+              const ease = zt * zt * (3 - 2 * zt);
+              const scale = 1 + ease * 60;
+              const fadeOthers = Math.max(0, 1 - ease * 2.2);
+
+              const tx = target.c * cellW + cellW / 2;
+              const ty = target.r * cellH + cellH / 2;
+
+              if (fadeOthers > 0.01) {
+                for (const g of grid) {
+                  if (g === target) continue;
+                  dctx.globalAlpha = fadeOthers * 0.8;
+                  dctx.fillStyle = '#3ee87a';
+                  dctx.fillText(g.ch, g.c * cellW + cellW / 2, g.r * cellH + cellH / 2);
+                }
+              }
+              dctx.globalAlpha = 1;
+
+              dctx.save();
+              dctx.translate(tx, ty);
+              dctx.scale(scale, scale);
+              dctx.fillStyle = '#eafff2';
+              dctx.shadowColor = '#9dffce';
+              dctx.shadowBlur = 6 / scale;
+              dctx.fillText(target.ch, 0, 0);
+              dctx.restore();
+
+              if (ease > 0.75) {
+                const wa = (ease - 0.75) / 0.25;
+                dctx.fillStyle = 'rgba(0,0,0,' + wa + ')';
+                dctx.fillRect(0, 0, W, H);
+              }
+
+              rafId = requestAnimationFrame(frame);
+            } else {
+              dctx.clearRect(0, 0, W, H);
+              resolve();
+            }
+          }
+          rafId = requestAnimationFrame(frame);
+        });
+      }
+
+      // ============================================================
+      //  INFINITE RAIN (final, permanent state — runs forever)
+      // ============================================================
+      const fontSize = 20;
+      const colGap = fontSize * 0.3;
+      const rowStep = fontSize * 1.35;
+      let columns, drops, speeds, trailLengths;
+      // rainStarted / rainOpacity declared earlier (before resizeCanvases)
+
+      function initRainColumns() {
+        columns = Math.ceil(W / colGap);
+        const oldDrops = drops;
+        drops = new Float32Array(columns);
+        speeds = new Float32Array(columns);
+        trailLengths = new Float32Array(columns);
+        for (let i = 0; i < columns; i++) {
+          // preserve existing column progress where possible on resize,
+          // so a resize never resets the whole rain visibly
+          drops[i] = (oldDrops && oldDrops[i] !== undefined) ? oldDrops[i] : Math.random() * -100;
+          speeds[i] = 0.7 + Math.random() * 1.6;
+          trailLengths[i] = 10 + Math.random() * 20;
+        }
+      }
+
+      let lastTime = 0;
+      const frameInterval = 1000 / 45;
+
+      function rainFrame(now) {
+        rafId = requestAnimationFrame(rainFrame);
+        const dt = now - lastTime;
+        if (dt < frameInterval) return;
+        lastTime = now;
+
+        if (rainOpacity < 1) rainOpacity = Math.min(1, rainOpacity + dt / 900);
+
+        rctx.fillStyle = 'rgba(0,0,0,0.15)';
+        rctx.fillRect(0, 0, W, H);
+
+        rctx.font = '600 ' + fontSize + 'px "ocr", "ocr", monospace';
+        rctx.textBaseline = 'top';
+
+        for (let i = 0; i < columns; i++) {
+          const x = i * colGap;
+          const y = drops[i] * rowStep;
+
+          if (y >= -fontSize && y < H) {
+            rctx.globalAlpha = rainOpacity;
+            rctx.fillStyle = '#9eff03';
+            rctx.shadowColor = '#9eff03';
+            rctx.shadowBlur = 3;
+            rctx.fillText(randChar(rainChars), x, y);
+            rctx.shadowBlur = 0;
+
+            const tail = trailLengths[i];
+            for (let t = 1; t < tail; t++) {
+              const ty = y - t * rowStep;
+              if (ty < -fontSize) break;
+              const fade = 1 - t / tail;
+              const green = Math.floor(140 + fade * 100);
+              rctx.fillStyle = 'rgba(117,255,25,' + (fade * fade * 0.85 * rainOpacity) + ')';
+              rctx.fillText(randChar(rainChars), x, ty);
+            }
+            rctx.globalAlpha = 1;
+          }
+
+          drops[i] += speeds[i];
+          if (y - trailLengths[i] * rowStep > H && Math.random() > 0.975) {
+            drops[i] = Math.random() * -50;
+            speeds[i] = 0.3 + Math.random() * 0.9;
+            trailLengths[i] = 10 + Math.random() * 20;
+          }
+        }
+      }
+
+      function startRain() {
+        if (rainStarted) return;
+        rainStarted = true;
+        rctx.fillStyle = '#000';
+        rctx.fillRect(0, 0, W, H);
+        initRainColumns();
+        clearRAF();
+        lastTime = 0;
+        rafId = requestAnimationFrame(rainFrame);
+      }
+
+      // ============================================================
+      //  SEQUENCE ORCHESTRATION — runs once, straight through.
+      //  Wrapped in try/catch with a hard watchdog fallback: if any
+      //  step throws or hangs unexpectedly, the infinite rain still
+      //  starts on its own rather than leaving the page stuck.
+      // ============================================================
+      let sequenceFinished = false;
+
+      async function runSequence() {
+        // Step 1: entry point — single cursor blinking alone
+        setCursorBlinking(true);
+        cursorEl.style.left = '0px';
+        cursorEl.style.top = '0px';
+        cursorEl.style.height = '1.3em';
+        await wait(2600);
+
+        // Step 2: types "PESUMS SOFTWARES"
+        await typeLine('PESUMS SOFTWARES', 90);
+        await wait(700);
+
+        // Step 3: idle blink
+        await idleBlink(1100);
+
+        // Step 4: "Call trans opt: received..." line
+        await typeLine('Init sequence: received. 2-19-98 13:24:18 REC:Log>', 22);
+        await wait(650);
+
+        // Step 5: "Loading Pesums" line
+        await typeLine('Loading Pesums Shield: privacy engine initializing...', 40);
+        await wait(700);
+
+        // Step 6: fade out intro text + cursor, bring in digit field
+        introText.style.opacity = '0';
+        cursorEl.style.opacity = '0';
+        await wait(111);
+        cursorEl.style.display = 'none'; // hard-remove, don't rely on opacity alone
+
+        // Step 7: digit field appear -> hold -> zoom into '0'
+        await runDigitField();
+
+        // Step 8: infinite matrix rain, forever
+        sequenceFinished = true;
+        startRain();
+      }
+
+      runSequence().catch(function (err) {
+        // If any step throws for an unexpected reason, don't leave the
+        // page stuck — fall straight through to the permanent animation.
+        sequenceFinished = true;
+        introText.style.opacity = '0';
+        cursorEl.style.opacity = '0';
+        dctx.clearRect(0, 0, W, H);
+        startRain();
+      });
+
+      // Watchdog: the whole intro sequence above totals well under 10s.
+      // If something unforeseen stalls it (a hung await, a browser quirk),
+      // force the permanent rain to start anyway after 12s so the page
+      // is never stuck showing only a blinking cursor.
+      setTimeout(function () {
+        if (!sequenceFinished) {
+          sequenceFinished = true;
+          introText.style.opacity = '0';
+          cursorEl.style.opacity = '0';
+          dctx.clearRect(0, 0, W, H);
+          startRain();
+        }
+      }, 12000);
+    })();
+  </script>
+</body>
+
+</html>
