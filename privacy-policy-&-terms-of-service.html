@@ -45,19 +45,13 @@
           exactly how Pesums handles your information which<fms>,</fms> by design<fms>,</fms> is almost none at all.
         </div>
 
-        <h2 id="privacy-promise">Our Core Promise</h2>
-        <p>
-          Pesums collects no personal data. Not your browsing history. Not your searches. Not your passwords. Not your
-          device information. Nothing. This is not a marketing claim it is a technical reality. Pesums is built so
-          that your data never leaves your device. There are no Pesums servers receiving your information<fms>,</fms>
-          because none
-          of that information is ever sent.
-        </p>
-        <div class="highlight-box">
-          <strong>The honest guarantee:</strong> We cannot misuse<fms>,</fms> sell<fms>,</fms> or leak data we never
-          receive. Your privacy is
-          protected by architecture<fms>,</fms> not by policy.
-        </div>
+       <h2 id="privacy-promise">Our Core Promise</h2>
+<p>
+  Pesums collects no personal data from your browsing. Not your browsing history. Not your searches. Not your passwords. Not your device information while browsing. This is not a marketing claim it is a technical reality. Pesums is built so that your browsing data never leaves your device. There is no round-trip to a Pesums server for anything you do in the browser.
+</p>
+<div class="highlight-box">
+  <strong>The honest guarantee:</strong> We cannot misuse, sell, or leak browsing data we never receive. That part of your privacy is protected by architecture, not by policy. The separate, limited exception for license verification is explained openly below nothing is hidden.
+</div>
 
 
 
@@ -122,13 +116,12 @@
           </div>
         </div>
      
-        <h3>What We Or Pesums Collect</h3>
-        <p>
-          Nothing. 
-        </p>
-        
-        <p>There is no exception list. There is no asterisk. The above is complete.</p>
+       <h3>What We Or Pesums Collect</h3>
+<p>
+  For browsing itself: nothing, as described above. The one exception is license verification if you purchase or trial Pesums a small, separate system covered honestly in its own section below. It exists only to stop fraud and keep licensing working, never to watch what you do in the browser.
+</p>
 
+<p>There is no exception list for browsing. There is no asterisk. The above is complete for everything you do inside the browser.</p>
         <h2 id="how-pesums-works">How Pesums Works Without Your Data</h2>
         <p>
           Everything Pesums does<fms>,</fms> it does locally on your device. Block lists<fms>,</fms> cookie rules<fms>,
@@ -238,21 +231,52 @@
             enforced locally.</li>
         </ul>
 
-        <h2 id="no-third-parties">No Third Parties. No Exceptions.</h2>
-        <p>
-          We do not share data with third parties because we have no data to share. No analytics companies. No
-          advertising networks. No data brokers. If a government authority ever presented a legally valid order for user
-          data<fms>,</fms> we would have nothing to hand over. There is nothing on our side.
-        </p>
-
-        <h2 id="payment-privacy">License and Payment</h2>
-        <p>
-          If you purchase a Pesums license<fms>,</fms> your payment is processed by our payment provider<fms>,</fms>
-          Lemon Squeezy. Lemon
-          Squeezy handles payment information under their own privacy policy. Pesums receives only what is needed to
-          verify your license such as a license key. We do not store your payment card details. We have no access to
-          your billing information.
-        </p>
+      <h2 id="third-party-components">Third-Party Components</h2>
+<p>
+  Pesums is not built entirely from scratch like virtually all software, it relies on some open-source components and outside services to function. Being honest about this is part of being honest with you.
+</p>
+<p>
+  For browsing, this means only local, on-device, open-source components nothing that phones home, because your browsing never leaves your device in the first place.
+</p>
+<p>
+  For the license system specifically, a small number of services are involved by necessity:
+</p>
+<ul>
+  <li><strong>Lemon Squeezy</strong> processes your payment and sees the email and amount involved in your purchase, under their own privacy policy.</li>
+  <li><strong>Resend</strong> delivers your license key by email, and briefly handles your email address and key to send it.</li>
+  <li><strong>Our hosting provider</strong>, like any server on the internet, sees the IP address of requests reaching it.</li>
+</ul>
+<p>
+  These exist to make the license system work never to build a profile of you, never to track your browsing, and never to sell or hand your data to advertisers. We do not add tracking SDKs, analytics services, or ad networks. We do not sell data to anyone, for any reason. What these components see is limited strictly to what's needed to verify a purchase or deliver a key nothing more.
+</p>
+<h2 id="payment-privacy">License Verification (Not Browsing Data)</h2>
+<p>
+  If you purchase or trial a license, a small, separate system exists purely to stop fraud and keep the license working it has nothing to do with your browsing, which stays private as described above.
+</p>
+<h3>What This System Stores</h3>
+<ul>
+  <li>Your email and license key, so we can verify your purchase and resend your key if you lose it</li>
+  <li>A device identifier generated on your device, so we can enforce the 3-device limit and stop the same trial being started over and over</li>
+  <li>Your device model and Android version, shown to you in your own account so you can tell your devices apart</li>
+  <li>The time of activation and last use</li>
+  <li>The outcome of activation attempts, including IP address, kept briefly to catch abuse like someone trying thousands of license keys until one works</li>
+</ul>
+<h3>Why We Need This</h3>
+<ul>
+  <li>To verify your license is real and let you use it on your devices</li>
+  <li>To enforce the device limit and trial fairly</li>
+  <li>To catch and stop fraud, brute-force attempts, and trial abuse</li>
+  <li>To help you if you email us lost key, refund, device issue</li>
+</ul>
+<h3>What We Never Do With It</h3>
+<ul>
+  <li>We never share it with any third party beyond the services listed above, for any reason</li>
+  <li>We never use it to track, profile, or watch what you do in the browser that data never reaches us in the first place</li>
+  <li>We never sell it or use it for advertising</li>
+</ul>
+<p>
+  Payments themselves are handled by Lemon Squeezy under their own policy. We never see or store your card details.
+</p>
 
         <h2 id="children-privacy">Children's Privacy</h2>
         <p>
