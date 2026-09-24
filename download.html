@@ -1,1 +1,777 @@
-<h1>DOWNLOAD</h1>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Download Pesums</title>
+  <style>
+    @font-face {
+      letter-spacing: -3px;
+      word-spacing: 6px;
+      font-family: ocr;
+      src: url("https://cdn.jsdelivr.net/gh/gitmaxu/shphsvfp@main/OCRBBQ.otf") format("opentype");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    :root {
+      --bg: #ffffff;
+      --surface: #ffffff;
+      --ink: #1A1512;
+      --ink-dim: #6b6058;
+      --ink-faint: #a89d92;
+      --line: #E8DFD3;
+      --accent: #ff3c00;
+      --accent-dark: #ff4a0e;
+      --accent-tint: #FDECE5;
+
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--ink);
+      word-spacing: 3px;
+      letter-spacing: -1px;
+      font-family: ocr;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      padding: 0 24px 100px;
+    }
+
+    .wrap {
+      max-width: 660px;
+      margin: 0 auto;
+    }
+
+    header.top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 32px 0 40px;
+    }
+
+    .wordmark {
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .top-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .top-links a {
+      color: var(--ink-dim);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .top-links a:hover {
+      color: var(--accent);
+    }
+
+    .status-line {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--accent-dark);
+      background: var(--accent-tint);
+      padding: 7px 14px 7px 10px;
+      border-radius: 100px;
+      margin-bottom: 28px;
+    }
+
+    .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    h1 {
+      font-family: ocr;
+      font-weight: 700;
+      font-size: 64px;
+      line-height: 0.98;
+      letter-spacing: -0.02em;
+      margin: 0 0 20px;
+      color: var(--ink);
+    }
+
+    h1 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+
+    .lede {
+      font-size: 18px;
+      line-height: 1.55;
+      color: var(--ink-dim);
+      max-width: 46ch;
+      margin: 0 0 44px;
+      font-weight: 500;
+    }
+
+    .version-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--ink);
+      border-radius: 14px;
+      padding: 26px 28px;
+      margin-bottom: 20px;
+    }
+
+    .version-num {
+      font-family: ocr;
+      font-size: 40px;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1;
+    }
+
+    .version-meta {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--accent);
+      font-family: ocr;
+      text-align: right;
+    }
+
+    .download-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      padding: 22px 24px;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 800;
+      border-radius: 12px;
+      margin-bottom: 14px;
+      box-shadow: 0 8px 24px -8px rgba(232, 72, 28, 0.55);
+      transition: transform 0.12s ease, background 0.12s ease;
+    }
+
+    .download-btn:hover {
+      background: var(--accent-dark);
+      transform: translateY(-1px);
+    }
+
+    .download-btn svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .file-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12.5px;
+      color: var(--ink-faint);
+      font-family: ocr;
+      font-weight: 600;
+      margin-bottom: 64px;
+      padding: 0 4px;
+    }
+
+    section {
+      margin-bottom: 52px;
+    }
+
+    h2 {
+      font-size: 13px;
+      color: var(--ink);
+      font-weight: 800;
+      margin: 0 0 18px;
+      letter-spacing: -0.01em;
+    }
+
+    .swatch-pesums {
+      background: var(--ink);
+    }
+
+    .swatch-chrome {
+      background: var(--line);
+      border: 1px solid var(--ink-faint);
+    }
+
+    .compare-toast {
+      position: absolute;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #fff;
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 700;
+      padding: 8px 14px;
+      border-radius: 100px;
+      box-shadow: 0 6px 18px -4px rgba(26, 21, 18, 0.3);
+      z-index: 6;
+      pointer-events: none;
+    }
+
+    .compare-toast .mark {
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: #fff;
+    }
+
+    .compare-toast.is-pesums .mark {
+      background: #2e9e5b;
+    }
+
+    .compare-toast.is-chrome .mark {
+      background: var(--accent);
+    }
+
+    .spec-list {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .spec-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--line);
+      font-size: 14.5px;
+    }
+
+    .spec-row:last-child {
+      border-bottom: none;
+    }
+
+    .spec-key {
+      color: var(--ink-dim);
+      font-weight: 600;
+    }
+
+    .spec-val {
+      color: var(--ink);
+      text-align: right;
+      font-weight: 600;
+    }
+
+    .spec-val a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .spec-val a:hover {
+      text-decoration: underline;
+    }
+
+    .steps {
+      list-style: none;
+      counter-reset: step;
+      padding: 0;
+      margin: 0;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .steps li {
+      counter-increment: step;
+      display: flex;
+      gap: 16px;
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--line);
+      font-size: 14.5px;
+      line-height: 1.5;
+      color: var(--ink-dim);
+      font-weight: 500;
+    }
+
+    .steps li:last-child {
+      border-bottom: none;
+    }
+
+    .steps li::before {
+      content: counter(step);
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .steps strong {
+      color: var(--ink);
+      font-weight: 800;
+    }
+
+    .checksum-box {
+      background: var(--ink);
+      border-radius: 12px;
+      padding: 20px 22px;
+    }
+
+    .checksum-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 10px;
+      letter-spacing: 0.02em;
+    }
+
+    .checksum-val {
+      font-family: ocr;
+      font-size: 13px;
+      color: #fff;
+      word-break: break-all;
+      line-height: 1.6;
+      opacity: 0.85;
+    }
+
+    .note {
+      font-size: 13.5px;
+      color: var(--ink-faint);
+      line-height: 1.6;
+      margin-top: 16px;
+      font-weight: 500;
+    }
+
+    .note code {
+      background: var(--accent-tint);
+      color: var(--accent-dark);
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 12.5px;
+    }
+
+    .roadmap-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 20px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      font-size: 14.5px;
+      font-weight: 600;
+    }
+
+    .roadmap-item .label {
+      color: var(--ink);
+    }
+
+    .roadmap-item .tag {
+      font-family: ocr;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent-dark);
+      background: var(--accent-tint);
+      padding: 5px 10px;
+      border-radius: 20px;
+    }
+
+    footer {
+      border-top: 2px solid var(--ink);
+      padding-top: 28px;
+      margin-top: 60px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink-dim);
+    }
+
+    footer a {
+      color: var(--ink-dim);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: var(--accent);
+    }
+
+    /* Comparison slider */
+    .compare {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      margin: 0 auto;
+      /* centers it */
+
+      padding: 20px;
+      border: 1px solid var(--line);
+      box-shadow: 0 12px 32px -16px rgba(26, 21, 18, 0.25);
+    }
+
+    .compare-frame {
+      position: relative;
+      width: 100%;
+      height: 1100px;
+      overflow: hidden;
+      user-select: none;
+      background: #ffffff;
+    }
+
+    .compare-img {
+      position: absolute;
+      top: 0;
+      color: #ff3c00;
+
+      margin-top: -1px;
+      margin-left: -1px;
+      left: 0;
+      border-radius: 14px;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+      pointer-events: none;
+    }
+
+    .compare-clip {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .compare-clip .compare-img {
+      width: var(--frame-w, 660px);
+      max-width: none;
+    }
+
+    .compare-handle {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      height: 100%;
+      width: 0;
+      cursor: ew-resize;
+      z-index: 5;
+      touch-action: none;
+    }
+
+    .compare-handle-line {
+      position: absolute;
+      top: 0;
+      left: -1px;
+      width: 2px;
+      height: 100%;
+      background: #fff;
+      box-shadow: 0 0 0 1px rgba(26, 21, 18, 0.15);
+    }
+
+    .compare-handle-grip {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 14px -2px rgba(232, 72, 28, 0.6);
+    }
+
+    .compare-handle-grip svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .compare-badge {
+      position: absolute;
+      bottom: 14px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      padding: 6px 12px;
+      border-radius: 100px;
+      background: rgb(255, 255, 255);
+      color: #ff351a;
+      z-index: 4;
+      pointer-events: none;
+    }
+
+    .compare-badge-left {
+      left: 14px;
+    }
+
+    .compare-badge-right {
+      right: 14px;
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 46px;
+      }
+
+      .version-num {
+        font-size: 30px;
+      }
+
+      .version-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+
+      .version-meta {
+        text-align: left;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .compare-frame {
+        height: 720px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <header class="top">
+      <a href="https://pesums.com" class="wordmark">Pesums</a>
+      <div class="top-links">
+        <a href="https://github.com/pesums-browser/pesums">Source</a>
+        <a href="https://pesums.com">Home</a>
+      </div>
+    </header>
+
+    <div class="status-line">
+      <span class="dot"></span>
+      Direct download &mdash; Play Store listing in review
+    </div>
+
+    <h1>Download<br><em>Pesums.</em></h1>
+    <p class="lede">
+      The universal APK, built and signed straight from our release
+      pipeline. No store account needed to install it.
+    </p>
+
+    <div class="version-card">
+      <div class="version-num">1.6</div>
+      <div class="version-meta">CURRENT<br>UNIVERSAL APK</div>
+    </div>
+
+    <a href="https://pesums.com/downloads/pesums-1.6.apk" class="download-btn" id="dl-button">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14" />
+      </svg>
+      Download for Android
+    </a>
+    <div class="file-meta">
+      <span>~24 MB</span>
+      <span>Android 8.0+</span>
+    </div>
+
+    <section>
+      <h2>What's in 1.6</h2>
+      <div class="spec-list">
+        <div class="spec-row">
+          <span class="spec-key">Status</span>
+          <span class="spec-val">First public release</span>
+        </div>
+        <div class="spec-row">
+          <span class="spec-key">Changelog</span>
+          <span class="spec-val"><a href="https://github.com/pesums-browser/pesums/releases">Full notes on GitHub
+              &rarr;</a></span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Installing from outside the Play Store</h2>
+      <ol class="steps">
+        <li>Download the APK above using your phone's browser.</li>
+        <li>Open the downloaded file. Android will warn you it's from an <strong>unknown source</strong> &mdash; this is
+          expected for any app installed outside the Play Store.</li>
+        <li>Tap <strong>Settings</strong> in that warning, then allow installs from your browser.</li>
+        <li>Go back and tap <strong>Install</strong>.</li>
+      </ol>
+      <p class="note">
+        Pesums isn't on the Play Store yet because Google's testing
+        requirements take time to clear. This APK is built from the same
+        source published in our repository.
+      </p>
+    </section>
+
+    <section>
+      <h2>Verify your download</h2>
+      <div class="checksum-box">
+        <div class="checksum-label">SHA-256</div>
+        <div class="checksum-val">pending &mdash; published alongside the 1.6 file</div>
+      </div>
+      <p class="note">
+        Once the APK is live, its checksum will appear here. After
+        downloading, run <code>shasum -a 256 pesums-1.6.apk</code> and
+        compare the result &mdash; it confirms the file reached you exactly
+        as we built it.
+      </p>
+    </section>
+
+    <section>
+      <h2>Coming later</h2>
+      <div class="roadmap-item">
+        <span class="label">Google Play Store listing</span>
+        <span class="tag">in review</span>
+      </div>
+    </section>
+
+    <section>
+      <h2>Same page, fewer ads</h2>
+      <p class="lede" style="font-size:15px;margin-bottom:24px;">
+        The same site, loaded in Pesums and in Chrome. Drag to compare.
+      </p>
+
+      <div class="compare" id="compare">
+        <div class="compare-frame">
+          <img class="compare-img compare-before" src="/home/i64y/Documents/Pesums_download/chrome.jpg" alt="Chrome">
+          <div class="compare-clip" id="compare-clip">
+            <img class="compare-img" src="/home/i64y/Documents/Pesums_download/pesums_shield.jpg" alt="Pesums">
+          </div>
+          <div class="compare-handle" id="compare-handle">
+            <div class="compare-handle-line"></div>
+            <div class="compare-handle-grip">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M8 8l-4 4 4 4M16 8l4 4-4 4" />
+              </svg>
+            </div>
+          </div>
+          <div class="compare-toast is-pesums" id="compare-toast">
+            <span class="mark" id="compare-toast-mark">
+              <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="3">
+                <path d="M20 6L9 17l-5-5" />
+              </svg>
+            </span>
+            <span id="compare-toast-label">Pesums</span>
+          </div>
+
+        </div>
+      </div>
+      <p class="note">
+        Screenshots of the same page, same scroll position &mdash; only the
+        browser changes.
+      </p>
+    </section>
+
+    <footer>
+      <span>contact@pesums.com</span>
+      <a href="https://github.com/pesums-browser/pesums">github.com/pesums-browser</a>
+    </footer>
+
+  </div>
+
+  <script>
+    (function () {
+      var frame = document.querySelector('.compare-frame');
+      var clip = document.getElementById('compare-clip');
+      var handle = document.getElementById('compare-handle');
+      var clipImg = clip.querySelector('.compare-img');
+
+      function setWidths() {
+        var w = frame.offsetWidth;
+        clipImg.style.width = w + 'px';
+      }
+      setWidths();
+      window.addEventListener('resize', setWidths);
+
+      function setPos(pct) {
+        pct = Math.max(2, Math.min(98, pct));
+        clip.style.width = pct + '%';
+        handle.style.left = pct + '%';
+
+        var toast = document.getElementById('compare-toast');
+        var mark = document.getElementById('compare-toast-mark');
+        var label = document.getElementById('compare-toast-label');
+        if (pct >= 50) {
+          toast.className = 'compare-toast is-pesums';
+          mark.innerHTML = '<svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>';
+          label.textContent = 'Pesums';
+        } else {
+          toast.className = 'compare-toast is-chrome';
+          mark.innerHTML = '<svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6L6 18M6 6l12 12"/></svg>';
+          label.textContent = 'Chrome';
+        }
+      }
+
+      function pctFromEvent(clientX) {
+        var rect = frame.getBoundingClientRect();
+        return ((clientX - rect.left) / rect.width) * 100;
+      }
+
+      var dragging = false;
+
+      function start(e) {
+        dragging = true;
+      }
+      function move(e) {
+        if (!dragging) return;
+        var x = e.touches ? e.touches[0].clientX : e.clientX;
+        setPos(pctFromEvent(x));
+      }
+      function end() { dragging = false; }
+
+      handle.addEventListener('mousedown', start);
+      frame.addEventListener('mousedown', function (e) { start(e); move(e); });
+      window.addEventListener('mousemove', move);
+      window.addEventListener('mouseup', end);
+
+      handle.addEventListener('touchstart', start, { passive: true });
+      frame.addEventListener('touchstart', function (e) { start(e); move(e); }, { passive: true });
+      window.addEventListener('touchmove', move, { passive: true });
+      window.addEventListener('touchend', end);
+    })();
+  </script>
+</body>
+
+</html>
