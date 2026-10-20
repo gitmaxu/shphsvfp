@@ -877,15 +877,40 @@
 
   </div>
 
-  <script>
-
-
-
+<script>
 (function () {
-  var tabs = document.querySelectorAll('.cmp-tab');
-  var img  = document.querySelector('#compare .compare-before');
-  var lede = document.getElementById('cmp-lede');
+  var tabs  = document.querySelectorAll('.cmp-tab');
+  var img   = document.querySelector('#compare .compare-before');
+  var lede  = document.getElementById('cmp-lede');
 
+  var frame   = document.querySelector('.compare-frame');
+  var clip    = document.getElementById('compare-clip');
+  var handle  = document.getElementById('compare-handle');
+  var clipImg = clip.querySelector('.compare-img');
+  var toast   = document.getElementById('compare-toast');
+  var mark    = document.getElementById('compare-toast-mark');
+  var label   = document.getElementById('compare-toast-label');
+
+  // the "other" browser name (Chrome or DuckDuckGo), taken from the active tab
+  var activeTab = document.querySelector('.cmp-tab.is-active');
+  var otherName = activeTab ? activeTab.dataset.name : 'Chrome';
+
+  // remember the slider position so the label can be redrawn when a tab is tapped
+  var currentPct = 50;
+
+  function updateToast(pct) {
+    if (pct >= 50) {
+      toast.className = 'compare-toast is-pesums';
+      mark.innerHTML = '<svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>';
+      label.textContent = 'Pesums';
+    } else {
+      toast.className = 'compare-toast is-chrome';
+      mark.innerHTML = '<svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6L6 18M6 6l12 12"/></svg>';
+      label.textContent = otherName;
+    }
+  }
+
+  // ---- tabs ----
   tabs.forEach(function (tab) {
     tab.addEventListener('click', function () {
       tabs.forEach(function (t) {
@@ -895,77 +920,57 @@
       tab.classList.add('is-active');
       tab.setAttribute('aria-selected', 'true');
 
+      otherName = tab.dataset.name;
       img.src = tab.dataset.src;
-      img.alt = tab.dataset.name;
+      img.alt = otherName;
       lede.textContent = 'The same site, loaded in Pesums and in ' +
-        tab.dataset.name + '. Drag to compare.';
+        otherName + '. Drag to compare.';
+
+      updateToast(currentPct); // label changes right away
     });
   });
+
+  // ---- compare slider ----
+  function setWidths() {
+    clipImg.style.width = frame.offsetWidth + 'px';
+  }
+  setWidths();
+  window.addEventListener('resize', setWidths);
+
+  function setPos(pct) {
+    pct = Math.max(2, Math.min(98, pct));
+    currentPct = pct;
+    clip.style.width = pct + '%';
+    handle.style.left = pct + '%';
+    updateToast(pct);
+  }
+
+  function pctFromEvent(clientX) {
+    var rect = frame.getBoundingClientRect();
+    return ((clientX - rect.left) / rect.width) * 100;
+  }
+
+  var dragging = false;
+
+  function start(e) { dragging = true; }
+  function move(e) {
+    if (!dragging) return;
+    var x = e.touches ? e.touches[0].clientX : e.clientX;
+    setPos(pctFromEvent(x));
+  }
+  function end() { dragging = false; }
+
+  handle.addEventListener('mousedown', start);
+  frame.addEventListener('mousedown', function (e) { start(e); move(e); });
+  window.addEventListener('mousemove', move);
+  window.addEventListener('mouseup', end);
+
+  handle.addEventListener('touchstart', start, { passive: true });
+  frame.addEventListener('touchstart', function (e) { start(e); move(e); }, { passive: true });
+  window.addEventListener('touchmove', move, { passive: true });
+  window.addEventListener('touchend', end);
 })();
-
-
-
-    
-    (function () {
-      var frame = document.querySelector('.compare-frame');
-      var clip = document.getElementById('compare-clip');
-      var handle = document.getElementById('compare-handle');
-      var clipImg = clip.querySelector('.compare-img');
-
-      function setWidths() {
-        var w = frame.offsetWidth;
-        clipImg.style.width = w + 'px';
-      }
-      setWidths();
-      window.addEventListener('resize', setWidths);
-
-      function setPos(pct) {
-        pct = Math.max(2, Math.min(98, pct));
-        clip.style.width = pct + '%';
-        handle.style.left = pct + '%';
-
-        var toast = document.getElementById('compare-toast');
-        var mark = document.getElementById('compare-toast-mark');
-        var label = document.getElementById('compare-toast-label');
-        if (pct >= 50) {
-          toast.className = 'compare-toast is-pesums';
-          mark.innerHTML = '<svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>';
-          label.textContent = 'Pesums';
-        } else {
-          toast.className = 'compare-toast is-chrome';
-          mark.innerHTML = '<svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6L6 18M6 6l12 12"/></svg>';
-          label.textContent = 'Chrome';
-        }
-      }
-
-      function pctFromEvent(clientX) {
-        var rect = frame.getBoundingClientRect();
-        return ((clientX - rect.left) / rect.width) * 100;
-      }
-
-      var dragging = false;
-
-      function start(e) {
-        dragging = true;
-      }
-      function move(e) {
-        if (!dragging) return;
-        var x = e.touches ? e.touches[0].clientX : e.clientX;
-        setPos(pctFromEvent(x));
-      }
-      function end() { dragging = false; }
-
-      handle.addEventListener('mousedown', start);
-      frame.addEventListener('mousedown', function (e) { start(e); move(e); });
-      window.addEventListener('mousemove', move);
-      window.addEventListener('mouseup', end);
-
-      handle.addEventListener('touchstart', start, { passive: true });
-      frame.addEventListener('touchstart', function (e) { start(e); move(e); }, { passive: true });
-      window.addEventListener('touchmove', move, { passive: true });
-      window.addEventListener('touchend', end);
-    })();
-  </script>
+</script>
 </body>
 
 </html>
