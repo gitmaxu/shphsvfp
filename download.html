@@ -311,6 +311,21 @@
       overflow: hidden;
     }
 
+  .cmp-tabs{display:flex;gap:8px;margin:0 0 20px;flex-wrap:wrap}
+  .cmp-tab{
+    font:inherit;font-size:13px;cursor:pointer;
+    padding:8px 14px;border-radius:999px;
+    border:1px solid rgba(0,0,0,.15);
+    background:transparent;color:inherit;
+    transition:background .15s,color .15s,border-color .15s;
+  }
+  .cmp-tab:hover{border-color:rgba(0,0,0,.4)}
+  .cmp-tab.is-active{
+    background:var(--ink,#1f1b16);
+    color:var(--bg,#fff);
+    border-color:var(--ink,#1f1b16);
+  }
+    
     .steps li {
       counter-increment: step;
       display: flex;
@@ -809,40 +824,52 @@
         <span class="tag">in review</span>
       </div>
     </section>
-    <section>
-      <h2>Same page, no ads</h2>
-      <p class="lede" style="font-size:15px;margin-bottom:24px;">
-        The same site, loaded in Pesums and in Chrome. Drag to compare.
-      </p>
-      <div class="compare" id="compare">
-        <div class="compare-frame">
-          <img class="compare-img compare-before" src="https://raw.githubusercontent.com/gitmaxu/shphsvfp/main/images/chrome.jpg" alt="Chrome">
-          <div class="compare-clip" id="compare-clip">
-            <img class="compare-img" src="https://raw.githubusercontent.com/gitmaxu/shphsvfp/main/images/pesums_shield.jpg" alt="Pesums">
-          </div>
-          <div class="compare-handle" id="compare-handle">
-            <div class="compare-handle-line"></div>
-            <div class="compare-handle-grip">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <path d="M8 8l-4 4 4 4M16 8l4 4-4 4" />
-              </svg>
-            </div>
-          </div>
-          <div class="compare-toast is-pesums" id="compare-toast">
-            <span class="mark" id="compare-toast-mark">
-              <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="3">
-                <path d="M20 6L9 17l-5-5" />
-              </svg>
-            </span>
-            <span id="compare-toast-label">Pesums</span>
-          </div>
+
+<section>
+  <h2>Same page, no ads</h2>
+  <p class="lede" id="cmp-lede" style="font-size:15px;margin-bottom:16px;">
+    The same site, loaded in Pesums and in Chrome. Drag to compare.
+  </p>
+
+  <div class="cmp-tabs" role="tablist">
+    <button type="button" class="cmp-tab is-active" role="tab" aria-selected="true"
+      data-name="Chrome"
+      data-src="https://raw.githubusercontent.com/gitmaxu/shphsvfp/main/images/chrome.jpg">Pesums vs Chrome</button>
+    <button type="button" class="cmp-tab" role="tab" aria-selected="false"
+      data-name="DuckDuckGo"
+      data-src="https://raw.githubusercontent.com/gitmaxu/shphsvfp/main/images/duckduckgo.jpg">Pesums vs DuckDuckGo</button>
+  </div>
+
+  <div class="compare" id="compare">
+    <div class="compare-frame">
+      <img class="compare-img compare-before" src="https://raw.githubusercontent.com/gitmaxu/shphsvfp/main/images/chrome.jpg" alt="Chrome">
+      <div class="compare-clip" id="compare-clip">
+        <img class="compare-img" src="https://raw.githubusercontent.com/gitmaxu/shphsvfp/main/images/pesums_shield.jpg" alt="Pesums">
+      </div>
+      <div class="compare-handle" id="compare-handle">
+        <div class="compare-handle-line"></div>
+        <div class="compare-handle-grip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M8 8l-4 4 4 4M16 8l4 4-4 4" />
+          </svg>
         </div>
       </div>
-      <p class="note">
-        Screenshots of the same page, same scroll position &mdash; only the
-        browser changes.
-      </p>
-    </section>
+      <div class="compare-toast is-pesums" id="compare-toast">
+        <span class="mark" id="compare-toast-mark">
+          <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="3">
+            <path d="M20 6L9 17l-5-5" />
+          </svg>
+        </span>
+        <span id="compare-toast-label">Pesums</span>
+      </div>
+    </div>
+  </div>
+
+  <p class="note">
+    Screenshots of the same page, same scroll position &mdash; only the
+    browser changes.
+  </p>
+</section> 
     <footer>
       <span>contact@pesums.com</span>
       <a href="https://github.com/pesums-browser/pesums/releases">github.com/pesums-browser/releases</a>
@@ -851,6 +878,34 @@
   </div>
 
   <script>
+
+
+
+(function () {
+  var tabs = document.querySelectorAll('.cmp-tab');
+  var img  = document.querySelector('#compare .compare-before');
+  var lede = document.getElementById('cmp-lede');
+
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      tabs.forEach(function (t) {
+        t.classList.remove('is-active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      tab.classList.add('is-active');
+      tab.setAttribute('aria-selected', 'true');
+
+      img.src = tab.dataset.src;
+      img.alt = tab.dataset.name;
+      lede.textContent = 'The same site, loaded in Pesums and in ' +
+        tab.dataset.name + '. Drag to compare.';
+    });
+  });
+})();
+
+
+
+    
     (function () {
       var frame = document.querySelector('.compare-frame');
       var clip = document.getElementById('compare-clip');
