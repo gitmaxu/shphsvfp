@@ -496,52 +496,413 @@
     </div>
   </div>
   <!-- SCREENSHOTS -->
-  <section id="screenshots">
-    <div class="screenshots-header reveal">
-      <div class="section-label">In Action</div>
-      <h2 class="section-title">See Pesums <span>In Action</span></h2>
-      <p class="section-sub">
-        Real screenshots of the browser clean<x>, </x>focused<x>, </x>and built for privacy from the ground
-        up.
-      </p>
-    </div>
-    <div class="slider-container">
-      <div class="slider">
-        <div class="slides" id="slides">
-          <div class="slide">
-            <img src="https://raw.githubusercontent.com/gitmaxu/shphsvfp/main/images/abtr-s.jpg"
-              alt="Pesums browser screenshot 1" />
-          </div>
-          <div class="slide">
-            <img src="https://raw.githubusercontent.com/gitmaxu/shphsvfp/main/images/phv-s.jpg"
-              alt="Pesums browser screenshot 2" />
-          </div>
-          <div class="slide">
-            <img src="https://raw.githubusercontent.com/gitmaxu/shphsvfp/main/images/test-adblock.jpg"
-              alt="Pesums ad-block test screenshot" />
-          </div>
-          <div class="slide">
-            <img src="https://raw.githubusercontent.com/gitmaxu/shphsvfp/main/images/fd-s.jpg"
-              alt="Pesums browser screenshot 3" />
-          </div>
-          <div class="slide">
-            <img src="https://raw.githubusercontent.com/gitmaxu/shphsvfp/main/images/sab-s.jpg"
-              alt="Pesums browser screenshot 4" />
-          </div>
-          <div class="slide">
-            <img src="https://raw.githubusercontent.com/gitmaxu/shphsvfp/main/images/mpl-s.jpg"
-              alt="Pesums browser screenshot 5" />
-          </div>
-          <div class="slide">
-            <img src="https://raw.githubusercontent.com/gitmaxu/shphsvfp/main/images/ptv-s.jpg"
-              alt="Pesums browser screenshot 6" />
-          </div>
+ <!-- ============================================================
+     PESUMS COMPARE SECTION  ("Same page, no ads")
+     Drop-in replacement for the "See Pesums In Action" section.
+     Part 1: CSS  -> paste inside your <head> <style> (or before the section)
+     Part 2: HTML -> paste where the old section was
+     Part 3: JS   -> paste before </body>
+     Everything is scoped under .pcmp so it cannot clash with your page.
+     The section inherits your page's font automatically.
+     ============================================================ -->
+
+
+<!-- ==================== PART 1: CSS ==================== -->
+<style>
+  .pcmp,
+  .pcmp * {
+    box-sizing: border-box;
+  }
+
+  .pcmp {
+    --ink: #1A1512;
+    --ink-dim: #6b6058;
+    --ink-faint: #a89d92;
+    --line: #E8DFD3;
+    --accent: #ff3c00;
+    --accent-dark: #ff4a0e;
+    --bg: #ffffff;
+
+    font-family: inherit;
+    color: var(--ink);
+    max-width: 660px;
+    margin: 0 auto;
+    padding: 60px 24px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .pcmp .pcmp-eyebrow {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 14px;
+  }
+
+  .pcmp h2 {
+    font-family: inherit;
+    font-size: 44px;
+    font-weight: 700;
+    line-height: 1.02;
+    margin: 0 0 14px;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+  }
+
+  .pcmp h2 em {
+    font-style: normal;
+    color: var(--accent);
+  }
+
+  .pcmp .lede {
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--ink-dim);
+    max-width: 46ch;
+    margin: 0 0 16px;
+    font-weight: 500;
+  }
+
+  .pcmp .note {
+    font-size: 13.5px;
+    color: var(--ink-faint);
+    line-height: 1.6;
+    margin: 16px 0 0;
+    font-weight: 500;
+  }
+
+  /* Tabs */
+  .pcmp .cmp-tabs {
+    display: flex;
+    gap: 8px;
+    margin: 0 0 20px;
+    flex-wrap: wrap;
+  }
+
+  .pcmp .cmp-tab {
+    font: inherit;
+    font-size: 13px;
+    cursor: pointer;
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(0, 0, 0, .15);
+    background: transparent;
+    color: inherit;
+    transition: background .15s, color .15s, border-color .15s;
+  }
+
+  .pcmp .cmp-tab:hover {
+    border-color: rgba(0, 0, 0, .4);
+  }
+
+  .pcmp .cmp-tab.is-active {
+    background: var(--ink);
+    color: var(--bg);
+    border-color: var(--ink);
+  }
+
+  /* Slider */
+  .pcmp .compare {
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid var(--line);
+    box-shadow: 0 12px 32px -16px rgba(26, 21, 18, 0.25);
+  }
+
+  .pcmp .compare-frame {
+    position: relative;
+    width: 100%;
+    height: 1100px;
+    overflow: hidden;
+    user-select: none;
+    -webkit-user-select: none;
+    background: #ffffff;
+    touch-action: pan-y;
+  }
+
+  .pcmp .compare-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: -1px;
+    margin-left: -1px;
+    border-radius: 14px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    display: block;
+    pointer-events: none;
+    -webkit-user-drag: none;
+  }
+
+  .pcmp .compare-clip {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .pcmp .compare-clip .compare-img {
+    width: 660px;
+    max-width: none;
+  }
+
+  .pcmp .compare-handle {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    height: 100%;
+    width: 0;
+    cursor: ew-resize;
+    z-index: 5;
+    touch-action: none;
+  }
+
+  .pcmp .compare-handle-line {
+    position: absolute;
+    top: 0;
+    left: -1px;
+    width: 2px;
+    height: 100%;
+    background: #fff;
+    box-shadow: 0 0 0 1px rgba(26, 21, 18, 0.15);
+  }
+
+  .pcmp .compare-handle-grip {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 14px -2px rgba(232, 72, 28, 0.6);
+  }
+
+  .pcmp .compare-handle-grip svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .pcmp .compare-toast {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #fff;
+    color: var(--ink);
+    font-size: 13px;
+    font-weight: 700;
+    padding: 8px 14px;
+    border-radius: 100px;
+    box-shadow: 0 6px 18px -4px rgba(26, 21, 18, 0.3);
+    z-index: 6;
+    pointer-events: none;
+    white-space: nowrap;
+  }
+
+  .pcmp .compare-toast .mark {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: #fff;
+  }
+
+  .pcmp .compare-toast.is-pesums .mark {
+    background: #2e9e5b;
+  }
+
+  .pcmp .compare-toast.is-chrome .mark {
+    background: var(--accent);
+  }
+
+  @media (max-width: 480px) {
+    .pcmp {
+      padding: 40px 16px;
+    }
+
+    .pcmp h2 {
+      font-size: 34px;
+    }
+
+    .pcmp .compare-frame {
+      height: 720px;
+    }
+  }
+</style>
+
+
+<!-- ==================== PART 2: HTML ==================== -->
+<section class="pcmp" id="pesums-compare">
+  <span class="pcmp-eyebrow">— Same page, no ads</span>
+  <h2>See the <em>difference.</em></h2>
+  <p class="lede" id="cmp-lede">
+    The same site, loaded in Pesums and in Chrome. Drag to compare.
+  </p>
+
+  <div class="cmp-tabs" role="tablist">
+    <button type="button" class="cmp-tab is-active" role="tab" aria-selected="true"
+      data-name="Chrome"
+      data-src="https://raw.githubusercontent.com/gitmaxu/shphsvfp/main/images/chrome.jpg">Pesums vs Chrome</button>
+    <button type="button" class="cmp-tab" role="tab" aria-selected="false"
+      data-name="DuckDuckGo"
+      data-src="https://raw.githubusercontent.com/gitmaxu/shphsvfp/main/images/duckduckgo.jpg">Pesums vs DuckDuckGo</button>
+  </div>
+
+  <div class="compare" id="compare">
+    <div class="compare-frame">
+      <img class="compare-img compare-before" src="https://raw.githubusercontent.com/gitmaxu/shphsvfp/main/images/chrome.jpg" alt="Chrome" draggable="false">
+      <div class="compare-clip" id="compare-clip">
+        <img class="compare-img" src="https://raw.githubusercontent.com/gitmaxu/shphsvfp/main/images/pesums_shield.jpg" alt="Pesums" draggable="false">
+      </div>
+      <div class="compare-handle" id="compare-handle">
+        <div class="compare-handle-line"></div>
+        <div class="compare-handle-grip">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path d="M8 8l-4 4 4 4M16 8l4 4-4 4" />
+          </svg>
         </div>
       </div>
-      <button class="slider-btn prev" onclick="prevSlide()" aria-label="Previous screenshot">‹</button>
-      <button class="slider-btn next" onclick="nextSlide()" aria-label="Next screenshot">›</button>
+      <div class="compare-toast is-pesums" id="compare-toast">
+        <span class="mark" id="compare-toast-mark">
+          <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="3">
+            <path d="M20 6L9 17l-5-5" />
+          </svg>
+        </span>
+        <span id="compare-toast-label">Pesums</span>
+      </div>
     </div>
-  </section>
+  </div>
+
+  <p class="note">
+    Screenshots of the same page, same scroll position &mdash; only the
+    browser changes.
+  </p>
+</section>
+
+
+<!-- ==================== PART 3: JS ==================== -->
+<script>
+(function () {
+  var root = document.getElementById('pesums-compare');
+  if (!root) return;
+
+  var tabs    = root.querySelectorAll('.cmp-tab');
+  var img     = root.querySelector('.compare-before');
+  var lede    = root.querySelector('#cmp-lede');
+  var frame   = root.querySelector('.compare-frame');
+  var clip    = root.querySelector('#compare-clip');
+  var handle  = root.querySelector('#compare-handle');
+  var clipImg = clip.querySelector('.compare-img');
+  var toast   = root.querySelector('#compare-toast');
+  var mark    = root.querySelector('#compare-toast-mark');
+  var label   = root.querySelector('#compare-toast-label');
+
+  var activeTab = root.querySelector('.cmp-tab.is-active');
+  var otherName = activeTab ? activeTab.dataset.name : 'Chrome';
+  var currentPct = 50;
+
+  var CHECK = '<svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6L9 17l-5-5"/></svg>';
+  var CROSS = '<svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="3"><path d="M18 6L6 18M6 6l12 12"/></svg>';
+
+  function updateToast(pct) {
+    if (pct >= 50) {
+      toast.className = 'compare-toast is-pesums';
+      mark.innerHTML = CHECK;
+      label.textContent = 'Pesums';
+    } else {
+      toast.className = 'compare-toast is-chrome';
+      mark.innerHTML = CROSS;
+      label.textContent = otherName;
+    }
+  }
+
+  // ---- tabs ----
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      tabs.forEach(function (t) {
+        t.classList.remove('is-active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      tab.classList.add('is-active');
+      tab.setAttribute('aria-selected', 'true');
+
+      otherName = tab.dataset.name;
+      img.src = tab.dataset.src;
+      img.alt = otherName;
+      lede.textContent = 'The same site, loaded in Pesums and in ' +
+        otherName + '. Drag to compare.';
+
+      updateToast(currentPct);
+    });
+  });
+
+  // ---- slider ----
+  function setWidths() {
+    clipImg.style.width = frame.offsetWidth + 'px';
+  }
+  setWidths();
+  window.addEventListener('resize', setWidths);
+  window.addEventListener('load', setWidths);
+
+  function setPos(pct) {
+    pct = Math.max(2, Math.min(98, pct));
+    currentPct = pct;
+    clip.style.width = pct + '%';
+    handle.style.left = pct + '%';
+    updateToast(pct);
+  }
+
+  function pctFromEvent(clientX) {
+    var rect = frame.getBoundingClientRect();
+    return ((clientX - rect.left) / rect.width) * 100;
+  }
+
+  var dragging = false;
+
+  function start() { dragging = true; }
+  function move(e) {
+    if (!dragging) return;
+    var x = e.touches ? e.touches[0].clientX : e.clientX;
+    setPos(pctFromEvent(x));
+  }
+  function end() { dragging = false; }
+
+  handle.addEventListener('mousedown', function (e) { e.preventDefault(); start(); });
+  frame.addEventListener('mousedown', function (e) { e.preventDefault(); start(); move(e); });
+  window.addEventListener('mousemove', move);
+  window.addEventListener('mouseup', end);
+
+  handle.addEventListener('touchstart', start, { passive: true });
+  frame.addEventListener('touchstart', function (e) { start(); move(e); }, { passive: true });
+  window.addEventListener('touchmove', move, { passive: true });
+  window.addEventListener('touchend', end);
+  window.addEventListener('touchcancel', end);
+
+  setPos(50);
+})();
+</script>
   <!-- FEATURES DARK (detailed) -->
   <section class="features-dark-section" id="speed-architecture">
     <div class="fdark-inner">
@@ -1375,70 +1736,7 @@
       });
     });
 
-    // ─── SCREENSHOT SLIDER ───
-    let currentSlide = 0;
-    const slidesEl = document.getElementById("slides");
-    const slideEls = Array.from(document.querySelectorAll(".slide"));
-    const total = slideEls.length;
-    let isTransitioning = false;
-    let touchStartX = 0;
-    let autoTimer = null;
-
-    for (let r = 0; r < 2; r++) {
-      for (let i = 0; i < total; i++) {
-        slidesEl.appendChild(slideEls[i].cloneNode(true));
-      }
-    }
-
-    const visibleCount = () => (window.innerWidth <= 768 ? 1 : window.innerWidth <= 1024 ? 2 : 4);
-    currentSlide = total;
-    slidesEl.style.transition = "none";
-    slidesEl.style.transform = `translateX(-${currentSlide * (100 / visibleCount())}%)`;
-
-    function showSlide(index) {
-      if (isTransitioning) return;
-      isTransitioning = true;
-      currentSlide = index;
-      const vc = visibleCount();
-      slidesEl.style.transition = "transform 0.45s cubic-bezier(0.4,0,0.2,1)";
-      slidesEl.style.transform = `translateX(-${currentSlide * (100 / vc)}%)`;
-      setTimeout(() => {
-        if (currentSlide >= total * 2) {
-          slidesEl.style.transition = "none";
-          currentSlide = total;
-          slidesEl.style.transform = `translateX(-${currentSlide * (100 / vc)}%)`;
-        } else if (currentSlide < total) {
-          slidesEl.style.transition = "none";
-          currentSlide = total * 2 - 1;
-          slidesEl.style.transform = `translateX(-${currentSlide * (100 / vc)}%)`;
-        }
-        isTransitioning = false;
-      }, 450);
-    }
-    function nextSlide() {
-      if (!isTransitioning) showSlide(currentSlide + 1);
-    }
-    function prevSlide() {
-      if (!isTransitioning) showSlide(currentSlide - 1);
-    }
-
-    const sliderEl = document.querySelector(".slider");
-    sliderEl.addEventListener("touchstart", (e) => {
-      touchStartX = e.changedTouches[0].screenX;
-    });
-    sliderEl.addEventListener("touchend", (e) => {
-      const diff = touchStartX - e.changedTouches[0].screenX;
-      if (Math.abs(diff) > 50) diff > 0 ? nextSlide() : prevSlide();
-    });
-
-    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (!prefersReducedMotion) {
-      autoTimer = setInterval(nextSlide, 3500);
-      sliderEl.addEventListener("mouseenter", () => clearInterval(autoTimer));
-      sliderEl.addEventListener("mouseleave", () => {
-        autoTimer = setInterval(nextSlide, 3500);
-      });
-    }
+   
 
     // ─── SCROLL REVEAL ───
     const revObs = new IntersectionObserver(
