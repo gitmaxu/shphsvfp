@@ -7,7 +7,7 @@
   <title>Pesums Independent Software to End Internet Surveillance</title>
   <link rel="icon" type="image/jpeg"
     href="https://raw.githubusercontent.com/gitmaxu/shphsvfp/refs/heads/main/prex.jpeg" />
- <style> @font-face { font-family: "ocr"; src: url("https://cdn.jsdelivr.net/gh/gitmaxu/shphsvfp@main/OCRBBQ.otf") format("opentype"); font-weight: 400; font-style: normal; font-display: swap; } *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; } html { scroll-behavior: smooth; overflow-x: hidden; width: 100%; } /* ═══ FOUT FIX ═══ All the negative letter-spacing / word-spacing that makes the OCR font look right is scoped under html.fonts-loaded. Until the font is confirmed active, every element uses normal spacing with the fallback font, so there's no "creepy squished sans-serif" flash. The JS at the bottom flips the html class once document.fonts confirms "ocr" is loaded. */ :root { --white: #ffffff; --off: #f8f8f6; --off2: #f1f1ec; --ink: #0a0a0a; --ink2: #1a1a1a; --ink3: #5a5a5a; --border: #e2e2dc; --border2: #c9c9c1; --accent: #ff3c10; --accent-dark: #f33f12; --accent-deep: #ff2200; --accent-pale: #fff1ec; --accent-line: #ffb199; --blue-dark: #1b54ff; --font: "ocr", sans-serif; --mono: "ocr", monospace; --body: "ocr", sans-serif; --ocr: "ocr", "ocr", sans-serif; --radius-sm: 8px; --radius-md: 12px; --shadow-soft: 0 8px 32px rgba(10, 10, 10, 0.08); } x { font-family: monospace; font-weight: bolder; } body { font-family: var(--body); background: var(--white); color: var(--ink); line-height: 1.6; width: 100%; overflow-x: hidden; } /* Spacing that depends on the OCR font only applies once it's loaded */ html.fonts-loaded body { letter-spacing: -3px; word-spacing: 6px; } html.fonts-loaded .highlight, html.fonts-loaded .not-matched, html.fonts-loaded .tracker-examples code, html.fonts-loaded .btn-suggestion, html.fonts-loaded .nav-link, html.fonts-loaded .logo-name, html.fonts-loaded .hero-badge, html.fonts-loaded .hero-title, html.fonts-loaded .hero-coming, html.fonts-loaded .btn-hero-primary, html.fonts-loaded .btn-hero-ghost, html.fonts-loaded .zero-num, html.fonts-loaded .section-label, html.fonts-loaded .section-title, html.fonts-loaded .stats-label, html.fonts-loaded .stat-big, html.fonts-loaded .feat-num, html.fonts-loaded .feat-title, html.fonts-loaded .shield-title, html.fonts-loaded .shield-eyebrow, html.fonts-loaded .shield-card-title, html.fonts-loaded .fdark-label, html.fonts-loaded .fdark-title, html.fonts-loaded .fdark-item-title, html.fonts-loaded .vpn-item-title, html.fonts-loaded .live-log-label, html.fonts-loaded .quote-text, html.fonts-loaded .quote-author, html.fonts-loaded .quote-author-fe-oydk, html.fonts-loaded .promise-title, html.fonts-loaded .faq-question, html.fonts-loaded .footer-logo-name, html.fonts-loaded .footer-brand-desc, html.fonts-loaded .footer-sovereign, html.fonts-loaded .footer-col h4, html.fonts-loaded .footer-copy { letter-spacing: -3px; word-spacing: 6px; } /* Titles with their own custom tracking (unchanged values, just gated) */ html.fonts-loaded .hero-title { letter-spacing: -27px; word-spacing: 19px; } html.fonts-loaded .section-title { letter-spacing: -8px; word-spacing: 12px; } html.fonts-loaded .fdark-title { letter-spacing: -9px; word-spacing: 6px; } html.fonts-loaded .fdark-item-title { letter-spacing: -4px; word-spacing: 9px; } html.fonts-loaded .quote-text { letter-spacing: -7px; word-spacing: 9px; } @media (max-width: 768px) { html.fonts-loaded .hero-title { letter-spacing: -2px; } } a { color: inherit; } .download-btn { padding: 14px 32px; background: var(--accent); color: #fff; border: 2px solid var(--accent); border-radius: var(--radius-sm); font-weight: 700; font-size: 0.95rem; text-decoration: none; font-family: var(--body); transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px; } .download-btn:hover { background: var(--accent-dark); border-color: var(--accent-dark); transform: translateY(-2px); } .download-btn svg { width: 16px; height: 16px; } :focus-visible { outline: 2.5px solid var(--blue-dark); outline-offset: 3px; border-radius: 4px; } ::-webkit-scrollbar { width: 4px; } ::-webkit-scrollbar-track { background: var(--off); } ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 99px; } .highlight { display: inline-block; background: var(--accent); color: var(--white); padding: 2px 10px; border-radius: 6px; font-family: var(--mono); font-size: 0.82em; font-weight: 500; line-height: 1.9; } .ich2s { color: rgb(255, 75, 15); } .not-matched { display: inline-block; background: var(--blue-dark); color: var(--white); padding: 2px 10px; border-radius: 6px; font-family: var(--mono); font-size: 0.82em; font-weight: 500; line-height: 1.9; } .accent-text { color: var(--accent-dark); font-weight: 600; } .fdark-item-desc { line-height: 1.8; color: rgba(255, 255, 255, 0.82); font-size: 0.95rem; } .fdark-item-desc p { margin-bottom: 1.1em; } .fdark-item-desc p:last-child { margin-bottom: 0; } .fdark-item-desc strong { color: var(--white); } .tracker-examples { margin: 1em 0 1.3em; padding-left: 0; list-style: none; } .tracker-examples li { margin-bottom: 0.7em; } .tracker-examples code { background: rgba(255, 255, 255, 0.08); color: #ff1500; padding: 2px 8px; font-family: var(--mono); border-radius: 5px; font-size: 0.85em; } /* ─── HEADER ─── */ header { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1.5px solid var(--border); transition: transform 0.25s ease; height: 68px; } header.hidden { transform: translateY(-100%); } .header-container { max-width: 1300px; margin: 0 auto; padding: 0 24px; height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 12px; } .logo-wrap { display: flex; align-items: center; gap: 10px; text-decoration: none; min-width: 0; flex-shrink: 0; } .logo-wrap img { width: 40px; height: 40px; border-radius: 10px; object-fit: cover; flex-shrink: 0; } .logo-name { font-family: var(--font); font-weight: 800; font-size: 1.1rem; color: var(--ink); letter-spacing: -0.5px; white-space: nowrap; } .logo-name span { color: var(--accent); } /* ─── DESKTOP NAV ─── */ .nav-menu { display: flex; gap: 2px; align-items: center; } .nav-item { position: relative; } .nav-link { padding: 8px 14px; font-size: 0.85rem; font-weight: 500; color: var(--ink3); text-decoration: none; display: block; border-radius: 6px; transition: all 0.2s; font-family: var(--body); white-space: nowrap; } .nav-link:hover { color: var(--ink); background: var(--off); } .dropdown-content { position: absolute; top: calc(100% + 8px); left: 0; background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-md); min-width: 190px; opacity: 0; visibility: hidden; transform: translateY(-8px); transition: all 0.2s; box-shadow: var(--shadow-soft); overflow: hidden; } .dropdown:hover .dropdown-content, .dropdown:focus-within .dropdown-content { opacity: 1; visibility: visible; transform: translateY(0); } .dropdown-content a { padding: 11px 18px; font-size: 0.83rem; font-weight: 500; color: var(--ink2); text-decoration: none; display: block; transition: all 0.15s; border-bottom: 1px solid var(--border); } .dropdown-content a:last-child { border-bottom: none; } .dropdown-content a:hover { background: var(--accent-pale); color: var(--accent-dark); padding-left: 22px; } .btn-suggestion { display: inline-flex; align-items: center; gap: 7px; padding: 10px 16px; font-size: 0.8rem; font-weight: 700; color: var(--white); background: var(--accent); text-decoration: none; border-radius: var(--radius-sm); transition: all 0.2s; font-family: var(--body); border: 1.5px solid var(--accent); flex-shrink: 0; white-space: nowrap; } .btn-suggestion:hover { background: var(--accent-dark); border-color: var(--accent-dark); transform: translateY(-1px); } .btn-suggestion svg { flex-shrink: 0; } /* ─── HAMBURGER (mobile only) ─── */ .hamburger-btn { display: none; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 8px; border: 1.5px solid var(--border); background: var(--white); cursor: pointer; flex-shrink: 0; padding: 0; } .hamburger-btn svg { width: 20px; height: 20px; display: block; } .hamburger-line { fill: none; stroke: var(--ink); stroke-width: 2; stroke-linecap: round; transition: transform 0.25s ease, opacity 0.2s ease; transform-origin: center; } .mobile-nav-overlay.open~header .hamburger-line.top, header.menu-open .hamburger-line.top { transform: translateY(6px) rotate(45deg); } header.menu-open .hamburger-line.mid { opacity: 0; } header.menu-open .hamburger-line.bottom { transform: translateY(-6px) rotate(-45deg); } /* Full mobile menu panel: same dark "software corp" surface as the rest of the dark sections on the site (var(--ink)), not a new color. */ .mobile-nav-panel { position: fixed; inset: 68px 0 0 0; background: var(--ink); z-index: 999; display: none; flex-direction: column; overflow-y: auto; padding: 8px 0 32px; border-top: 1.5px solid rgba(255, 255, 255, 0.08); } .mobile-nav-panel.open { display: flex; } .mobile-nav-group { border-bottom: 1px solid rgba(255, 255, 255, 0.08); } .mobile-nav-group-title { font-family: var(--font); font-weight: 700; font-size: 0.95rem; color: rgba(255, 255, 255, 0.42); letter-spacing: 1.5px; text-transform: uppercase; padding: 18px 24px 8px; } .mobile-nav-panel a { display: block; padding: 14px 24px; font-family: var(--font); font-size: 1.05rem; font-weight: 600; color: var(--white); text-decoration: none; } .mobile-nav-panel a:active { background: rgba(255, 74, 31, 0.12); color: var(--accent); } .mobile-nav-cta { margin: 20px 24px 0; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 16px; border-radius: var(--radius-sm); background: var(--accent); color: var(--white) !important; font-weight: 700; } /* ─── HERO ─── */ #hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 140px 24px 80px; position: relative; overflow: hidden; text-align: center; background: var(--white); width: 100%; } .hero-bg { position: absolute; inset: 0; overflow: hidden; pointer-events: none; } .matrix-canvas { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 1; mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #ffffff 0%, transparent 75%); -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #ffffff 0%, transparent 75%); } .hero-grid { position: absolute; inset: 0; pointer-events: none; background-color: rgba(255, 255, 255, 0); } .hero-stripe { position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--accent); } .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; background: var(--accent-pale); border: 1.5px solid var(--accent); border-radius: 99px; font-family: var(--mono); font-size: 0.72rem; color: var(--accent-dark); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 32px; position: relative; z-index: 1; animation: fadeDown 0.6s ease both; } .badge-dot { width: 7px; height: 7px; background: var(--accent); border-radius: 50%; animation: pulse 2s ease infinite; } @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.7); } } @keyframes fadeDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } } @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } } .hero-title { font-family: var(--font); font-size: clamp(3.2rem, 9vw, 7rem); font-weight: 800; color: var(--ink); margin-bottom: 28px; position: relative; line-height: 111%; z-index: 1; animation: fadeUp 0.7s 0.1s ease both; word-break: break-word; } .hero-title .blue { color: var(--accent); } .hero-title .outline { -webkit-text-stroke: 2.8px rgb(255, 76, 17); color: transparent; color: #ffffff; } .hero-sub { font-size: clamp(1rem, 2.2vw, 1.2rem); color: var(--ink3); max-width: 560px; margin: 0 auto 20px; line-height: 1.8; font-weight: 400; position: relative; z-index: 1; animation: fadeUp 0.7s 0.2s ease both; } .hero-sub strong { color: var(--ink); font-weight: 600; } .hero-coming { font-family: var(--mono); font-size: 0.85rem; color: var(--accent-dark); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 44px; position: relative; z-index: 1; animation: fadeUp 0.7s 0.3s ease both; } .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; animation: fadeUp 0.7s 0.4s ease both; } .btn-hero-primary { padding: 14px 32px; background: var(--ink); color: var(--white); border: 2px solid var(--ink); border-radius: var(--radius-sm); font-weight: 700; font-size: 0.95rem; text-decoration: none; font-family: var(--body); transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px; } .btn-hero-primary:hover { background: var(--accent); border-color: var(--accent); transform: translateY(-2px); } .btn-hero-ghost { padding: 14px 32px; background: transparent; color: var(--ink); border: 2px solid var(--border2); border-radius: var(--radius-sm); font-weight: 600; font-size: 0.95rem; text-decoration: none; font-family: var(--body); transition: all 0.2s; } .btn-hero-ghost:hover { border-color: var(--ink); transform: translateY(-2px); } .hero-zeros { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 60px; position: relative; z-index: 1; animation: fadeUp 0.7s 0.5s ease both; max-width: 100%; } .zero-pill { display: flex; align-items: center; gap: 10px; padding: 10px 20px; background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-sm); font-size: 0.82rem; font-weight: 600; color: var(--ink2); box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05); transition: all 0.2s; white-space: nowrap; } .zero-pill:hover { border-color: var(--accent); background: var(--accent-pale); color: var(--accent-dark); transform: translateY(-3px); } .zero-num { font-family: var(--font); font-size: 1.4rem; font-weight: 800; color: var(--accent); line-height: 1; } /* ─── SECTION BASE ─── */ section { padding: 100px 24px; width: 100%; overflow-x: hidden; } .section-inner { max-width: 1200px; margin: 0 auto; } .section-label { font-family: var(--mono); font-size: 0.72rem; color: var(--accent-dark); letter-spacing: 2px; text-transform: uppercase; display: flex; align-items: center; gap: 10px; margin-bottom: 14px; } .section-label::before { content: ""; width: 24px; height: 1.5px; background: var(--accent); } .section-title { font-family: var(--font); font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; line-height: 1.1; color: var(--ink); margin-bottom: 14px; } .section-title span { color: var(--accent); } .section-sub { color: var(--ink3); font-size: 1rem; max-width: 540px; line-height: 1.75; } /* ─── STATS ─── */ #stats { background: var(--ink); padding: 80px 24px; } .stats-inner { max-width: 1200px; margin: 0 auto; } .stats-label { font-family: var(--mono); font-size: 0.72rem; color: var(--accent); letter-spacing: 2px; text-transform: uppercase; text-align: center; margin-bottom: 60px; display: flex; align-items: center; justify-content: center; gap: 12px; } .stats-label::before, .stats-label::after { content: ""; flex: 1; max-width: 80px; height: 1px; background: rgba(255, 255, 255, 0.18); } .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; border: 1.5px solid rgba(255, 255, 255, 0.12); border-radius: var(--radius-md); overflow: hidden; } .stat-card { padding: 44px 28px; text-align: center; border-right: 1.5px solid rgba(255, 255, 255, 0.08); transition: background 0.2s; min-width: 0; } .stat-card:last-child { border-right: none; } .stat-card:hover { background: rgba(255, 74, 31, 0.08); } .stat-big { font-family: var(--font); font-size: 5rem; font-weight: 800; color: var(--white); line-height: 1; margin-bottom: 10px; } .stat-title { font-size: 1rem; font-weight: 700; color: var(--accent); margin-bottom: 10px; } .stat-detail { font-size: 0.82rem; color: rgba(255, 255, 255, 0.7); line-height: 1.7; } /* ─── FEATURES MAIN ─── */ #features-main { background: var(--off); border-top: 1.5px solid var(--border); border-bottom: 1.5px solid var(--border); } .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 56px; } .feat-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-md); padding: 32px 28px; transition: all 0.25s; position: relative; overflow: hidden; min-width: 0; } .feat-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; } .feat-card:hover { border-color: var(--accent); transform: translateY(-5px); box-shadow: 0 16px 40px rgba(255, 74, 31, 0.12); } .feat-card:hover::before { transform: scaleX(1); } .feat-num { font-family: var(--mono); font-size: 0.7rem; color: var(--accent-dark); letter-spacing: 1px; margin-bottom: 18px; display: block; } .feat-icon { display: flex; margin-bottom: 14px; } .feat-icon svg { width: 44px; height: 44px; } .feat-title { font-family: var(--font); font-size: 1.1rem; font-weight: 700; letter-spacing: -0.3px; margin-bottom: 10px; color: var(--ink); } .feat-desc { font-size: 0.875rem; color: var(--ink3); line-height: 1.75; } /* ─── SHIELD SECTION ─── */ #shield-section { background: var(--accent-deep); color: var(--white); padding: 90px 24px; } .shield-inner { max-width: 1200px; margin: 0 auto; } .shield-header { margin-bottom: 60px; } .shield-eyebrow { font-family: var(--mono); font-size: 0.72rem; color: rgba(255, 255, 255, 0.75); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 14px; display: flex; align-items: center; gap: 10px; } .shield-eyebrow::before { content: ""; width: 24px; height: 1px; background: rgba(255, 255, 255, 0.4); } .shield-title { font-family: var(--font); font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 800; letter-spacing: -1.5px; color: var(--white); line-height: 1.1; margin-bottom: 14px; } .shield-sub { font-size: 1rem; color: rgb(255, 255, 255); max-width: 540px; line-height: 1.75; } .shield-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; } .shield-card { background: rgb(255, 255, 255); border: solid 2px rgb(0, 0, 0); border-radius: var(--radius-md); padding: 32px 28px; transition: background 0.6s ease, border-color 0.6s ease; min-width: 0; } .shield-card:hover { border: solid 3px rgb(0, 0, 0); } .shield-card-title { font-family: var(--font); font-size: 1.05rem; font-weight: 700; letter-spacing: -0.2px; color: var(--white); margin-bottom: 12px; display: flex; align-items: center; gap: 12px; } .shield-card-icon { width: 40px; height: 40px; background: var(--white); border-radius: var(--radius-sm); display: flex; border: solid 2px rgb(255, 76, 10); align-items: center; justify-content: center; flex-shrink: 0; padding: 7px; } .shield-card-icon svg { width: 100%; height: 100%; } .shield-card-desc { font-size: 0.875rem; color: rgb(0, 0, 0); line-height: 1.75; } /* ─── FEATURES DARK (black sections) ─── */ .features-dark-section { background: var(--ink); padding: 90px 24px; } .fdark-inner { max-width: 1200px; margin: 0 auto; } .fdark-label { font-family: var(--mono); font-size: 0.72rem; color: rgba(255, 255, 255, 0.6); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 14px; display: flex; align-items: center; gap: 10px; } .fdark-label::before { content: ""; width: 24px; height: 1px; background: rgba(255, 255, 255, 0.4); } .fdark-title { font-family: var(--font); font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; color: var(--white); margin-bottom: 16px; } .fdark-title span { color: var(--accent); } .fdark-sub { font-size: 1rem; color: rgba(255, 255, 255, 0.72); max-width: 620px; line-height: 1.75; margin-bottom: 56px; } .fdark-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; background: rgba(255, 255, 255, 0.1); border: 1.5px solid rgba(255, 255, 255, 0.1); border-radius: var(--radius-md); overflow: hidden; } .fdark-item { padding: 36px 28px; background: var(--ink); transition: background 0.2s; min-width: 0; } .fdark-item:hover { background: #151515; } .fdark-item-icon { display: flex; margin-bottom: 16px; } .fdark-item-icon svg { width: 40px; height: 40px; } .fdark-item-title { font-family: var(--font); font-size: 1.05rem; font-weight: 700; color: var(--white); margin-bottom: 10px; } .fdark-closing { margin-top: 44px; padding: 32px; background: rgba(255, 255, 255, 0.03); border: 1.5px solid rgba(255, 255, 255, 0.08); border-radius: var(--radius-md); font-size: 0.98rem; line-height: 1.85; color: rgba(255, 255, 255, 0.78); } .fdark-closing strong { color: var(--white); } /* ─── VPN / DNS EXPLAINER SECTION ─── */ .vpn-item-title { font-family: var(--font); font-size: 1.2rem; font-weight: 700; color: var(--white); margin: 32px 0 12px; } .vpn-item-title:first-of-type { margin-top: 0; } .vpn-body { font-size: 0.95rem; line-height: 1.85; color: rgba(255, 255, 255, 0.78); } .vpn-body p { margin-bottom: 1.1em; } .vpn-body a { color: var(--accent); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; } .vpn-body a:hover { color: #ff7a4d; } .vpn-tip { margin-top: 24px; padding: 20px 24px; background: rgba(255, 74, 31, 0.08); border: 1.5px solid rgba(255, 74, 31, 0.25); border-radius: var(--radius-sm); font-size: 0.9rem; line-height: 1.75; color: rgba(255, 255, 255, 0.85); } .vpn-tip strong { color: var(--accent); } .live-log-frame { max-width: 1200px; margin: 0 auto; padding: 0 24px 100px; } .live-log-card { overflow: hidden; border: 1.5px solid var(--border); border-radius: var(--radius-md); background: var(--off); } .live-log-card img { width: 100%; height: auto; display: block; } .live-log-label { font-family: var(--mono); font-size: 0.72rem; color: var(--ink3); letter-spacing: 1.5px; text-transform: uppercase; padding: 14px 20px; border-bottom: 1.5px solid var(--border); } /* ─── SCREENSHOTS ─── */ #screenshots { padding: 100px 0; background: var(--off); border-top: 1.5px solid var(--border); border-bottom: 1.5px solid var(--border); overflow: hidden; } .screenshots-header { max-width: 1200px; margin: 0 auto 48px; padding: 0 24px; } .slider-container { max-width: 1200px; margin: 0 auto; position: relative; padding: 0 24px; } .slider { overflow: hidden; border-radius: var(--radius-md); } .slides { display: flex; transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1); } .slide { min-width: 25%; flex-shrink: 0; padding: 10px; } .slide img { width: 100%; height: 520px; object-fit: cover; border-radius: var(--radius-sm); border: 1.5px solid var(--border); box-shadow: var(--shadow-soft); display: block; transition: transform 0.2s; } .slide img:hover { transform: scale(1.03); } .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: var(--white); color: var(--accent); border: 1.5px solid var(--border); width: 44px; height: 44px; border-radius: 50%; cursor: pointer; font-size: 1.2rem; transition: all 0.2s; display: flex; align-items: center; justify-content: center; z-index: 10; box-shadow: var(--shadow-soft); } .slider-btn:hover { background: var(--accent); color: var(--white); border-color: var(--accent); transform: translateY(-50%) scale(1.08); } .slider-btn.prev { left: 0; } .slider-btn.next { right: 0; } /* ─── QUOTE BREAKS ─── */ .quote-section-bg-oydk { min-height: 70vh; width: 100%; padding: 10vh 8vw; background: var(--accent); color: var(--white); display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; } .quote-section { min-height: 70vh; width: 100%; padding: 10vh 8vw; background: var(--ink); color: var(--white); display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; } .quote-card { width: 100%; max-width: 1000px; position: relative; display: flex; flex-direction: column; gap: 40px; } .quote-card::before { content: "\201C"; position: absolute; top: -6%; left: -2%; font-family: var(--font); font-size: 14rem; line-height: 1; opacity: 0.08; color: var(--accent); pointer-events: none; } .quote-text { font-family: var(--font); font-size: clamp(1.6rem, 4.2vw, 2.6rem); line-height: 1.3; font-weight: 700; position: relative; z-index: 1; } .quote-author-fe-oydk { font-family: var(--mono); font-size: 0.95rem; color: black; position: relative; z-index: 1; } .quote-author { font-family: var(--mono); font-size: 0.95rem; color: var(--accent); position: relative; z-index: 1; } /* ─── PROMISE ─── */ #promise { background: var(--white); border-top: 1.5px solid var(--border); } .promise-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 56px; } .promise-card { padding: 32px 24px; background: var(--off); border: 1.5px solid var(--border); border-radius: var(--radius-md); transition: all 0.25s; text-align: center; min-width: 0; } .promise-card:hover { border-color: var(--accent); background: var(--accent-pale); transform: translateY(-4px); } .promise-icon { display: flex; justify-content: center; margin-bottom: 14px; } .promise-icon svg { width: 44px; height: 44px; } .promise-title { font-family: var(--font); font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 8px; letter-spacing: -0.2px; } .promise-desc { font-size: 0.83rem; color: var(--ink3); line-height: 1.7; } /* ─── FAQ ─── */ #faq-section { background: var(--off); border-top: 1.5px solid var(--border); border-bottom: 1.5px solid var(--border); } .faq-inner { max-width: 800px; margin: 0 auto; } .faq-list { margin-top: 56px; } .faq-item { border: 1.5px solid var(--border); border-radius: 10px; margin-bottom: 12px; overflow: hidden; transition: border-color 0.2s; background: var(--white); } .faq-item:hover { border-color: var(--border2); } .faq-item.active { border-color: var(--accent); } .faq-question { padding: 20px 24px; font-size: 0.95rem; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; user-select: none; font-family: var(--body); color: var(--ink); transition: background 0.15s; } .faq-question:hover { background: var(--off); } .faq-item.active .faq-question { background: var(--accent-pale); color: var(--accent-dark); } .faq-arrow { width: 28px; height: 28px; background: var(--off); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; font-weight: 700; flex-shrink: 0; transition: transform 0.3s, background 0.2s; } .faq-item.active .faq-arrow { transform: rotate(180deg); background: var(--accent); color: var(--white); } .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; padding: 0 24px; font-size: 0.9rem; line-height: 1.8; color: var(--ink3); } .faq-item.active .faq-answer { max-height: 600px; padding: 0 24px 22px; } /* ─── FOOTER ─── */ footer { background: var(--ink); color: var(--white); padding: 72px 24px 32px; overflow: hidden; } .footer-top { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 56px; } .footer-logo-row { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; text-decoration: none; } .footer-logo-row img { width: 40px; height: 40px; border-radius: 10px; } .footer-logo-name { font-family: var(--font); font-weight: 800; font-size: 1.15rem; color: var(--white); letter-spacing: -0.5px; } .footer-brand-desc { font-size: 0.85rem; color: rgba(255, 255, 255, 0.68); line-height: 1.75; max-width: 280px; margin-bottom: 24px; } .footer-sovereign { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 6px; font-size: 0.9rem; font-weight: 600; color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: all 0.2s; font-family: var(--font); } .footer-sovereign:hover { border-color: var(--blue-dark); color: var(--white); } .footer-col { min-width: 0; } .footer-col h4 { font-family: var(--mono); font-size: 0.7rem; font-weight: 500; color: rgba(255, 255, 255, 0.4); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 18px; } .footer-col ul { list-style: none; } .footer-col ul li { margin-bottom: 10px; } .footer-col ul li a { font-size: 0.875rem; color: rgba(255, 255, 255, 0.82); text-decoration: none; transition: all 0.2s; font-weight: 500; display: flex; align-items: center; gap: 6px; } .footer-col ul li a:hover { color: var(--accent); padding-left: 4px; } .connect-row { display: flex; gap: 10px; } .icon-link { width: 38px; height: 38px; border: 1.5px solid rgba(255, 255, 255, 0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: rgba(255, 255, 255, 0.6); transition: all 0.2s; text-decoration: none; } .icon-link:hover { border-color: var(--accent); color: var(--white); background: rgba(255, 74, 31, 0.15); } .footer-bottom { max-width: 1200px; margin: 0 auto; padding-top: 28px; border-top: 1px solid rgba(255, 255, 255, 0.1); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; } .footer-copy { font-size: 0.78rem; color: rgba(255, 255, 255, 0.45); font-family: var(--mono); } .footer-copy strong { color: var(--accent); font-weight: 600; } .footer-copy a { color: rgba(255, 255, 255, 0.7); text-decoration: none; } .footer-copy a:hover { color: var(--white); } /* ─── REVEAL ANIMATIONS ─── */ .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; } .reveal.visible { opacity: 1; transform: translateY(0); } .reveal.d1 { transition-delay: 0.1s; } .reveal.d2 { transition-delay: 0.2s; } .reveal.d3 { transition-delay: 0.3s; } .reveal.d4 { transition-delay: 0.4s; } .reveal.d5 { transition-delay: 0.5s; } @media (prefers-reduced-motion: reduce) { * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; } } /* ─── RESPONSIVE ─── */ @media (max-width: 1024px) { .nav-menu { display: none; } .hamburger-btn { display: flex; } .stat-grid { grid-template-columns: repeat(2, 1fr); } .stat-card:nth-child(2) { border-right: none; } .features-grid, .fdark-grid { grid-template-columns: repeat(2, 1fr); } .shield-grid { grid-template-columns: 1fr; } .promise-grid { grid-template-columns: repeat(2, 1fr); } .footer-top { grid-template-columns: 1fr 1fr; } .slide { min-width: 50%; } } @media (max-width: 768px) { .header-container { padding: 0 16px; } .btn-suggestion span { display: none; } .stat-grid { grid-template-columns: 1fr 1fr; } .features-grid, .fdark-grid, .promise-grid { grid-template-columns: 1fr; } .footer-top { grid-template-columns: 1fr; gap: 32px; } .slide { min-width: 100%; } .slide img { height: 700px; } .footer-bottom { flex-direction: column; text-align: center; } section { padding: 72px 20px; } .hero-zeros { gap: 10px; } .zero-pill { padding: 8px 14px; font-size: 0.76rem; } } @media (max-width: 420px) { .btn-suggestion { padding: 10px 12px; } } </style>
+ <style> @font-face { font-family: "ocr"; src: url("https://cdn.jsdelivr.net/gh/gitmaxu/shphsvfp@main/OCRBBQ.otf") format("opentype"); font-weight: 400; font-style: normal; font-display: swap; } *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; } html { scroll-behavior: smooth; overflow-x: hidden; width: 100%; } /* ═══ FOUT FIX ═══ All the negative letter-spacing / word-spacing that makes the OCR font look right is scoped under html.fonts-loaded. Until the font is confirmed active, every element uses normal spacing with the fallback font, so there's no "creepy squished sans-serif" flash. The JS at the bottom flips the html class once document.fonts confirms "ocr" is loaded. */ :root { --white: #ffffff; --off: #f8f8f6; --off2: #f1f1ec; --ink: #0a0a0a; --ink2: #1a1a1a; --ink3: #5a5a5a; --border: #e2e2dc; --border2: #c9c9c1; --accent: #ff3c10; --accent-dark: #f33f12; --accent-deep: #ff2200; --accent-pale: #fff1ec; --accent-line: #ffb199; --blue-dark: #1b54ff; --font: "ocr", sans-serif; --mono: "ocr", monospace; --body: "ocr", sans-serif; --ocr: "ocr", "ocr", sans-serif; --radius-sm: 8px; --radius-md: 12px; --shadow-soft: 0 8px 32px rgba(10, 10, 10, 0.08); } x { font-family: monospace; font-weight: bolder; } body { font-family: var(--body); background: var(--white); color: var(--ink); line-height: 1.6; width: 100%; overflow-x: hidden; } /* Spacing that depends on the OCR font only applies once it's loaded */ html.fonts-loaded body { letter-spacing: -3px; word-spacing: 6px; } html.fonts-loaded .highlight, html.fonts-loaded .not-matched, html.fonts-loaded .tracker-examples code, html.fonts-loaded .btn-suggestion, html.fonts-loaded .nav-link, html.fonts-loaded .logo-name, html.fonts-loaded .hero-badge, html.fonts-loaded .hero-title, html.fonts-loaded .hero-coming, html.fonts-loaded .btn-hero-primary, html.fonts-loaded .btn-hero-ghost, html.fonts-loaded .zero-num, html.fonts-loaded .section-label, html.fonts-loaded .section-title, html.fonts-loaded .stats-label, html.fonts-loaded .stat-big, html.fonts-loaded .feat-num, html.fonts-loaded .feat-title, html.fonts-loaded .shield-title, html.fonts-loaded .shield-eyebrow, html.fonts-loaded .shield-card-title, html.fonts-loaded .fdark-label, html.fonts-loaded .fdark-title, html.fonts-loaded .fdark-item-title, html.fonts-loaded .vpn-item-title, html.fonts-loaded .live-log-label, html.fonts-loaded .quote-text, html.fonts-loaded .quote-author, html.fonts-loaded .quote-author-fe-oydk, html.fonts-loaded .promise-title, html.fonts-loaded .faq-question, html.fonts-loaded .footer-logo-name, html.fonts-loaded .footer-brand-desc, html.fonts-loaded .footer-sovereign, html.fonts-loaded .footer-col h4, html.fonts-loaded .footer-copy { letter-spacing: -3px; word-spacing: 6px; } /* Titles with their own custom tracking (unchanged values, just gated) */ html.fonts-loaded .hero-title { letter-spacing: -27px; word-spacing: 19px; } html.fonts-loaded .section-title { letter-spacing: -8px; word-spacing: 12px; } html.fonts-loaded .fdark-title { letter-spacing: -9px; word-spacing: 6px; } html.fonts-loaded .fdark-item-title { letter-spacing: -4px; word-spacing: 9px; } html.fonts-loaded .quote-text { letter-spacing: -7px; word-spacing: 9px; } @media (max-width: 768px) {  .support-cta { padding: 28px 22px; } html.fonts-loaded .hero-title { letter-spacing: -2px; } } a { color: inherit; } .download-btn { padding: 14px 32px; background: var(--accent); color: #fff; border: 2px solid var(--accent); border-radius: var(--radius-sm); font-weight: 700; font-size: 0.95rem; text-decoration: none; font-family: var(--body); transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px; } .download-btn:hover { background: var(--accent-dark); border-color: var(--accent-dark); transform: translateY(-2px); } .download-btn svg { width: 16px; height: 16px; } :focus-visible { outline: 2.5px solid var(--blue-dark); outline-offset: 3px; border-radius: 4px; } ::-webkit-scrollbar { width: 4px; } ::-webkit-scrollbar-track { background: var(--off); } ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 99px; } .highlight { display: inline-block; background: var(--accent); color: var(--white); padding: 2px 10px; border-radius: 6px; font-family: var(--mono); font-size: 0.82em; font-weight: 500; line-height: 1.9; }#nothing-is-free, #support-us, #how-support-works { scroll-margin-top: 24px; } .support-cta { margin-top: 56px; padding: 36px 32px; background: var(--ink); color: var(--white); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; } .support-cta-text { flex: 1 1 360px; min-width: 0; } .support-cta-title { font-family: var(--font); font-size: 1.4rem; font-weight: 800; margin-bottom: 8px; color: var(--white); } .support-cta-title span { color: var(--accent); } .support-cta-desc { font-size: 0.92rem; line-height: 1.75; color: rgba(255, 255, 255, 0.78); } .support-note { margin-top: 32px; padding: 20px 24px; background: var(--accent-pale); border: 1.5px solid var(--accent-line); border-radius: var(--radius-sm); font-size: 0.92rem; line-height: 1.8; color: var(--ink2); } .support-note strong { color: var(--accent-dark); } .ich2s { color: rgb(255, 75, 15); } .not-matched { display: inline-block; background: var(--blue-dark); color: var(--white); padding: 2px 10px; border-radius: 6px; font-family: var(--mono); font-size: 0.82em; font-weight: 500; line-height: 1.9; } .accent-text { color: var(--accent-dark); font-weight: 600; } .fdark-item-desc { line-height: 1.8; color: rgba(255, 255, 255, 0.82); font-size: 0.95rem; } .fdark-item-desc p { margin-bottom: 1.1em; } .fdark-item-desc p:last-child { margin-bottom: 0; } .fdark-item-desc strong { color: var(--white); } .tracker-examples { margin: 1em 0 1.3em; padding-left: 0; list-style: none; } .tracker-examples li { margin-bottom: 0.7em; } .tracker-examples code { background: rgba(255, 255, 255, 0.08); color: #ff1500; padding: 2px 8px; font-family: var(--mono); border-radius: 5px; font-size: 0.85em; } /* ─── HEADER ─── */ header { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1.5px solid var(--border); transition: transform 0.25s ease; height: 68px; } header.hidden { transform: translateY(-100%); } .header-container { max-width: 1300px; margin: 0 auto; padding: 0 24px; height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 12px; } .logo-wrap { display: flex; align-items: center; gap: 10px; text-decoration: none; min-width: 0; flex-shrink: 0; } .logo-wrap img { width: 40px; height: 40px; border-radius: 10px; object-fit: cover; flex-shrink: 0; } .logo-name { font-family: var(--font); font-weight: 800; font-size: 1.1rem; color: var(--ink); letter-spacing: -0.5px; white-space: nowrap; } .logo-name span { color: var(--accent); } /* ─── DESKTOP NAV ─── */ .nav-menu { display: flex; gap: 2px; align-items: center; } .nav-item { position: relative; } .nav-link { padding: 8px 14px; font-size: 0.85rem; font-weight: 500; color: var(--ink3); text-decoration: none; display: block; border-radius: 6px; transition: all 0.2s; font-family: var(--body); white-space: nowrap; } .nav-link:hover { color: var(--ink); background: var(--off); } .dropdown-content { position: absolute; top: calc(100% + 8px); left: 0; background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-md); min-width: 190px; opacity: 0; visibility: hidden; transform: translateY(-8px); transition: all 0.2s; box-shadow: var(--shadow-soft); overflow: hidden; } .dropdown:hover .dropdown-content, .dropdown:focus-within .dropdown-content { opacity: 1; visibility: visible; transform: translateY(0); } .dropdown-content a { padding: 11px 18px; font-size: 0.83rem; font-weight: 500; color: var(--ink2); text-decoration: none; display: block; transition: all 0.15s; border-bottom: 1px solid var(--border); } .dropdown-content a:last-child { border-bottom: none; } .dropdown-content a:hover { background: var(--accent-pale); color: var(--accent-dark); padding-left: 22px; } .btn-suggestion { display: inline-flex; align-items: center; gap: 7px; padding: 10px 16px; font-size: 0.8rem; font-weight: 700; color: var(--white); background: var(--accent); text-decoration: none; border-radius: var(--radius-sm); transition: all 0.2s; font-family: var(--body); border: 1.5px solid var(--accent); flex-shrink: 0; white-space: nowrap; } .btn-suggestion:hover { background: var(--accent-dark); border-color: var(--accent-dark); transform: translateY(-1px); } .btn-suggestion svg { flex-shrink: 0; } /* ─── HAMBURGER (mobile only) ─── */ .hamburger-btn { display: none; align-items: center; justify-content: center; width: 42px; height: 42px; border-radius: 8px; border: 1.5px solid var(--border); background: var(--white); cursor: pointer; flex-shrink: 0; padding: 0; } .hamburger-btn svg { width: 20px; height: 20px; display: block; } .hamburger-line { fill: none; stroke: var(--ink); stroke-width: 2; stroke-linecap: round; transition: transform 0.25s ease, opacity 0.2s ease; transform-origin: center; } .mobile-nav-overlay.open~header .hamburger-line.top, header.menu-open .hamburger-line.top { transform: translateY(6px) rotate(45deg); } header.menu-open .hamburger-line.mid { opacity: 0; } header.menu-open .hamburger-line.bottom { transform: translateY(-6px) rotate(-45deg); } /* Full mobile menu panel: same dark "software corp" surface as the rest of the dark sections on the site (var(--ink)), not a new color. */ .mobile-nav-panel { position: fixed; inset: 68px 0 0 0; background: var(--ink); z-index: 999; display: none; flex-direction: column; overflow-y: auto; padding: 8px 0 32px; border-top: 1.5px solid rgba(255, 255, 255, 0.08); } .mobile-nav-panel.open { display: flex; } .mobile-nav-group { border-bottom: 1px solid rgba(255, 255, 255, 0.08); } .mobile-nav-group-title { font-family: var(--font); font-weight: 700; font-size: 0.95rem; color: rgba(255, 255, 255, 0.42); letter-spacing: 1.5px; text-transform: uppercase; padding: 18px 24px 8px; } .mobile-nav-panel a { display: block; padding: 14px 24px; font-family: var(--font); font-size: 1.05rem; font-weight: 600; color: var(--white); text-decoration: none; } .mobile-nav-panel a:active { background: rgba(255, 74, 31, 0.12); color: var(--accent); } .mobile-nav-cta { margin: 20px 24px 0; display: flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 16px; border-radius: var(--radius-sm); background: var(--accent); color: var(--white) !important; font-weight: 700; } /* ─── HERO ─── */ #hero { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 140px 24px 80px; position: relative; overflow: hidden; text-align: center; background: var(--white); width: 100%; } .hero-bg { position: absolute; inset: 0; overflow: hidden; pointer-events: none; } .matrix-canvas { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 1; mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #ffffff 0%, transparent 75%); -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 30%, #ffffff 0%, transparent 75%); } .hero-grid { position: absolute; inset: 0; pointer-events: none; background-color: rgba(255, 255, 255, 0); } .hero-stripe { position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--accent); } .hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; background: var(--accent-pale); border: 1.5px solid var(--accent); border-radius: 99px; font-family: var(--mono); font-size: 0.72rem; color: var(--accent-dark); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 32px; position: relative; z-index: 1; animation: fadeDown 0.6s ease both; } .badge-dot { width: 7px; height: 7px; background: var(--accent); border-radius: 50%; animation: pulse 2s ease infinite; } @keyframes pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.7); } } @keyframes fadeDown { from { opacity: 0; transform: translateY(-16px); } to { opacity: 1; transform: translateY(0); } } @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } } .hero-title { font-family: var(--font); font-size: clamp(3.2rem, 9vw, 7rem); font-weight: 800; color: var(--ink); margin-bottom: 28px; position: relative; line-height: 111%; z-index: 1; animation: fadeUp 0.7s 0.1s ease both; word-break: break-word; } .hero-title .blue { color: var(--accent); } .hero-title .outline { -webkit-text-stroke: 2.8px rgb(255, 76, 17); color: transparent; color: #ffffff; } .hero-sub { font-size: clamp(1rem, 2.2vw, 1.2rem); color: var(--ink3); max-width: 560px; margin: 0 auto 20px; line-height: 1.8; font-weight: 400; position: relative; z-index: 1; animation: fadeUp 0.7s 0.2s ease both; } .hero-sub strong { color: var(--ink); font-weight: 600; } .hero-coming { font-family: var(--mono); font-size: 0.85rem; color: var(--accent-dark); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 44px; position: relative; z-index: 1; animation: fadeUp 0.7s 0.3s ease both; } .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; animation: fadeUp 0.7s 0.4s ease both; } .btn-hero-primary { padding: 14px 32px; background: var(--ink); color: var(--white); border: 2px solid var(--ink); border-radius: var(--radius-sm); font-weight: 700; font-size: 0.95rem; text-decoration: none; font-family: var(--body); transition: all 0.2s; display: inline-flex; align-items: center; gap: 8px; } .btn-hero-primary:hover { background: var(--accent); border-color: var(--accent); transform: translateY(-2px); } .btn-hero-ghost { padding: 14px 32px; background: transparent; color: var(--ink); border: 2px solid var(--border2); border-radius: var(--radius-sm); font-weight: 600; font-size: 0.95rem; text-decoration: none; font-family: var(--body); transition: all 0.2s; } .btn-hero-ghost:hover { border-color: var(--ink); transform: translateY(-2px); } .hero-zeros { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 60px; position: relative; z-index: 1; animation: fadeUp 0.7s 0.5s ease both; max-width: 100%; } .zero-pill { display: flex; align-items: center; gap: 10px; padding: 10px 20px; background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-sm); font-size: 0.82rem; font-weight: 600; color: var(--ink2); box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05); transition: all 0.2s; white-space: nowrap; } .zero-pill:hover { border-color: var(--accent); background: var(--accent-pale); color: var(--accent-dark); transform: translateY(-3px); } .zero-num { font-family: var(--font); font-size: 1.4rem; font-weight: 800; color: var(--accent); line-height: 1; } /* ─── SECTION BASE ─── */ section { padding: 100px 24px; width: 100%; overflow-x: hidden; } .section-inner { max-width: 1200px; margin: 0 auto; } .section-label { font-family: var(--mono); font-size: 0.72rem; color: var(--accent-dark); letter-spacing: 2px; text-transform: uppercase; display: flex; align-items: center; gap: 10px; margin-bottom: 14px; } .section-label::before { content: ""; width: 24px; height: 1.5px; background: var(--accent); } .section-title { font-family: var(--font); font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; line-height: 1.1; color: var(--ink); margin-bottom: 14px; } .section-title span { color: var(--accent); } .section-sub { color: var(--ink3); font-size: 1rem; max-width: 540px; line-height: 1.75; } /* ─── STATS ─── */ #stats { background: var(--ink); padding: 80px 24px; } .stats-inner { max-width: 1200px; margin: 0 auto; } .stats-label { font-family: var(--mono); font-size: 0.72rem; color: var(--accent); letter-spacing: 2px; text-transform: uppercase; text-align: center; margin-bottom: 60px; display: flex; align-items: center; justify-content: center; gap: 12px; } .stats-label::before, .stats-label::after { content: ""; flex: 1; max-width: 80px; height: 1px; background: rgba(255, 255, 255, 0.18); } .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; border: 1.5px solid rgba(255, 255, 255, 0.12); border-radius: var(--radius-md); overflow: hidden; } .stat-card { padding: 44px 28px; text-align: center; border-right: 1.5px solid rgba(255, 255, 255, 0.08); transition: background 0.2s; min-width: 0; } .stat-card:last-child { border-right: none; } .stat-card:hover { background: rgba(255, 74, 31, 0.08); } .stat-big { font-family: var(--font); font-size: 5rem; font-weight: 800; color: var(--white); line-height: 1; margin-bottom: 10px; } .stat-title { font-size: 1rem; font-weight: 700; color: var(--accent); margin-bottom: 10px; } .stat-detail { font-size: 0.82rem; color: rgba(255, 255, 255, 0.7); line-height: 1.7; } /* ─── FEATURES MAIN ─── */ #features-main { background: var(--off); border-top: 1.5px solid var(--border); border-bottom: 1.5px solid var(--border); } .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 56px; } .feat-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-md); padding: 32px 28px; transition: all 0.25s; position: relative; overflow: hidden; min-width: 0; } .feat-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform 0.3s; } .feat-card:hover { border-color: var(--accent); transform: translateY(-5px); box-shadow: 0 16px 40px rgba(255, 74, 31, 0.12); } .feat-card:hover::before { transform: scaleX(1); } .feat-num { font-family: var(--mono); font-size: 0.7rem; color: var(--accent-dark); letter-spacing: 1px; margin-bottom: 18px; display: block; } .feat-icon { display: flex; margin-bottom: 14px; } .feat-icon svg { width: 44px; height: 44px; } .feat-title { font-family: var(--font); font-size: 1.1rem; font-weight: 700; letter-spacing: -0.3px; margin-bottom: 10px; color: var(--ink); } .feat-desc { font-size: 0.875rem; color: var(--ink3); line-height: 1.75; } /* ─── SHIELD SECTION ─── */ #shield-section { background: var(--accent-deep); color: var(--white); padding: 90px 24px; } .shield-inner { max-width: 1200px; margin: 0 auto; } .shield-header { margin-bottom: 60px; } .shield-eyebrow { font-family: var(--mono); font-size: 0.72rem; color: rgba(255, 255, 255, 0.75); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 14px; display: flex; align-items: center; gap: 10px; } .shield-eyebrow::before { content: ""; width: 24px; height: 1px; background: rgba(255, 255, 255, 0.4); } .shield-title { font-family: var(--font); font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 800; letter-spacing: -1.5px; color: var(--white); line-height: 1.1; margin-bottom: 14px; } .shield-sub { font-size: 1rem; color: rgb(255, 255, 255); max-width: 540px; line-height: 1.75; } .shield-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; } .shield-card { background: rgb(255, 255, 255); border: solid 2px rgb(0, 0, 0); border-radius: var(--radius-md); padding: 32px 28px; transition: background 0.6s ease, border-color 0.6s ease; min-width: 0; } .shield-card:hover { border: solid 3px rgb(0, 0, 0); } .shield-card-title { font-family: var(--font); font-size: 1.05rem; font-weight: 700; letter-spacing: -0.2px; color: var(--white); margin-bottom: 12px; display: flex; align-items: center; gap: 12px; } .shield-card-icon { width: 40px; height: 40px; background: var(--white); border-radius: var(--radius-sm); display: flex; border: solid 2px rgb(255, 76, 10); align-items: center; justify-content: center; flex-shrink: 0; padding: 7px; } .shield-card-icon svg { width: 100%; height: 100%; } .shield-card-desc { font-size: 0.875rem; color: rgb(0, 0, 0); line-height: 1.75; } /* ─── FEATURES DARK (black sections) ─── */ .features-dark-section { background: var(--ink); padding: 90px 24px; } .fdark-inner { max-width: 1200px; margin: 0 auto; } .fdark-label { font-family: var(--mono); font-size: 0.72rem; color: rgba(255, 255, 255, 0.6); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 14px; display: flex; align-items: center; gap: 10px; } .fdark-label::before { content: ""; width: 24px; height: 1px; background: rgba(255, 255, 255, 0.4); } .fdark-title { font-family: var(--font); font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; color: var(--white); margin-bottom: 16px; } .fdark-title span { color: var(--accent); } .fdark-sub { font-size: 1rem; color: rgba(255, 255, 255, 0.72); max-width: 620px; line-height: 1.75; margin-bottom: 56px; } .fdark-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; background: rgba(255, 255, 255, 0.1); border: 1.5px solid rgba(255, 255, 255, 0.1); border-radius: var(--radius-md); overflow: hidden; } .fdark-item { padding: 36px 28px; background: var(--ink); transition: background 0.2s; min-width: 0; } .fdark-item:hover { background: #151515; } .fdark-item-icon { display: flex; margin-bottom: 16px; } .fdark-item-icon svg { width: 40px; height: 40px; } .fdark-item-title { font-family: var(--font); font-size: 1.05rem; font-weight: 700; color: var(--white); margin-bottom: 10px; } .fdark-closing { margin-top: 44px; padding: 32px; background: rgba(255, 255, 255, 0.03); border: 1.5px solid rgba(255, 255, 255, 0.08); border-radius: var(--radius-md); font-size: 0.98rem; line-height: 1.85; color: rgba(255, 255, 255, 0.78); } .fdark-closing strong { color: var(--white); } /* ─── VPN / DNS EXPLAINER SECTION ─── */ .vpn-item-title { font-family: var(--font); font-size: 1.2rem; font-weight: 700; color: var(--white); margin: 32px 0 12px; } .vpn-item-title:first-of-type { margin-top: 0; } .vpn-body { font-size: 0.95rem; line-height: 1.85; color: rgba(255, 255, 255, 0.78); } .vpn-body p { margin-bottom: 1.1em; } .vpn-body a { color: var(--accent); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; } .vpn-body a:hover { color: #ff7a4d; } .vpn-tip { margin-top: 24px; padding: 20px 24px; background: rgba(255, 74, 31, 0.08); border: 1.5px solid rgba(255, 74, 31, 0.25); border-radius: var(--radius-sm); font-size: 0.9rem; line-height: 1.75; color: rgba(255, 255, 255, 0.85); } .vpn-tip strong { color: var(--accent); } .live-log-frame { max-width: 1200px; margin: 0 auto; padding: 0 24px 100px; } .live-log-card { overflow: hidden; border: 1.5px solid var(--border); border-radius: var(--radius-md); background: var(--off); } .live-log-card img { width: 100%; height: auto; display: block; } .live-log-label { font-family: var(--mono); font-size: 0.72rem; color: var(--ink3); letter-spacing: 1.5px; text-transform: uppercase; padding: 14px 20px; border-bottom: 1.5px solid var(--border); } /* ─── SCREENSHOTS ─── */ #screenshots { padding: 100px 0; background: var(--off); border-top: 1.5px solid var(--border); border-bottom: 1.5px solid var(--border); overflow: hidden; } .screenshots-header { max-width: 1200px; margin: 0 auto 48px; padding: 0 24px; } .slider-container { max-width: 1200px; margin: 0 auto; position: relative; padding: 0 24px; } .slider { overflow: hidden; border-radius: var(--radius-md); } .slides { display: flex; transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1); } .slide { min-width: 25%; flex-shrink: 0; padding: 10px; } .slide img { width: 100%; height: 520px; object-fit: cover; border-radius: var(--radius-sm); border: 1.5px solid var(--border); box-shadow: var(--shadow-soft); display: block; transition: transform 0.2s; } .slide img:hover { transform: scale(1.03); } .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: var(--white); color: var(--accent); border: 1.5px solid var(--border); width: 44px; height: 44px; border-radius: 50%; cursor: pointer; font-size: 1.2rem; transition: all 0.2s; display: flex; align-items: center; justify-content: center; z-index: 10; box-shadow: var(--shadow-soft); } .slider-btn:hover { background: var(--accent); color: var(--white); border-color: var(--accent); transform: translateY(-50%) scale(1.08); } .slider-btn.prev { left: 0; } .slider-btn.next { right: 0; } /* ─── QUOTE BREAKS ─── */ .quote-section-bg-oydk { min-height: 70vh; width: 100%; padding: 10vh 8vw; background: var(--accent); color: var(--white); display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; } .quote-section { min-height: 70vh; width: 100%; padding: 10vh 8vw; background: var(--ink); color: var(--white); display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; } .quote-card { width: 100%; max-width: 1000px; position: relative; display: flex; flex-direction: column; gap: 40px; } .quote-card::before { content: "\201C"; position: absolute; top: -6%; left: -2%; font-family: var(--font); font-size: 14rem; line-height: 1; opacity: 0.08; color: var(--accent); pointer-events: none; } .quote-text { font-family: var(--font); font-size: clamp(1.6rem, 4.2vw, 2.6rem); line-height: 1.3; font-weight: 700; position: relative; z-index: 1; } .quote-author-fe-oydk { font-family: var(--mono); font-size: 0.95rem; color: black; position: relative; z-index: 1; } .quote-author { font-family: var(--mono); font-size: 0.95rem; color: var(--accent); position: relative; z-index: 1; } /* ─── PROMISE ─── */ #promise { background: var(--white); border-top: 1.5px solid var(--border); } .promise-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 56px; } .promise-card { padding: 32px 24px; background: var(--off); border: 1.5px solid var(--border); border-radius: var(--radius-md); transition: all 0.25s; text-align: center; min-width: 0; } .promise-card:hover { border-color: var(--accent); background: var(--accent-pale); transform: translateY(-4px); } .promise-icon { display: flex; justify-content: center; margin-bottom: 14px; } .promise-icon svg { width: 44px; height: 44px; } .promise-title { font-family: var(--font); font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 8px; letter-spacing: -0.2px; } .promise-desc { font-size: 0.83rem; color: var(--ink3); line-height: 1.7; } /* ─── FAQ ─── */ #faq-section { background: var(--off); border-top: 1.5px solid var(--border); border-bottom: 1.5px solid var(--border); } .faq-inner { max-width: 800px; margin: 0 auto; } .faq-list { margin-top: 56px; } .faq-item { border: 1.5px solid var(--border); border-radius: 10px; margin-bottom: 12px; overflow: hidden; transition: border-color 0.2s; background: var(--white); } .faq-item:hover { border-color: var(--border2); } .faq-item.active { border-color: var(--accent); } .faq-question { padding: 20px 24px; font-size: 0.95rem; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; user-select: none; font-family: var(--body); color: var(--ink); transition: background 0.15s; } .faq-question:hover { background: var(--off); } .faq-item.active .faq-question { background: var(--accent-pale); color: var(--accent-dark); } .faq-arrow { width: 28px; height: 28px; background: var(--off); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; font-weight: 700; flex-shrink: 0; transition: transform 0.3s, background 0.2s; } .faq-item.active .faq-arrow { transform: rotate(180deg); background: var(--accent); color: var(--white); } .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.4s ease; padding: 0 24px; font-size: 0.9rem; line-height: 1.8; color: var(--ink3); } .faq-item.active .faq-answer { max-height: 600px; padding: 0 24px 22px; } /* ─── FOOTER ─── */ footer { background: var(--ink); color: var(--white); padding: 72px 24px 32px; overflow: hidden; } .footer-top { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 56px; } .footer-logo-row { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; text-decoration: none; } .footer-logo-row img { width: 40px; height: 40px; border-radius: 10px; } .footer-logo-name { font-family: var(--font); font-weight: 800; font-size: 1.15rem; color: var(--white); letter-spacing: -0.5px; } .footer-brand-desc { font-size: 0.85rem; color: rgba(255, 255, 255, 0.68); line-height: 1.75; max-width: 280px; margin-bottom: 24px; } .footer-sovereign { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 6px; font-size: 0.9rem; font-weight: 600; color: rgba(255, 255, 255, 0.7); text-decoration: none; transition: all 0.2s; font-family: var(--font); } .footer-sovereign:hover { border-color: var(--blue-dark); color: var(--white); } .footer-col { min-width: 0; } .footer-col h4 { font-family: var(--mono); font-size: 0.7rem; font-weight: 500; color: rgba(255, 255, 255, 0.4); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 18px; } .footer-col ul { list-style: none; } .footer-col ul li { margin-bottom: 10px; } .footer-col ul li a { font-size: 0.875rem; color: rgba(255, 255, 255, 0.82); text-decoration: none; transition: all 0.2s; font-weight: 500; display: flex; align-items: center; gap: 6px; } .footer-col ul li a:hover { color: var(--accent); padding-left: 4px; } .connect-row { display: flex; gap: 10px; } .icon-link { width: 38px; height: 38px; border: 1.5px solid rgba(255, 255, 255, 0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: rgba(255, 255, 255, 0.6); transition: all 0.2s; text-decoration: none; } .icon-link:hover { border-color: var(--accent); color: var(--white); background: rgba(255, 74, 31, 0.15); } .footer-bottom { max-width: 1200px; margin: 0 auto; padding-top: 28px; border-top: 1px solid rgba(255, 255, 255, 0.1); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; } .footer-copy { font-size: 0.78rem; color: rgba(255, 255, 255, 0.45); font-family: var(--mono); } .footer-copy strong { color: var(--accent); font-weight: 600; } .footer-copy a { color: rgba(255, 255, 255, 0.7); text-decoration: none; } .footer-copy a:hover { color: var(--white); } /* ─── REVEAL ANIMATIONS ─── */ .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; } .reveal.visible { opacity: 1; transform: translateY(0); } .reveal.d1 { transition-delay: 0.1s; } .reveal.d2 { transition-delay: 0.2s; } .reveal.d3 { transition-delay: 0.3s; } .reveal.d4 { transition-delay: 0.4s; } .reveal.d5 { transition-delay: 0.5s; } @media (prefers-reduced-motion: reduce) { * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; } } /* ─── RESPONSIVE ─── */ @media (max-width: 1024px) { .nav-menu { display: none; } .hamburger-btn { display: flex; } .stat-grid { grid-template-columns: repeat(2, 1fr); } .stat-card:nth-child(2) { border-right: none; } .features-grid, .fdark-grid { grid-template-columns: repeat(2, 1fr); } .shield-grid { grid-template-columns: 1fr; } .promise-grid { grid-template-columns: repeat(2, 1fr); } .footer-top { grid-template-columns: 1fr 1fr; } .slide { min-width: 50%; } } @media (max-width: 768px) { .header-container { padding: 0 16px; } .btn-suggestion span { display: none; } .stat-grid { grid-template-columns: 1fr 1fr; } .features-grid, .fdark-grid, .promise-grid { grid-template-columns: 1fr; } .footer-top { grid-template-columns: 1fr; gap: 32px; } .slide { min-width: 100%; } .slide img { height: 700px; } .footer-bottom { flex-direction: column; text-align: center; } section { padding: 72px 20px; } .hero-zeros { gap: 10px; } .zero-pill { padding: 8px 14px; font-size: 0.76rem; } } @media (max-width: 420px) { .btn-suggestion { padding: 10px 12px; } } </style>
 </head>
 
 <body>
@@ -36,21 +36,26 @@
           </div>
         </div>
 
-
 <div class="nav-item dropdown">
   <a href="#business-model" class="nav-link">Business Model ▾</a>
   <div class="dropdown-content">
     <a href="#business-model">How Free Browsers Earn</a>
-    <a href="#nothing-is-free">Nothing Is Free</a>
-    <a href="#pesums-deal">The Pesums Deal</a>
+    <a href="#nothing-is-free">Pesums Is Free</a>
+  </div>
+</div>
+<div class="nav-item dropdown">
+  <a href="#support-us" class="nav-link">Support Us ▾</a>
+  <div class="dropdown-content">
+    <a href="#support-us">Support Pesums</a>
+    <a href="#how-support-works">How Support Works</a>
   </div>
 </div>
 
 
-        <div class="nav-item dropdown">
-          <a href="mailto:contact@pesums.com" class="nav-link">Support ▾</a>
-          <div class="dropdown-content"><a href="mailto:contact@pesums.com">Contact</a></div>
-        </div>
+      <div class="nav-item dropdown">
+  <a href="mailto:contact@pesums.com" class="nav-link">Contact ▾</a>
+  <div class="dropdown-content"><a href="mailto:contact@pesums.com">Contact</a></div>
+</div>
         <div class="nav-item dropdown">
           <a class="nav-link">Download ▾</a>
           <div class="dropdown-content"><a href="download">Download For Android</a></div>
@@ -94,22 +99,26 @@
       <a href="#promise">Privacy First</a>
       <a href="#speed-architecture">Lightning Speed</a>
     </div>
-    <div class="mobile-nav-group">
-      <div class="mobile-nav-group-title">Business Model</div>
-      <a href="#business-model">How Free Browsers Earn</a>
-      <a href="#nothing-is-free">Nothing Is Free</a>
-      <a href="#pesums-deal">The Pesums Deal</a>
-    </div>
-    <div class="mobile-nav-group">
-      <div class="mobile-nav-group-title">Support</div>
-      <a href="mailto:contact@pesums.com">Contact</a>
-    </div>
+   <div class="mobile-nav-group">
+  <div class="mobile-nav-group-title">Business Model</div>
+  <a href="#business-model">How Free Browsers Earn</a>
+  <a href="#nothing-is-free">Pesums Is Free</a>
+</div>
+<div class="mobile-nav-group">
+  <div class="mobile-nav-group-title">Support Us</div>
+  <a href="#support-us">Support Pesums</a>
+  <a href="#how-support-works">How Support Works</a>
+</div>
+<div class="mobile-nav-group">
+  <div class="mobile-nav-group-title">Contact</div>
+  <a href="mailto:contact@pesums.com">Contact</a>
+</div>
     <div class="mobile-nav-group">
       <div class="mobile-nav-group-title">Download</div>
       <a href="download">Download For Android</a>
     </div>
-    <a href="mailto:contact@pesums.com?subject=Pesums%20Suggestion" class="mobile-nav-cta">Send a Suggestion</a>
-  </nav>
+    <a href="#support-us" class="mobile-nav-cta">Support Pesums</a>
+    </nav>
   <!-- HERO -->
   <section id="hero">
     <div class="hero-grid"></div>
@@ -127,7 +136,8 @@
       <strong>Zero tracking. Zero data collection. Zero fingerprinting.</strong><br />
       Browse the web the way it was meant to be fast and completely yours.
     </p>
-  <div class="hero-coming">Pesums v2.0.* is here</div>
+  <div class="hero-coming">Free for everyone<x>, </x>supported by people like you</div>
+
     <div class="hero-btns">
       <a href="#features-main" class="btn-hero-primary">
         <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"
@@ -142,7 +152,9 @@
         </svg>
         Get it on Google Play
       </a>
-      <a href="mailto:contact@pesums.com?subject=Pesums%20Suggestion" class="btn-hero-ghost">Send a Suggestion</a>
+      <a href="#support-us" class="btn-hero-ghost">Support Us</a>
+<a href="mailto:contact@pesums.com?subject=Pesums%20Suggestion" class="btn-hero-ghost">Send a Suggestion</a>
+
     </div>
     <div class="hero-zeros">
       <div class="zero-pill"><span class="zero-num">0</span> Data Collected</div>
@@ -1277,68 +1289,14 @@
   <section id="business-model">
   <div class="section-inner">
 
-    <div class="reveal">
-      <div class="section-label">The Truth</div>
-      <h2 class="section-title">The <span>Business Model</span></h2>
-      <p class="section-sub">
-        Every browser has a business model. Most companies just don't tell you what it is. Here is how
-        free browsers really make money, and how Pesums does it differently.
-      </p>
-    </div>
-
-    <div class="promise-grid">
-      <div class="promise-card reveal d1">
-        <span class="promise-icon"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="3" y="8" width="18" height="12" rx="2" stroke="#000000" stroke-width="1.5" />
-            <path d="M12 8V20M3 14H21" stroke="#000000" stroke-width="1.5" />
-            <path d="M12 8C12 8 10.5 3 8 4.5C6 5.7 8 8 12 8ZM12 8C12 8 13.5 3 16 4.5C18 5.7 16 8 12 8Z" stroke="#000000" stroke-width="1.5" />
-          </svg></span>
-        <div class="promise-title">1. It Looks Free</div>
-        <div class="promise-desc">
-          Chrome and most other big browsers cost nothing. No license, no purchase, no payment. You
-          download, install and use them.
-        </div>
-      </div>
-      <div class="promise-card reveal d2">
-        <span class="promise-icon"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="11" cy="11" r="6" stroke="#000000" stroke-width="1.5" />
-            <path d="M20 20L15.5 15.5" stroke="#000000" stroke-width="1.5" stroke-linecap="round" />
-          </svg></span>
-        <div class="promise-title">2. They Collect</div>
-        <div class="promise-desc">
-          What you search, which sites you visit, when you visit them, cookies, logins and account
-          activity. Sign in and sync, and it can include saved payment details too.
-        </div>
-      </div>
-      <div class="promise-card reveal d3">
-        <span class="promise-icon"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="12" cy="8" r="4" stroke="#000000" stroke-width="1.5" />
-            <path d="M4 20C4 16.6863 7.58172 14 12 14C16.4183 14 20 16.6863 20 20" stroke="#000000" stroke-width="1.5" stroke-linecap="round" />
-          </svg></span>
-        <div class="promise-title">3. They Profile You</div>
-        <div class="promise-desc">
-          All of that is combined into a detailed picture of who you are, what you want, what you fear
-          and what you will buy.
-        </div>
-      </div>
-      <div class="promise-card reveal d4">
-        <span class="promise-icon"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 3V21M16 7.5C16 6.1 14.2 5 12 5C9.8 5 8 6.1 8 7.5C8 10.5 16 9 16 12.5C16 13.9 14.2 15 12 15C9.8 15 8 13.9 8 12.5" stroke="#000000" stroke-width="1.5" stroke-linecap="round" />
-          </svg></span>
-        <div class="promise-title">4. They Sell Access</div>
-        <div class="promise-desc">
-          Advertisers pay to reach you based on that profile. Some companies sell the data outright.
-          Either way, your behavior is the product.
-        </div>
-      </div>
-    </div>
-
+     <!-- PESUMS IS FREE -->
     <div class="reveal" id="nothing-is-free" style="margin-top: 80px;">
       <div class="section-label">The Reality</div>
-      <h2 class="section-title">Nothing Is <span>Free</span></h2>
+      <h2 class="section-title">Pesums Is <span>Free</span></h2>
       <p class="section-sub">
-        A browser needs developers, servers, updates, security fixes and support. All of that costs
-        real money, every month. If you are not paying, someone else is, and they expect something back.
+        A browser still needs developers<x>, </x>updates and security fixes. The difference is who
+        pays for it. Pesums does not charge you and does not sell you. Every feature is free for
+        everyone.
       </p>
     </div>
 
@@ -1348,63 +1306,129 @@
             <circle cx="12" cy="12" r="9" stroke="#000000" stroke-width="1.5" />
             <path d="M12 7V12L15 14" stroke="#000000" stroke-width="1.5" stroke-linecap="round" />
           </svg></span>
-        <div class="promise-title">Free Has a Cost</div>
+        <div class="promise-title">No Trial</div>
         <div class="promise-desc">
-          Free to download does not mean free to run. The cost moves from your wallet to your privacy.
+          No countdown and no expiry. Install it and use it for as long as you want.
         </div>
       </div>
       <div class="promise-card reveal d2">
         <span class="promise-icon"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="3" y="4" width="18" height="7" rx="2" stroke="#000000" stroke-width="1.5" />
-            <rect x="3" y="13" width="18" height="7" rx="2" stroke="#000000" stroke-width="1.5" />
-            <path d="M7 7.5H7.01M7 16.5H7.01" stroke="#000000" stroke-width="2" stroke-linecap="round" />
+            <circle cx="12" cy="8" r="4" stroke="#000000" stroke-width="1.5" />
+            <path d="M4 20C4 16.6863 7.58172 14 12 14C16.4183 14 20 16.6863 20 20" stroke="#000000" stroke-width="1.5" stroke-linecap="round" />
           </svg></span>
-        <div class="promise-title">Same Model Everywhere</div>
+        <div class="promise-title">No Account</div>
         <div class="promise-desc">
-          Most free browsers and free apps follow this pattern: free product, your data, paid by
-          advertisers.
+          No sign-up<x>, </x>no email and no license key. We do not know who you are.
         </div>
       </div>
       <div class="promise-card reveal d3">
         <span class="promise-icon"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 3L4 6V12C4 16.5 7.4 20.3 12 21C16.6 20.3 20 16.5 20 12V6L12 3Z" stroke="#000000" stroke-width="1.5" stroke-linejoin="round" />
+            <circle cx="12" cy="12" r="9" stroke="#000000" stroke-width="1.5" />
+            <path d="M5.6 5.6L18.4 18.4" stroke="#000000" stroke-width="1.5" />
           </svg></span>
-        <div class="promise-title">Pesums Needs Income Too</div>
+        <div class="promise-title">No Ads</div>
         <div class="promise-desc">
-          Pesums must be built, maintained and supported, and the people behind it must live. We are
-          honest about that.
+          No ad network and no investors. Nothing in Pesums is paid for with your attention.
         </div>
       </div>
       <div class="promise-card reveal d4">
         <span class="promise-icon"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M5 12L10 17L19 7" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <ellipse cx="12" cy="6" rx="7" ry="3" stroke="#000000" stroke-width="1.5" />
+            <path d="M5 6V18C5 19.7 8.1 21 12 21C15.9 21 19 19.7 19 18V6" stroke="#000000" stroke-width="1.5" />
+            <path d="M5 12C5 13.7 8.1 15 12 15C15.9 15 19 13.7 19 12" stroke="#000000" stroke-width="1.5" />
           </svg></span>
-        <div class="promise-title">So We Chose One</div>
+        <div class="promise-title">No Data Sold</div>
         <div class="promise-desc">
-          Either you pay with money, or you pay with your data. A free Pesums would have to do the
-          second. We refuse.
+          Pesums collects nothing<x>, </x>so there is nothing to sell. Now or later.
         </div>
       </div>
     </div>
 
-    <div class="reveal" id="pesums-deal" style="margin-top: 80px;">
-      <div class="section-label">The Deal</div>
-      <h2 class="section-title">The Pesums <span>Deal</span></h2>
+    <!-- SUPPORT PESUMS -->
+    <div class="reveal" id="support-us" style="margin-top: 80px;">
+      <div class="section-label">The Support</div>
+      <h2 class="section-title">Support <span>Pesums</span></h2>
       <p class="section-sub">
-        You pay once a year. We collect nothing. That is the whole business model. <strong>You are the
-        customer, not the product.</strong>
+        Pesums is built and maintained by one independent developer. It has no ads<x>, </x>no
+        investors and no data to sell. The only way it keeps going is if people who value it choose
+        to help. <strong>That is the whole business model: a free browser<x>, </x>kept alive by
+        voluntary support.</strong>
       </p>
     </div>
 
     <div class="promise-grid">
       <div class="promise-card reveal d1">
         <span class="promise-icon"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect x="3" y="6" width="18" height="12" rx="2" stroke="#000000" stroke-width="1.5" />
-            <circle cx="12" cy="12" r="2.5" stroke="#000000" stroke-width="1.5" />
+            <path d="M5 12L10 17L19 7" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
           </svg></span>
-        <div class="promise-title">$4.6 Per Year</div>
+        <div class="promise-title">Always Optional</div>
         <div class="promise-desc">
-          One simple license. This is our only income, so it is the only thing we answer to.
+          You can use Pesums forever without paying anything. Support is a choice<x>, </x>never a requirement.
+        </div>
+      </div>
+      <div class="promise-card reveal d2">
+        <span class="promise-icon"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 3L4 6V12C4 16.5 7.4 20.3 12 21C16.6 20.3 20 16.5 20 12V6L12 3Z" stroke="#000000" stroke-width="1.5" stroke-linejoin="round" />
+          </svg></span>
+        <div class="promise-title">Unlocks Nothing</div>
+        <div class="promise-desc">
+          Supporting does not unlock a feature or change how the browser works. It only shows a small thank-you heart in the app.
+        </div>
+      </div>
+      <div class="promise-card reveal d3">
+        <span class="promise-icon"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 20.5C12 20.5 4 15.5 4 9.5C4 6.9 6 5 8.3 5C9.9 5 11.3 5.9 12 7.2C12.7 5.9 14.1 5 15.7 5C18 5 20 6.9 20 9.5C20 15.5 12 20.5 12 20.5Z" stroke="#000000" stroke-width="1.5" stroke-linejoin="round" />
+          </svg></span>
+        <div class="promise-title">Keeps It Going</div>
+        <div class="promise-desc">
+          Pesums has no other income. Support is what lets one developer keep building<x>, </x>fixing and updating it.
+        </div>
+      </div>
+      <div class="promise-card reveal d4">
+        <span class="promise-icon"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 12a9 9 0 1 0 3-6.7M3 4v5h5" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg></span>
+        <div class="promise-title">Support Again</div>
+        <div class="promise-desc">
+          If you want to<x>, </x>you can support more than once. There is no limit and no pressure.
+        </div>
+      </div>
+    </div>
+
+    <div class="support-cta reveal">
+      <div class="support-cta-text">
+        <div class="support-cta-title">Support lives <span>inside the app</span></div>
+        <div class="support-cta-desc">
+          Download Pesums from Google Play and you will find the Support option inside the app. It is
+          only available in the Google Play version<x>, </x>not in the direct download. Supporting is
+          optional and never unlocks anything.
+        </div>
+      </div>
+      <a href="https://play.google.com/store/apps/details?id=com.pesums.browser" class="download-btn" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true">
+          <path d="M5 2.8v18.4c0 .8.9 1.3 1.6.9l14.7-9.2c.6-.4.6-1.4 0-1.8L6.6 1.9C5.9 1.5 5 2 5 2.8z" />
+        </svg>
+        Get it on Google Play
+      </a>
+    </div>
+
+    <!-- HOW SUPPORT WORKS -->
+    <div class="reveal" id="how-support-works" style="margin-top: 80px;">
+      <div class="section-label">The Details</div>
+      <h2 class="section-title">How Support <span>Works</span></h2>
+      <p class="section-sub">
+        Simple and private. Google Play handles the payment<x>, </x>and Pesums learns nothing about you.
+      </p>
+    </div>
+
+    <div class="promise-grid">
+      <div class="promise-card reveal d1">
+        <span class="promise-icon"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 4V20L19 12L7 4Z" stroke="#000000" stroke-width="1.5" stroke-linejoin="round" />
+          </svg></span>
+        <div class="promise-title">Paid Through Google Play</div>
+        <div class="promise-desc">
+          Payment goes through Google Play under Google's own terms and privacy policy<x>, </x>using the payment methods Google Play offers you.
         </div>
       </div>
       <div class="promise-card reveal d2">
@@ -1412,35 +1436,39 @@
             <circle cx="12" cy="12" r="9" stroke="#000000" stroke-width="1.5" />
             <path d="M5.6 5.6L18.4 18.4" stroke="#000000" stroke-width="1.5" />
           </svg></span>
-        <div class="promise-title">Nothing Collected</div>
+        <div class="promise-title">We See Nothing</div>
         <div class="promise-desc">
-          No history watched, no searches logged, no profile built. We have nothing to sell because we
-          never take it.
+          Pesums never sees your card details<x>, </x>your name or your email<x>, </x>and keeps no record of who supported.
         </div>
       </div>
       <div class="promise-card reveal d3">
         <span class="promise-icon"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <ellipse cx="12" cy="6" rx="7" ry="3" stroke="#000000" stroke-width="1.5" />
-            <path d="M5 6V18C5 19.7 8.1 21 12 21C15.9 21 19 19.7 19 18V6" stroke="#000000" stroke-width="1.5" />
-            <path d="M5 12C5 13.7 8.1 15 12 15C15.9 15 19 13.7 19 12" stroke="#000000" stroke-width="1.5" />
+            <rect x="7" y="2" width="10" height="20" rx="2" stroke="#000000" stroke-width="1.5" />
+            <path d="M11 18H13" stroke="#000000" stroke-width="1.5" stroke-linecap="round" />
           </svg></span>
-        <div class="promise-title">Encrypted, Offline</div>
+        <div class="promise-title">One Value On Your Device</div>
         <div class="promise-desc">
-          Your data lives in an encrypted SQL database on your device. It never leaves your device.
+          To show the heart<x>, </x>Pesums saves the time you supported on your device only. It is never sent anywhere.
         </div>
       </div>
       <div class="promise-card reveal d4">
         <span class="promise-icon"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 3L4 6V12C4 16.5 7.4 20.3 12 21C16.6 20.3 20 16.5 20 12V6L12 3Z" stroke="#000000" stroke-width="1.5" stroke-linejoin="round" />
-            <path d="M9 12L11 14L15 10" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M9 14L4 9L9 4" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M4 9H15C18 9 20 11 20 14C20 17 18 19 15 19H10" stroke="#000000" stroke-width="1.5" stroke-linecap="round" />
           </svg></span>
-        <div class="promise-title">Pesums Shield Included</div>
+        <div class="promise-title">Refunds</div>
         <div class="promise-desc">
-          WebRTC leak protection, fingerprinting protection and more. Privacy, protection and security
-          in one license.
+          Refunds follow Google Play's refund policy.
         </div>
       </div>
     </div>
+
+    <p class="support-note">
+      <strong>What this means for your privacy:</strong> support comes from users and not from
+      advertisers or data buyers<x>, </x>so Pesums has no reason to collect anything about you. If fewer
+      people support Pesums<x>, </x>development may slow down<x>, </x>but it will never turn to selling
+      or collecting your data.
+    </p>
 
   </div>
 </section>
@@ -1465,29 +1493,30 @@
             </div>
           </div>
          
-         <div class="faq-item">
+ <div class="faq-item">
   <div class="faq-question" role="button" tabindex="0">
     How do I get Pesums? <span class="faq-arrow" aria-hidden="true">∨</span>
   </div>
   <div class="faq-answer">
-    Pesums is released — the latest version is available for
-    <a href="https://pesums.com/download"><span class="accent-text">Android</span></a>.
-    Windows, macOS, Linux, and iOS are coming later.
-    Download, install, and you are browsing privately within seconds.
-    No forced account. No registration wall. Just the browser.
+    Pesums is free. Get it on
+    <a href="https://play.google.com/store/apps/details?id=com.pesums.browser" target="_blank" rel="noopener"><span class="accent-text">Google Play</span></a>
+    or from the <a href="https://pesums.com/download"><span class="accent-text">download page</span></a>.
+    It is available for Android now. Windows<x>, </x>macOS<x>, </x>Linux and iOS are coming later.
+    Install it and you are browsing privately within seconds. No account. No trial. No license key.
   </div>
 </div>
           <div class="faq-item">
-            <div class="faq-question" role="button" tabindex="0">
-              Why is Pesums paid and not free? <span class="faq-arrow" aria-hidden="true">∨</span>
-            </div>
-            <div class="faq-answer">
-              Because free browsers pay their bills by selling your data or showing you ads. That is
-              the exact opposite of what Pesums stands for. Pesums is paid so it has zero financial
-              reason to touch your data ever. Your <span class="accent-text">$4.6</span> is the entire
-              business model. Nothing else.
-            </div>
-          </div>
+  <div class="faq-question" role="button" tabindex="0">
+    Why is Pesums free? <span class="faq-arrow" aria-hidden="true">∨</span>
+  </div>
+  <div class="faq-answer">
+    Because free browsers usually pay their bills by selling your data or showing you ads. Pesums
+    does neither. It is built and maintained by one independent developer<x>, </x>with no ads and no
+    investors. Every feature is free for everyone. If you value it<x>, </x>you can choose to
+    <a href="#support-us"><span class="accent-text">support the project</span></a> so it can keep
+    going. That is optional and unlocks nothing.
+  </div>
+</div>
           <div class="faq-item">
             <div class="faq-question" role="button" tabindex="0">
               Does Pesums collect any user data? <span class="faq-arrow" aria-hidden="true">∨</span>
@@ -1562,19 +1591,17 @@
               aggressive ad loads show the biggest improvement.
             </div>
           </div>
-          <div class="faq-item">
-            <div class="faq-question" role="button" tabindex="0">
-              Is Pesums open source? <span class="faq-arrow" aria-hidden="true">∨</span>
-            </div>
-            <div class="faq-answer">
-              Pesums is built on open-source technologies. The core browser engine and underlying
-              frameworks are open and auditable. The Pesums-specific codebase and blocking engine are
-              proprietary. There are no hidden trackers<x>, </x>no backdoors<x>, </x>and no secret
-              data collection the zero-collection architecture is verifiable through network
-              inspection. A user with a packet analyzer will see zero outbound calls to Pesums
-              servers.
-            </div>
-          </div>
+         <div class="faq-item">
+  <div class="faq-question" role="button" tabindex="0">
+    Is Pesums open source? <span class="faq-arrow" aria-hidden="true">∨</span>
+  </div>
+  <div class="faq-answer">
+    Pesums's own source code is not public. Everything it is built on is open source: every library
+    and package it uses<x>, </x>and the app shows the license of each one. There are no hidden
+    trackers and no secret data collection. The zero-collection architecture is verifiable through
+    network inspection. A user with a packet analyzer will see zero outbound calls to Pesums servers.
+  </div>
+</div>
           <div class="faq-item">
             <div class="faq-question" role="button" tabindex="0">
               Does Pesums have a password manager? <span class="faq-arrow" aria-hidden="true">∨</span>
@@ -1706,41 +1733,65 @@
               tomorrow<x>, </x>your local data would be completely unaffected.
             </div>
           </div>
-          <div class="faq-item">
-            <div class="faq-question" role="button" tabindex="0">
-              Can Pesums be compelled by a court to hand over my data?
-              <span class="faq-arrow" aria-hidden="true">∨</span>
-            </div>
-            <div class="faq-answer">
-              No. Pesums cannot hand over what it does not have. We hold zero user data no browsing
-              history<x>, </x>no IP logs<x>, </x>no account records<x>, </x>no usage telemetry. A
-              court order against Pesums would return nothing because there is nothing stored.
-            </div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-question" role="button" tabindex="0">
-              Is my payment information private? <span class="faq-arrow" aria-hidden="true">∨</span>
-            </div>
-            <div class="faq-answer">
-              Payment is processed by <span class="accent-text">Lemon Squeezy</span>
-              <x>, </x>an
-              industry-standard payment processor and Merchant of Record. Pesums never sees or stores
-              your payment card details. The transaction goes through
-              <span class="accent-text">Lemon Squeezy</span> directly. What Pesums receives is
-              confirmation that a valid license was purchased. That is all.
-            </div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-question" role="button" tabindex="0">
-              What is your refund policy? <span class="faq-arrow" aria-hidden="true">∨</span>
-            </div>
-            <div class="faq-answer">
-              Contact us at <span class="accent-text">contact@pesums.com</span>. We handle refund
-              requests individually and fairly. Pesums is a small independent product we are not a
-              faceless corporation with automated denial systems. If you have a genuine issue<x>, </x>
-              reach out directly.
-            </div>
-          </div>
+         <div class="faq-item">
+  <div class="faq-question" role="button" tabindex="0">
+    Can Pesums be compelled by a court to hand over my data?
+    <span class="faq-arrow" aria-hidden="true">∨</span>
+  </div>
+  <div class="faq-answer">
+    No. The current version of Pesums holds zero user data: no browsing history<x>, </x>no IP logs<x>, </x>no
+    account records<x>, </x>no usage telemetry. A court order would return nothing because there is
+    nothing stored. Data from the old trial and license system of earlier versions is covered in the
+    question about older versions.
+  </div>
+</div>
+         <div class="faq-item">
+  <div class="faq-question" role="button" tabindex="0">
+    How can I support Pesums? <span class="faq-arrow" aria-hidden="true">∨</span>
+  </div>
+  <div class="faq-answer">
+    Support is available inside the Google Play version of the app. Download Pesums from Google Play
+    and open the Support option in the app. Support is optional<x>, </x>it unlocks nothing<x>, </x>and you
+    can support more than once if you want to. It is not available in the direct download version.
+  </div>
+</div>
+         
+<div class="faq-item">
+  <div class="faq-question" role="button" tabindex="0">
+    Is my support payment private? <span class="faq-arrow" aria-hidden="true">∨</span>
+  </div>
+  <div class="faq-answer">
+    Payment goes through Google Play under Google's own terms and privacy policy. Pesums never sees
+    your card details<x>, </x>your name or your email<x>, </x>and keeps no record of who supported. To show
+    the thank-you heart<x>, </x>Pesums saves the time you supported on your device only. It is never sent
+    anywhere.
+  </div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-question" role="button" tabindex="0">
+    What is your refund policy? <span class="faq-arrow" aria-hidden="true">∨</span>
+  </div>
+  <div class="faq-answer">
+    Refunds for support follow Google Play's refund policy. If you have a genuine issue<x>, </x>you can
+    also contact us at <span class="accent-text">contact@pesums.com</span>. Pesums is a small
+    independent project and we respond personally.
+  </div>
+</div>
+
+<div class="faq-item">
+  <div class="faq-question" role="button" tabindex="0">
+    I used an older version with a trial or license. What about my data?
+    <span class="faq-arrow" aria-hidden="true">∨</span>
+  </div>
+  <div class="faq-answer">
+    Earlier versions of Pesums had a trial and license system that stored an email address<x>, </x>a
+    license key and a device identifier on our server. That system has been completely removed from
+    the current version. Once older versions are no longer in use<x>, </x>the remaining data will be
+    deleted. If you want yours removed sooner<x>, </x>email
+    <span class="accent-text">contact@pesums.com</span>.
+  </div>
+</div>
           <div class="faq-item">
             <div class="faq-question" role="button" tabindex="0">
               Who built Pesums? <span class="faq-arrow" aria-hidden="true">∨</span>
@@ -1780,6 +1831,7 @@
           <li><a href="#faq-section">FAQs</a></li>
           <li><a href="#screenshots">Screenshots</a></li>
           <li><a href="#features-main">Features</a></li>
+          <li><a href="#support-us">Support Us</a></li>
         </ul>
       </div>
       <div class="footer-col">
