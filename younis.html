@@ -1,1 +1,727 @@
 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Younis — Founder of Pesums</title>
+  <meta name="description"
+    content="Younis is the founder of Pesums, a privacy-focused Android browser. Programming since 2017.">
+  <meta property="og:title" content="Younis — Founder of Pesums">
+  <meta property="og:description" content="Programmer since 2017. I build privacy tools for Android.">
+  <meta property="og:image" content="https://raw.githubusercontent.com/p1km1n1/y/main/y.png">
+  <link rel="icon" type="image/jpeg"
+    href="https://raw.githubusercontent.com/gitmaxu/shphsvfp/refs/heads/main/prex.jpeg">
+  <style>
+    @font-face {
+      font-family: "ocr";
+      src: url("https://cdn.jsdelivr.net/gh/gitmaxu/shphsvfp@main/OCRBBQ.otf") format("opentype");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    /* Tune the font spacing here. Smaller negative = looser, bigger negative = tighter. */
+    :root {
+      --ls-body: -2px;
+      --ls-head: -3px;
+      --pad: 6vw;
+      --line: #333;
+      --dim: #8a8a8a;
+    }
+
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      background: #000;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "ocr", monospace;
+      font-weight: 400;
+      word-spacing: 6px;
+      letter-spacing: var(--ls-body);
+      background: #000;
+      color: #fff;
+      line-height: 1.7;
+      font-size: 1.05rem;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid #fff;
+      outline-offset: 4px;
+    }
+
+    button {
+      font: inherit;
+      letter-spacing: inherit;
+      color: inherit;
+      background: none;
+      border: 0;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      padding: 0 var(--pad);
+    }
+
+    .photo {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 46vw;
+      height: 100%;
+      overflow: hidden;
+      background: #111;
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      filter: grayscale(1) contrast(1.08);
+    }
+
+    .photo::after {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 160px;
+      background: linear-gradient(#000c, transparent);
+      pointer-events: none;
+    }
+
+    .caption {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      z-index: 1;
+      background: #000;
+      padding: 18px 28px;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    nav {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 3;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 36px var(--pad);
+    }
+
+    .logo {
+      width: 54px;
+      height: 54px;
+      border: 3px solid #fff;
+      display: grid;
+      place-items: center;
+      font-size: 1.7rem;
+      line-height: 1;
+      text-decoration: none;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      font-size: 0.9rem;
+    }
+
+    .links a {
+      text-decoration: none;
+      padding: 4px 0;
+    }
+
+    .links a+a::before {
+      content: "/";
+      margin: 0 16px;
+      color: var(--dim);
+    }
+
+    .links a:hover {
+      text-decoration: underline;
+      text-underline-offset: 6px;
+    }
+
+    .hero-text {
+      position: relative;
+      z-index: 2;
+      mix-blend-mode: difference;
+    }
+
+    h1 {
+      font-weight: 400;
+      font-size: clamp(3.4rem, 17vw, 16rem);
+      line-height: 0.95;
+      letter-spacing: var(--ls-head);
+    }
+
+    .tagline {
+      margin-top: 28px;
+      max-width: 30ch;
+      font-size: clamp(1rem, 1.6vw, 1.35rem);
+      line-height: 1.5;
+    }
+
+    .hero-text,
+    .photo {
+      animation: in 0.9s ease both;
+    }
+
+    .photo {
+      animation-delay: 0.15s;
+    }
+
+    @keyframes in {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    /* ---------- SECTIONS ---------- */
+    section {
+      padding: 110px var(--pad) 0;
+    }
+
+    .head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+      gap: 24px;
+      align-items: end;
+      padding-bottom: 22px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    h2 {
+      font-weight: 400;
+      font-size: clamp(2rem, 4.4vw, 3.6rem);
+      line-height: 1.05;
+      letter-spacing: var(--ls-head);
+    }
+
+    .head p {
+      color: #bdbdbd;
+      max-width: 46ch;
+    }
+
+    .content {
+      padding-top: 56px;
+    }
+
+    /* what I do */
+    .work {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 6vw;
+      align-items: start;
+    }
+
+    .list {
+      list-style: none;
+    }
+
+    .item {
+      display: block;
+      width: 100%;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--line);
+      color: var(--dim);
+      transition: color 0.25s;
+    }
+
+    .item:first-child,
+    .list li:first-child .item {
+      border-top: 1px solid var(--line);
+    }
+
+    .item.on,
+    .item:hover {
+      color: #fff;
+    }
+
+    .item b {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      font-weight: 400;
+      font-size: clamp(1.3rem, 2.2vw, 1.8rem);
+      line-height: 1.2;
+      letter-spacing: var(--ls-head);
+    }
+
+    .item span {
+      display: block;
+      margin-top: 12px;
+      max-width: 42ch;
+      font-size: 0.98rem;
+    }
+
+    .stage {
+      position: sticky;
+      top: 24px;
+    }
+
+    .track {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none;
+      border: 1px solid var(--line);
+    }
+
+    .track::-webkit-scrollbar {
+      display: none;
+    }
+
+    .slide {
+      flex: 0 0 100%;
+      scroll-snap-align: start;
+      aspect-ratio: 4 / 5;
+      display: grid;
+      place-items: center;
+      background: #000000;
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      filter: grayscale(1);
+    }
+
+    .slide figcaption {
+      display: none;
+      color: var(--dim);
+      padding: 20px;
+      text-align: center;
+    }
+
+    .slide.missing img {
+      display: none;
+    }
+
+    .slide.missing figcaption {
+      display: block;
+    }
+
+    .arrows {
+      display: flex;
+      gap: 12px;
+      margin-top: 14px;
+      justify-content: flex-end;
+    }
+
+    .arrows button {
+      width: 56px;
+      height: 56px;
+      border: 1px solid #fff;
+      font-size: 1.3rem;
+      display: grid;
+      place-items: center;
+      text-align: center;
+    }
+
+    .arrows button:hover {
+      background: #fff;
+      color: #000;
+    }
+
+    /* insights */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      display: block;
+      border: 1px solid var(--line);
+      background: #0d0d0d;
+      padding: 32px 28px 36px;
+      text-decoration: none;
+      min-height: 260px;
+    }
+
+    a.card:hover {
+      border-color: #fff;
+    }
+
+    .card small {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--dim);
+      margin-bottom: 36px;
+    }
+
+    .card h3 {
+      font-weight: 400;
+      font-size: 1.4rem;
+      line-height: 1.25;
+      letter-spacing: var(--ls-head);
+      margin-bottom: 14px;
+    }
+
+    .card p {
+      color: #bdbdbd;
+      font-size: 0.95rem;
+    }
+
+    /* about + contact */
+    .about p {
+      max-width: 50ch;
+      color: #bdbdbd;
+    }
+
+    .about p+p {
+      margin-top: 1.1em;
+    }
+
+    .mail {
+      display: inline-block;
+      font-size: clamp(1.4rem, 4.6vw, 3.4rem);
+      line-height: 1.2;
+      letter-spacing: var(--ls-head);
+      text-decoration: none;
+      border-bottom: 2px solid #fff;
+      padding-bottom: 6px;
+      transition: background 0.2s, color 0.2s;
+      word-break: break-word;
+    }
+
+    .mail:hover {
+      background: #fff;
+      color: #000;
+    }
+
+    footer {
+      margin-top: 130px;
+      border-top: 1px solid var(--line);
+      padding: 28px var(--pad);
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      font-size: 0.85rem;
+      color: #777;
+    }
+
+    footer a {
+      text-decoration: none;
+      color: #fff;
+    }
+
+    /* ---------- MOBILE ---------- */
+    @media (max-width: 800px) {
+      .hero {
+        display: block;
+        min-height: 0;
+        padding: 0;
+      }
+
+      .photo {
+        position: relative;
+        width: 100%;
+        height: 64svh;
+      }
+
+      .caption {
+        padding: 12px 18px;
+        font-size: 0.8rem;
+      }
+
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+        padding: 22px var(--pad);
+      }
+
+      .logo {
+        width: 44px;
+        height: 44px;
+        font-size: 1.4rem;
+      }
+
+      .links {
+        justify-content: flex-start;
+        font-size: 0.8rem;
+      }
+
+      .links a+a::before {
+        margin: 0 9px;
+      }
+
+      .hero-text {
+        mix-blend-mode: normal;
+        padding: 36px var(--pad) 0;
+      }
+
+      h1 {
+        font-size: 22vw;
+      }
+
+      section {
+        padding-top: 80px;
+      }
+
+      .head,
+      .work,
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .head {
+        gap: 14px;
+      }
+
+      .content {
+        padding-top: 36px;
+      }
+
+      .work {
+        gap: 40px;
+      }
+
+      .stage {
+        position: static;
+        order: -1;
+      }
+
+      .card {
+        min-height: 0;
+      }
+
+      footer {
+        margin-top: 90px;
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .hero-text,
+      .photo {
+        animation: none;
+      }
+
+      html {
+        scroll-behavior: auto;
+      }
+
+      .mail,
+      .item {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="hero" id="top">
+    <nav>
+      <a class="logo" href="#top" aria-label="Younis">Y</a>
+      <div class="links">
+        <a href="https://pesums.com">Pesums</a>
+        <a href="https://pesums.com/matrix">Matrix</a>
+        <a href="https://www.youtube.com/@PesumsSoftware">YouTube</a>
+        <a href="#insights">Insights</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+    <div class="photo">
+      <img src="https://raw.githubusercontent.com/p1km1n1/y/main/yi.png" alt="Younis, founder of Pesums">
+      <div class="caption">Younis, Founder of Pesums</div>
+    </div>
+    <div class="hero-text">
+      <h1>Younis</h1>
+      <p class="tagline">I made Pesums. Programmer since 2017.</p>
+    </div>
+  </header>
+
+  <main>
+    <section id="work">
+      <div class="head">
+        <h2>What I do</h2>
+        <p>Privacy tools for Android, built by one person.</p>
+      </div>
+      <div class="content work">
+        <ul class="list">
+          <li><button class="item" data-i="0"><b>Pesums browser <em style="font-style:normal">00</em></b><span>A
+                privacy-focused Android browser. Designed, built and launched by me alone.</span></button></li>
+          <li><button class="item" data-i="1"><b>Shield <em style="font-style:normal">01</em></b><span>Trackers are
+                stopped at the network and DNS level, with injected JavaScript for what is left inside the
+                page.</span></button></li>
+          <li><button class="item" data-i="2"><b>Full stack <em style="font-style:normal">02</em></b><span>Flutter and
+                native Kotlin on the phone, Django on the server.</span></button></li>
+        </ul>
+
+        <div class="stage">
+          <!-- Upload gif1.gif, gif2.gif, gif3.gif to your GitHub repo (p1km1n1/y). Missing gifs show a plain label instead. -->
+          <div class="track" id="track">
+            <figure class="slide"><img src="https://raw.githubusercontent.com/p1km1n1/y/main/gif1.gif"
+                alt="Pesums browser" loading="lazy" onerror="this.parentNode.classList.add('missing')">
+              <figcaption>Pesums browser</figcaption>
+            </figure>
+            <figure class="slide"><img src="https://raw.githubusercontent.com/p1km1n1/y/main/gif2.gif"
+                alt="Shield blocking trackers" loading="lazy" onerror="this.parentNode.classList.add('missing')">
+              <figcaption>Shield</figcaption>
+            </figure>
+            <figure class="slide"><img src="https://raw.githubusercontent.com/p1km1n1/y/main/gif3.gif"
+                alt="The stack behind Pesums" loading="lazy" onerror="this.parentNode.classList.add('missing')">
+              <figcaption>Full stack</figcaption>
+            </figure>
+          </div>
+          <div class="arrows">
+            <button id="prev" aria-label="Previous">&lt;</button>
+            <button id="next" aria-label="Next">&gt;</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="insights">
+      <div class="head">
+        <h2>Insights</h2>
+        <p>Notes on the technical work behind Pesums.</p>
+      </div>
+      <div class="content cards">
+        <div class="card">
+          <small>Pesums</small>
+          <h3>How the Shield works</h3>
+          <p>Blocking happens before a page loads, at the network and DNS level. A small injected script handles the
+            rest.</p>
+        </div>
+        <div class="card">
+          <small>Architecture</small>
+          <h3>One developer, three layers</h3>
+          <p>A Flutter app, native Kotlin for what Flutter cannot reach, and a Django server behind it.</p>
+        </div>
+        <a class="card" href="https://pesums.com/matrix">
+          <small>More</small>
+          <h3>Pesums Matrix</h3>
+          <p>More of the technical work lives here.</p>
+        </a>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="head">
+        <h2>Who I am</h2>
+        <p>Self-taught. Coding since 2017.</p>
+      </div>
+      <div class="content about">
+        <p>I learned by building things until they worked. Pesums is the result: one person, one product, shipped.</p>
+        <p>I work with Flutter, Kotlin, Django and JavaScript.</p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="head">
+        <h2>Contact</h2>
+        <p>Write to me.</p>
+      </div>
+      <div class="content">
+        <a class="mail" href="mailto:contact@pesums.com?subject=Hello%20Younis">contact@pesums.com</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>&copy; 2026 Younis. Pesums.</span>
+    <a href="#top">Back to top</a>
+  </footer>
+
+  <script>
+    (function () {
+      var track = document.getElementById('track');
+      var items = Array.prototype.slice.call(document.querySelectorAll('.item'));
+      var cur = 0;
+      var busy = false, busyTimer, timer;
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      function mark(i) {
+        cur = i;
+        items.forEach(function (b, n) { b.classList.toggle('on', n === i); });
+      }
+
+      function go(i) {
+        i = (i + items.length) % items.length;
+        busy = true; // ignore scroll events while the slide is moving by itself
+        clearTimeout(busyTimer);
+        busyTimer = setTimeout(function () { busy = false; }, 900);
+        track.scrollTo({ left: i * track.clientWidth, behavior: reduce ? 'auto' : 'smooth' });
+        mark(i);
+      }
+
+      // Auto switch every 6 seconds: 0 -> 1 -> 2 -> 0 ...
+        function start() {
+        clearInterval(timer);
+        timer = setInterval(function () { go(cur + 1); }, 6000);
+      }
+
+      // Any tap, swipe or key press restarts the 6 second timer
+      function userAction() { busy = false; start(); }
+
+      track.addEventListener('scroll', function () {
+        if (busy) return;
+        var i = Math.round(track.scrollLeft / track.clientWidth);
+        if (i !== cur && i >= 0 && i < items.length) mark(i);
+      }, { passive: true });
+
+      items.forEach(function (b, n) { b.addEventListener('click', function () { go(n); }); });
+      document.getElementById('prev').addEventListener('click', function () { go(cur - 1); });
+      document.getElementById('next').addEventListener('click', function () { go(cur + 1); });
+
+      ['pointerdown', 'keydown'].forEach(function (e) {
+        document.getElementById('work').addEventListener(e, userAction);
+      });
+
+      var width = track.clientWidth;
+      window.addEventListener('resize', function () {
+        if (track.clientWidth === width) return; // phones fire resize when the address bar hides
+        width = track.clientWidth;
+        track.scrollTo({ left: cur * width, behavior: 'auto' });
+      });
+
+      mark(0);
+      start();
+    })();
+  </script>
+
+</body>
+
+</html>
